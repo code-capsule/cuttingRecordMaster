@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediaRecorder Demo</title>
+</head>
+<body>
+  <button onclick=start()>选择要录制的屏幕，并开始录制</button>
+  <button onclick=stop()>停止录制</button>
+  <button onclick=play()>播放刚刚的录制内容</button>
+  <video id="player"></video>
+  <script>
+    const player = document.querySelector('#player');
+    let blobs = [], mediaRecorder;
+    async function start() {
+      const stream = await navigator.mediaDevices.getDisplayMedia({
+        video: true,
+      });
+      
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = (e) => {
+        console.log('Blob数据：', e.data);
+        blobs.push(e.data);
+      };
+      mediaRecorder.start(2000);
+    }
+    function stop() {
+      mediaRecorder.stop();
+    }
+    function play() {
+      const blob = new Blob(blobs, { video: 'video/webm' });
+      player.src = URL.createObjectURL(blob);
+      player.play();
+    }
+  </script>
+</body>
+</html>
