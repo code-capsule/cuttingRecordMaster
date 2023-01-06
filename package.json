@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "vite",
-    "dev:main": "electron ./src/main/index.js"
+    "dev": "vite"
   },
   "keywords": [],
   "author": "",

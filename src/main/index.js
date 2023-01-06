@@ -1,12 +1,16 @@
-const { app, BrowserWindow } = require('electron')
+import { app, BrowserWindow } from 'electron'
+import { createWindow } from './createWindow';
 
-const createWindow = () => {
-  const window = new BrowserWindow({})
-  window.loadFile('index.html')
+function createHome() {
+  createWindow({
+    name: 'home',
+    width: 1000,
+    height: 800,
+  })
 }
 
 app.whenReady().then(() => {
-  createWindow()
+  createHome()
 })
 
 app.on('window-all-closed', () => {
@@ -17,6 +21,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    createHome()
   }
 })
