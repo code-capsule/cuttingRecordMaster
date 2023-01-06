@@ -2,15 +2,16 @@
   "name": "cuttingRecordMaster",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "dev:main": "electron ./src/main/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@vitejs/plugin-react": "2.2.0",
+    "electron": "21.3.0",
     "vite": "3.2.2"
   },
   "dependencies": {
