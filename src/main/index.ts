@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron'
-import { createWindow } from './createWindow';
+import { createWindow } from './createWindow'
 
 function createHome() {
   createWindow({

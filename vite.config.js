@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { devMainPlugin } from './plugins/vite-plugin-dev-main'
-import { join } from 'path';
+import { join } from 'path'
 
 export default defineConfig({
   root: join(__dirname, 'src/render'),
@@ -10,8 +10,5 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  plugins: [
-    devMainPlugin(),
-    react()
-  ],
+  plugins: [devMainPlugin(), react()],
 })
