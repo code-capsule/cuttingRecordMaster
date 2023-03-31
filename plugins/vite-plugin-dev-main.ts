@@ -1,20 +1,13 @@
-const mainEntryPath = './src/main/index.ts';
-const mainOutPath = './dist/index.js';
+import { buildMain, mainOutPath } from '../scripts/build.main'
 
 export const devMainPlugin = () => {
   return {
     name: 'vite-plugin-dev-main',
     configureServer(server) {
-      require('esbuild').buildSync({
-        entryPoints: [mainEntryPath],
-        bundle: true,
-        platform: 'node',
-        outfile: mainOutPath,
-        external: ['electron'],
-      });
+      buildMain()
       server.httpServer.once('listening', () => {
-        const { spawn } = require('child_process');
-        const electronProcess = spawn(
+        let { spawn } = require('child_process')
+        let electronProcess = spawn(
           require('electron').toString(),
           [mainOutPath, '--inspect=9229', '--remote-debugging-port=9222'],
           {
@@ -23,10 +16,14 @@ export const devMainPlugin = () => {
           }
         )
         electronProcess.on('close', () => {
-          server.close();
-          process.exit();
-        });
-      });
+          server.close()
+          process.exit()
+        })
+        server.httpServer.once('close', () => {
+          electronProcess.close()
+          process.exit()
+        })
+      })
     },
-  };
-};
+  }
+}
