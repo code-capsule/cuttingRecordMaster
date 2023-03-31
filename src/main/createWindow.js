@@ -1,5 +1,4 @@
-const { BrowserWindow } = require('electron')
-const path = require('path')
+import { BrowserWindow } from "electron";
 
 /**
  * 公共的创建窗口的方法
@@ -15,7 +14,7 @@ export const createWindow = (params) => {
       nodeIntegration: true,
       contextIsolation: false,
     },
-  })
+  });
 
-  window.loadURL(`http://localhost:3000/entry/${name}.html`)
-}
+  window.loadURL(`http://localhost:3000/entry/${name}.html`);
+};
