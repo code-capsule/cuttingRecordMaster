@@ -1,5 +1,5 @@
 const { buildSync } = require('esbuild')
-const mainEntryPath = './src/main/index.js'
+const mainEntryPath = './src/main/index.ts'
 const mainOutPath = './dist/index.js'
 
 function buildMain() {

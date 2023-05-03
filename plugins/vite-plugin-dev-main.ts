@@ -1,11 +1,12 @@
+import { Plugin } from 'vite'
 import { buildMain, mainOutPath } from '../scripts/build.main'
 
-export const devMainPlugin = () => {
+export const devMainPlugin = (): Plugin => {
   return {
     name: 'vite-plugin-dev-main',
     configureServer(server) {
       buildMain()
-      server.httpServer.once('listening', () => {
+      server.httpServer?.once('listening', () => {
         let { spawn } = require('child_process')
         let electronProcess = spawn(
           require('electron').toString(),
@@ -19,7 +20,7 @@ export const devMainPlugin = () => {
           server.close()
           process.exit()
         })
-        server.httpServer.once('close', () => {
+        server.httpServer?.once('close', () => {
           electronProcess.close()
           process.exit()
         })
