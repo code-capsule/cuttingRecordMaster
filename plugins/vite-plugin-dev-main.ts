@@ -7,8 +7,8 @@ export const devMainPlugin = (): Plugin => {
     configureServer(server) {
       buildMain()
       server.httpServer?.once('listening', () => {
-        let { spawn } = require('child_process')
-        let electronProcess = spawn(
+        const { spawn } = require('child_process')
+        const electronProcess = spawn(
           require('electron').toString(),
           [mainOutPath, '--inspect=9229', '--remote-debugging-port=9222'],
           {
