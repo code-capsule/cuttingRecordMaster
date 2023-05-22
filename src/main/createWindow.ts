@@ -19,6 +19,6 @@ export const createWindow = (params: BaseWindowOptions) => {
       contextIsolation: false,
     },
   })
-
+  require('@electron/remote/main').enable(window.webContents)
   window.loadURL(`http://localhost:3000/entry/${name}.html`)
 }
