@@ -2,9 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Main from './containers/Main'
 import master from '@render/model'
+import { attachIpc } from '@render/model/ipc'
 import { Provider } from 'react-redux'
 import './index.less'
 
+attachIpc('home')
 function App() {
   return (
     <Provider store={master.store.reduxStore}>

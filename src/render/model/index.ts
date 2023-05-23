@@ -1,8 +1,12 @@
 import initReduxStore, { AppState } from './reduxStore'
+import { IRenderIpc } from '@common/services/ipc'
 import { Store } from 'redux'
 const remote = require('@electron/remote')
 
 interface Master {
+  service: {
+    ipc?: IRenderIpc
+  }
   store: {
     reduxStore: Store
   }
@@ -16,6 +20,8 @@ export function initMaster(): Master {
   const reduxStore = initReduxStore(state)
 
   const master: Master = {
+    service: {
+    },
     store: {
       reduxStore,
     },

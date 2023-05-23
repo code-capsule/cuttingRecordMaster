@@ -1,7 +1,6 @@
 import { app, BrowserWindow } from 'electron'
 import { createWindow } from './createWindow'
 import setup from './setup'
-const { ipcMain } = require('electron')
 
 function createHome() {
   createWindow({
@@ -22,7 +21,7 @@ function createRecord() {
 app.whenReady().then(() => {
   setup()
   createHome()
-  ipcMain.on('open.record.window', (event, message) => {
+  global.master.service.ipc.on('open.record.window', () => {
     createRecord()
   })
 })
