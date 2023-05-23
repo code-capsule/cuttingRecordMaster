@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
+import { ReactComponent as CloseIcon } from './mic.svg'
 import './index.less'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
           count is {count}
         </button>
       </div>
+      <CloseIcon />
     </div>
   )
 }
