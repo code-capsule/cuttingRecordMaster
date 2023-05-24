@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { devMainPlugin } from './plugins/vite-plugin-dev-main'
+import svgr from 'vite-plugin-svgr'
 import { join } from 'path'
 
 export default defineConfig({
@@ -10,7 +11,7 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  plugins: [devMainPlugin(), react()],
+  plugins: [devMainPlugin(), react(), svgr()],
   resolve: {
     alias: {
       '@addon': join(__dirname, 'src/addon'),
