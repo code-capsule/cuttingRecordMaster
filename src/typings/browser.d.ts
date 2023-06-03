@@ -1,4 +1,4 @@
-import { IMainIpc } from '@common/services/ipc';
+import { IRenderIpc } from '@common/services/ipc';
 import { Store } from 'redux';
 
 declare global {
@@ -13,7 +13,7 @@ interface Master {
 }
 
 interface MasterService {
-  ipc: IMainIpc;
+  ipc: IRenderIpc;
 }
 
 interface MasterStore {
