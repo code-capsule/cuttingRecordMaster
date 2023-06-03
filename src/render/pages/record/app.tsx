@@ -1,22 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Main from './containers/Main'
-import master from '@render/model'
-import { Provider } from 'react-redux'
-import { attachIpc } from '@render/model/ipc'
-import './index.less'
+import React, { lazy, Suspense } from 'react';
+import { createRoot } from 'react-dom/client';
+import setupRender, { SetupRenderOptions } from '@render/setup';
+import { Provider } from 'react-redux';
+import './index.less';
 
-attachIpc('record')
-function App() {
-  return (
-    <Provider store={master.store.reduxStore}>
-      <Main />
-    </Provider>
-  )
-}
+const Main = lazy(() => import('./containers/Main'));
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+const setupOptions: SetupRenderOptions = {
+  processKey: 'record',
+};
+
+setupRender(setupOptions).then(() => {
+  createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+      <Provider store={window.master.store.reduxStore}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Main />
+        </Suspense>
+      </Provider>
+    </React.StrictMode>
+  );
+});

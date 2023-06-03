@@ -1,21 +1,20 @@
-import React from 'react'
-import './index.less'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import './index.less';
+import { useSelector } from 'react-redux';
 import { AppState } from '@common/stores/reduxStore/typings';
-import { recordPageActions } from '@common/stores/reduxStore/actions'
-import master from '@render/model'
+import { recordPageActions } from '@common/stores/reduxStore/actions';
 
 function Main() {
-  const count = useSelector((state: AppState) => state.recordPage.count)
+  const count = useSelector((state: AppState) => state.recordPage.count);
 
   const handleOpenRecordWindow = () => {
-    master.service.ipc?.send('open.record.window')
-  }
+    window.master.service.ipc.send('open.record.window');
+  };
   return (
     <div className="home-main">
       <h1>Home</h1>
       <div className="card">
-      <button
+        <button
           aria-label="Increment value"
           onClick={() => recordPageActions.increment()}
         >
@@ -36,7 +35,7 @@ function Main() {
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Main
+export default Main;

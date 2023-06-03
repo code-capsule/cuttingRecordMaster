@@ -23,5 +23,12 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'react/react-in-jsx-scope': 'off',
+    'no-var': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
   },
-}
+};

@@ -1,4 +1,8 @@
-export const timeoutWrap = (handler: Function, timeout = 15000, ...args: any[]): Promise<any> => {
+export const timeoutWrap = (
+  handler: Function,
+  timeout = 15000,
+  ...args: any[]
+): Promise<any> => {
   return Promise.race([handler(...args), Timeout(timeout, ...args)]);
 };
 

@@ -1,7 +1,7 @@
-import { BrowserWindow, BrowserWindowConstructorOptions } from 'electron'
+import { BrowserWindow, BrowserWindowConstructorOptions } from 'electron';
 
 export interface BaseWindowOptions extends BrowserWindowConstructorOptions {
-  name: string
+  name: string;
 }
 
 /**
@@ -9,7 +9,7 @@ export interface BaseWindowOptions extends BrowserWindowConstructorOptions {
  * @param {*} params 参数
  */
 export const createWindow = (params: BaseWindowOptions) => {
-  const { name, width, height } = params
+  const { name, width, height } = params;
   const window = new BrowserWindow({
     title: name,
     width,
@@ -18,7 +18,7 @@ export const createWindow = (params: BaseWindowOptions) => {
       nodeIntegration: true,
       contextIsolation: false,
     },
-  })
-  require('@electron/remote/main').enable(window.webContents)
-  window.loadURL(`http://localhost:3000/entry/${name}.html`)
-}
+  });
+  require('@electron/remote/main').enable(window.webContents);
+  window.loadURL(`http://localhost:3000/entry/${name}.html`);
+};

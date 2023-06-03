@@ -42,25 +42,36 @@ export interface IBaseIpc {
    * 发送消息(触发事件)
    */
   send: (channel: string, args?: any) => void;
-   /**
-    * 请求消息
-    */
-  request: (channel: string, timeout?: number | 'infinite', args?: any) => Promise<any>;
-   /**
-    * 绑定事件
-    */
-  on: (channel: string, handler: TPortChannelHandler | IPortChannelCallback, once?: boolean) => void;
+  /**
+   * 请求消息
+   */
+  request: (
+    channel: string,
+    timeout?: number | 'infinite',
+    args?: any
+  ) => Promise<any>;
+  /**
+   * 绑定事件
+   */
+  on: (
+    channel: string,
+    handler: TPortChannelHandler | IPortChannelCallback,
+    once?: boolean
+  ) => void;
   /**
    * 绑定一次事件
    */
-  once: (channel: string, handler: TPortChannelHandler | IPortChannelCallback) => void;
-   /**
-    * 解除绑定事件
-    */
+  once: (
+    channel: string,
+    handler: TPortChannelHandler | IPortChannelCallback
+  ) => void;
+  /**
+   * 解除绑定事件
+   */
   off: (channel: string, handler?: Function) => void;
-   /**
-    * 解除绑定事件
-    */
+  /**
+   * 解除绑定事件
+   */
   removeListener: (channel: string, handler?: Function) => void;
 }
 
@@ -123,13 +134,13 @@ export interface IPortChannelCallback {
    */
   reqId?: string;
   /**
-  * 是否单次
-  */
+   * 是否单次
+   */
   once?: boolean;
 }
 
 export type TPortChannelHandler = (ctx: IIpcMessageCtx, body: any) => void;
 
-export interface IMainIpc extends IBaseIpc {}
+export type IMainIpc = IBaseIpc;
 
-export interface IRenderIpc extends IBaseIpc {}
+export type IRenderIpc = IBaseIpc;

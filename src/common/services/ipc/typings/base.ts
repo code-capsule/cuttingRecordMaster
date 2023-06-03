@@ -1,4 +1,4 @@
-import { IIpcMessage, IRequestResponse } from './channel'
+import { IIpcMessage, IRequestResponse } from './channel';
 
 export interface IHandleMessageParams {
   message: IIpcMessage;

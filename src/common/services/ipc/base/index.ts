@@ -1,5 +1,19 @@
 import IpcEventEmitter from './events';
-import { IBaseIpc, IBaseIpcProps, IIpcLogger, EIpcNamespace, IProcessMessagePortMap, IPortChannelMap, IHandleMessageParams, IIpcMessage, IPortChannelCallback, TPortChannelHandler, IIpcEventEmitter, IRequestResponse, TProcessKey } from '../typings';
+import {
+  IBaseIpc,
+  IBaseIpcProps,
+  IIpcLogger,
+  EIpcNamespace,
+  IProcessMessagePortMap,
+  IPortChannelMap,
+  IHandleMessageParams,
+  IIpcMessage,
+  IPortChannelCallback,
+  TPortChannelHandler,
+  IIpcEventEmitter,
+  IRequestResponse,
+  TProcessKey,
+} from '../typings';
 import { CHANNEL_REQUEST } from '../constants';
 import { generateMessageCtx, generateIpcMessage } from '../utils/message';
 import { timeoutWrap } from '../utils/timeout';
@@ -39,7 +53,11 @@ export default class BaseIpc implements IBaseIpc {
     this.eventEmitter.emit(channel, finalMessage);
   };
 
-  public on = (channel: string, handler: TPortChannelHandler | IPortChannelCallback, once?: boolean): void => {
+  public on = (
+    channel: string,
+    handler: TPortChannelHandler | IPortChannelCallback,
+    once?: boolean
+  ): void => {
     if (!this.portChannelMap[channel]) {
       this.portChannelMap[channel] = {
         callbacks: [],
@@ -60,7 +78,10 @@ export default class BaseIpc implements IBaseIpc {
     this.eventEmitter.on(channel, messageListener);
   };
 
-  public once = (channel: string, handler: TPortChannelHandler | IPortChannelCallback): void => {
+  public once = (
+    channel: string,
+    handler: TPortChannelHandler | IPortChannelCallback
+  ): void => {
     this.on(channel, handler, true);
   };
 
@@ -78,7 +99,11 @@ export default class BaseIpc implements IBaseIpc {
    * @param timeout TODO 待实现，超时时间
    * @param args 参数
    */
-   public request = async (channel: string, timeout?: number | 'infinite', args?: any): Promise<void> => {
+  public request = async (
+    channel: string,
+    timeout?: number | 'infinite',
+    args?: any
+  ): Promise<void> => {
     const finalMessage = generateIpcMessage(channel, args);
     this.logger.info('[request]', finalMessage);
     let _timeout = timeout;
@@ -96,9 +121,12 @@ export default class BaseIpc implements IBaseIpc {
         return res;
       },
       (error) => {
-        this.logger.error(`channel: ${channel}, request is timeout: ${_timeout}ms, args: `, args);
+        this.logger.error(
+          `channel: ${channel}, request is timeout: ${_timeout}ms, args: `,
+          args
+        );
         return error;
-      },
+      }
     );
   };
 
@@ -106,8 +134,17 @@ export default class BaseIpc implements IBaseIpc {
     const { message } = params;
     const { channel, targetId } = message;
 
-    if ((targetId !== undefined && targetId !== null && targetId !== '') && targetId !== this.processKey) {
-      this.logger.info(`the targetId is mismatch, channel is ${channel}, targetId:`, targetId, this.processKey);
+    if (
+      targetId !== undefined &&
+      targetId !== null &&
+      targetId !== '' &&
+      targetId !== this.processKey
+    ) {
+      this.logger.info(
+        `the targetId is mismatch, channel is ${channel}, targetId:`,
+        targetId,
+        this.processKey
+      );
       return;
     }
 
@@ -123,7 +160,7 @@ export default class BaseIpc implements IBaseIpc {
       this.logger = {
         info: () => {},
         error: () => {},
-      }
+      };
       return;
     }
 
@@ -140,7 +177,12 @@ export default class BaseIpc implements IBaseIpc {
     return new Promise((resolve) => {
       this.once(CHANNEL_REQUEST, {
         handler: (ctx, result) => {
-          this.logger.info('[request result], message is :', message, 'result is: ', result);
+          this.logger.info(
+            '[request result], message is :',
+            message,
+            'result is: ',
+            result
+          );
           resolve(result);
         },
         reqId: headers.reqId,
@@ -161,12 +203,16 @@ export default class BaseIpc implements IBaseIpc {
   };
 
   private _sendToPort = (message: IIpcMessage): void => {
-    for (const [key, processMessagePort] of Object.entries(this.processMessagePortMap)) {
+    for (const [key, processMessagePort] of Object.entries(
+      this.processMessagePortMap
+    )) {
       processMessagePort.messagePort?.postMessage(message);
     }
   };
 
-  private _executePortChannelCallbacks = (params: IHandleMessageParams): void => {
+  private _executePortChannelCallbacks = (
+    params: IHandleMessageParams
+  ): void => {
     const { message } = params;
     const { channel, headers } = message;
     const callbacks = this.portChannelMap[channel]?.callbacks;
@@ -185,7 +231,10 @@ export default class BaseIpc implements IBaseIpc {
     });
   };
 
-  private _executeRemoveListener = (channel: string, handler?: Function): void => {
+  private _executeRemoveListener = (
+    channel: string,
+    handler?: Function
+  ): void => {
     if (this.portChannelMap[channel]) {
       this._removeChannelCallback(channel, handler);
       handler && this.eventEmitter.removeListener(channel, handler);
@@ -194,7 +243,10 @@ export default class BaseIpc implements IBaseIpc {
     }
   };
 
-  private _removeChannelCallback = (channel: string, handler?: Function): void => {
+  private _removeChannelCallback = (
+    channel: string,
+    handler?: Function
+  ): void => {
     if (!handler) {
       delete this.portChannelMap[channel];
     } else {
@@ -202,11 +254,16 @@ export default class BaseIpc implements IBaseIpc {
     }
   };
 
-  private _removeChannelTargeCallback = (channel: string, handler: Function): void => {
-    this.portChannelMap[channel].callbacks?.forEach((cbItem: IPortChannelCallback, index: number) => {
-      if (cbItem.handler === handler) {
-        this.portChannelMap[channel].callbacks.splice(index, 1);
+  private _removeChannelTargeCallback = (
+    channel: string,
+    handler: Function
+  ): void => {
+    this.portChannelMap[channel].callbacks?.forEach(
+      (cbItem: IPortChannelCallback, index: number) => {
+        if (cbItem.handler === handler) {
+          this.portChannelMap[channel].callbacks.splice(index, 1);
+        }
       }
-    });
+    );
   };
 }

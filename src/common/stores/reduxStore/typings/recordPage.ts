@@ -1,3 +1,3 @@
 export interface RecordPage {
-  count: number
+  count: number;
 }
