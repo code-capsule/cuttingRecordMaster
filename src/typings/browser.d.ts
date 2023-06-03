@@ -1,4 +1,5 @@
 import { IRenderIpc } from '@common/services/ipc';
+import WindowService from '@common/services/windowService';
 
 declare global {
   interface Window {
@@ -12,4 +13,5 @@ interface Master {
 
 interface MasterService {
   ipc: IRenderIpc;
+  windowService: WindowService;
 }

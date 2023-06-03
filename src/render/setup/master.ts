@@ -1,5 +1,7 @@
 import { RenderIpc } from '@common/services/ipc';
 import { Master } from '@typings/browser';
+import { Master as MainMaster } from '@typings/node';
+const remote = require('@electron/remote');
 
 export interface InitRenderMasterOptions {
   /**
@@ -14,11 +16,15 @@ export async function initMaster(
   return new Promise((resolve) => {
     const { processKey } = options;
 
+    const Master: MainMaster = remote.getGlobal('master');
+    const { service } = Master;
+
     const ipc = new RenderIpc({ processKey });
 
     const master: Master = {
       service: {
         ipc,
+        windowService: service.windowService,
       },
     };
 

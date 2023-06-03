@@ -1,29 +1,9 @@
 import { app, BrowserWindow } from 'electron';
-import { createWindow } from './createWindow';
+import { createHome } from '@common/services/windowService/windows';
 import setupMain from './setup';
-
-function createHome() {
-  createWindow({
-    name: 'home',
-    width: 1000,
-    height: 800,
-  });
-}
-
-function createRecord() {
-  createWindow({
-    name: 'record',
-    width: 800,
-    height: 600,
-  });
-}
 
 app.whenReady().then(async () => {
   await setupMain();
-  createHome();
-  global.master.service.ipc.on('open.record.window', () => {
-    createRecord();
-  });
 });
 
 app.on('window-all-closed', () => {
