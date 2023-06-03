@@ -1,7 +1,8 @@
-import master from '../model';
+import master from './master';
 
-export default async function setup() {
-  // @ts-ignore
+interface SetUpMainOptions {}
+
+export default async function setupMain(options?: SetUpMainOptions) {
   global.master = master;
   require('@electron/remote/main').initialize();
 }

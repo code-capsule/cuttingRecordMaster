@@ -17,7 +17,8 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-      "@addon/*": ["src/addon"],
+      "@typings/*": ["src/typings/*"],
+      "@addon/*": ["src/addon/*"],
       "@common/*": ["src/common/*"],
       "@config/*": ["src/config/*"],
       "@main/*": ["src/main/*"],
@@ -25,6 +26,13 @@
       "@static/*": ["src/static/*"]
     }
   },
-  "include": ["src", "typings"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/**/*",
+    "src/common/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/types/*.d.ts",
+    "src/types/**/*.d.ts"
+  ],
+  "exclude": ["node_modules"]
 }

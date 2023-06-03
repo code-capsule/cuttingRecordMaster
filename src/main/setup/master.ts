@@ -1,22 +1,14 @@
+import { Master } from '@typings/node';
 import ReduxStore from './reduxStore';
-import { MainIpc, IMainIpc } from '@common/services/ipc';
-import { Store } from 'redux';
-
-interface Master {
-  service: {
-    ipc: IMainIpc;
-  };
-  store: {
-    reduxStore: Store;
-  };
-}
+import { MainIpc } from '@common/services/ipc';
 
 export function initMaster(): Master {
   const reduxStore = ReduxStore;
+  const ipc = new MainIpc({ processKey: 'main' });
 
   const master: Master = {
     service: {
-      ipc: new MainIpc({ processKey: 'main' }),
+      ipc,
     },
     store: {
       reduxStore,

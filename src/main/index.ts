@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import { createWindow } from './createWindow';
-import setup from './setup';
+import setupMain from './setup';
 
 function createHome() {
   createWindow({
@@ -19,7 +19,7 @@ function createRecord() {
 }
 
 app.whenReady().then(() => {
-  setup();
+  setupMain();
   createHome();
   global.master.service.ipc.on('open.record.window', () => {
     createRecord();

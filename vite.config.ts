@@ -14,6 +14,7 @@ export default defineConfig({
   plugins: [devMainPlugin(), react(), svgr()],
   resolve: {
     alias: {
+      '@typings': join(__dirname, 'src/typings'),
       '@addon': join(__dirname, 'src/addon'),
       '@common': join(__dirname, 'src/common'),
       '@config': join(__dirname, 'src/config'),
