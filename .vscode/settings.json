@@ -1,9 +1,11 @@
 {
-  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-  "editor.formatOnPaste": false, // required
-  "editor.formatOnType": false, // required
-  "editor.formatOnSave": true, // optional
-  "editor.formatOnSaveMode": "file", // required to format on save
-  "files.autoSave": "onFocusChange", // optional but recommended
-  "vs-code-prettier-eslint.prettierLast": "false" // set as "true" to run 'prettier' last not first
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint", // 定义一个默认格式化程序
+  "editor.formatOnPaste": false, // 控制编辑器是否自动格式化粘贴的内容
+  "editor.formatOnType": false, // 控制编辑器在键入一行后是否自动格式化该行
+  "editor.formatOnSave": true, // 在保存时格式化文件
+  "editor.formatOnSaveMode": "file", // 控制在保存时设置格式是设置整个文件格式
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true // 控制是否应在文件保存时运行自动修复操作
+  },
+  "vs-code-prettier-eslint.prettierLast": false // set as "true" to run 'prettier' last not first
 }
