@@ -1,6 +1,6 @@
-const { buildSync } = require('esbuild')
-const mainEntryPath = './src/main/index.ts'
-const mainOutPath = './dist/index.js'
+const { buildSync } = require('esbuild');
+const mainEntryPath = './src/main/index.ts';
+const mainOutPath = './dist/index.js';
 
 function buildMain() {
   buildSync({
@@ -9,7 +9,7 @@ function buildMain() {
     platform: 'node',
     outfile: mainOutPath,
     external: ['electron'],
-  })
+  });
 }
 
-export { mainOutPath, buildMain }
+export { mainOutPath, buildMain };
