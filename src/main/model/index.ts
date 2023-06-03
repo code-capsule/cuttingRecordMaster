@@ -1,18 +1,18 @@
-import ReduxStore from './reduxStore'
-import { MainIpc, IMainIpc } from '@common/services/ipc'
-import { Store } from 'redux'
+import ReduxStore from './reduxStore';
+import { MainIpc, IMainIpc } from '@common/services/ipc';
+import { Store } from 'redux';
 
 interface Master {
   service: {
-    ipc: IMainIpc
-  }
+    ipc: IMainIpc;
+  };
   store: {
-    reduxStore: Store
-  }
+    reduxStore: Store;
+  };
 }
 
 export function initMaster(): Master {
-  const reduxStore = ReduxStore
+  const reduxStore = ReduxStore;
 
   const master: Master = {
     service: {
@@ -21,9 +21,9 @@ export function initMaster(): Master {
     store: {
       reduxStore,
     },
-  }
+  };
 
-  return master
+  return master;
 }
 
-export default initMaster()
+export default initMaster();

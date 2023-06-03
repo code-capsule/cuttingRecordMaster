@@ -1,4 +1,4 @@
-import { TProcessKey } from "./index";
+import { TProcessKey } from './index';
 
 export interface IIpcMessage {
   /**

@@ -1,22 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Main from './containers/Main'
-import master from '@render/model'
-import { attachIpc } from '@render/model/ipc'
-import { Provider } from 'react-redux'
-import './index.less'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Main from './containers/Main';
+import master from '@render/model';
+import { attachIpc } from '@render/model/ipc';
+import { Provider } from 'react-redux';
+import './index.less';
 
-attachIpc('home')
+attachIpc('home');
 function App() {
   return (
     <Provider store={master.store.reduxStore}>
       <Main />
     </Provider>
-  )
+  );
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-)
+);

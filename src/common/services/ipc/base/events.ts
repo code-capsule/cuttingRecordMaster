@@ -16,7 +16,10 @@ export default class IpcEventEmitter implements IIpcEventEmitter {
     this.eventEmitter.emit(channel, message);
   };
 
-  public on = (channel: string, messageListener: IPortChannelCallback): void => {
+  public on = (
+    channel: string,
+    messageListener: IPortChannelCallback
+  ): void => {
     const { handler, once } = messageListener;
     const callbackReqId = messageListener.reqId;
     const listener = (message: IIpcMessage): void => {
@@ -55,11 +58,13 @@ export default class IpcEventEmitter implements IIpcEventEmitter {
       this.listenerMap[channel] = [];
       return;
     }
-    this.listenerMap[channel].forEach((cbItem: IIpcEventEmitterListenerMapItem, index: number) => {
-      if (cbItem.handler === handler) {
-        this.listenerMap[channel].splice(index, 1);
-        this.eventEmitter.removeListener(channel, cbItem.listener);
+    this.listenerMap[channel].forEach(
+      (cbItem: IIpcEventEmitterListenerMapItem, index: number) => {
+        if (cbItem.handler === handler) {
+          this.listenerMap[channel].splice(index, 1);
+          this.eventEmitter.removeListener(channel, cbItem.listener);
+        }
       }
-    });
+    );
   };
 }

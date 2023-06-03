@@ -3,15 +3,15 @@ import {
   IRequestResponse,
   IHandleMessageParams,
   IIpcMessage,
-} from '../typings'
-import { CODE_REQUEST_SUCCESS } from '../constants'
-import { getUuid } from './uuid'
+} from '../typings';
+import { CODE_REQUEST_SUCCESS } from '../constants';
+import { getUuid } from './uuid';
 
 export const generateMessageCtx = (
   params: IHandleMessageParams
 ): IIpcMessageCtx => {
-  const { message, resolveHandle } = params
-  const { headers } = message
+  const { message, resolveHandle } = params;
+  const { headers } = message;
   const ctx: IIpcMessageCtx = {
     ...message,
     request: {
@@ -22,13 +22,13 @@ export const generateMessageCtx = (
             code: CODE_REQUEST_SUCCESS,
             body: result,
           },
-        }
-        resolveHandle(requestResponse)
+        };
+        resolveHandle(requestResponse);
       },
     },
-  }
-  return ctx
-}
+  };
+  return ctx;
+};
 
 export const generateIpcMessage = (
   channel: string,
@@ -42,5 +42,5 @@ export const generateIpcMessage = (
     data: {
       body: args,
     },
-  }
-}
+  };
+};

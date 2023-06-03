@@ -1,33 +1,32 @@
-import initReduxStore, { AppState } from './reduxStore'
-import { IRenderIpc } from '@common/services/ipc'
-import { Store } from 'redux'
-const remote = require('@electron/remote')
+import initReduxStore, { AppState } from './reduxStore';
+import { IRenderIpc } from '@common/services/ipc';
+import { Store } from 'redux';
+const remote = require('@electron/remote');
 
 interface Master {
   service: {
-    ipc?: IRenderIpc
-  }
+    ipc?: IRenderIpc;
+  };
   store: {
-    reduxStore: Store
-  }
+    reduxStore: Store;
+  };
 }
 
 export function initMaster(): Master {
-  const Master = remote.getGlobal('master')
+  const Master = remote.getGlobal('master');
 
-  const state: AppState = Master.store.reduxStore.getState()
+  const state: AppState = Master.store.reduxStore.getState();
 
-  const reduxStore = initReduxStore(state)
+  const reduxStore = initReduxStore(state);
 
   const master: Master = {
-    service: {
-    },
+    service: {},
     store: {
       reduxStore,
     },
-  }
+  };
 
-  return master
+  return master;
 }
 
-export default initMaster()
+export default initMaster();

@@ -1,5 +1,5 @@
-import { RecordPage } from './recordPage'
+import { RecordPage } from './recordPage';
 
 export interface AppState {
-  recordPage: RecordPage
+  recordPage: RecordPage;
 }
