@@ -1,5 +1,4 @@
 import { IRenderIpc } from '@common/services/ipc';
-import { Store } from 'redux';
 
 declare global {
   interface Window {
@@ -9,13 +8,8 @@ declare global {
 
 interface Master {
   service: MasterService;
-  store: MasterStore;
 }
 
 interface MasterService {
   ipc: IRenderIpc;
-}
-
-interface MasterStore {
-  reduxStore: Store;
 }

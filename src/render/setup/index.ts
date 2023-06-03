@@ -1,6 +1,6 @@
-import initMaster, { InitMasterOptions } from './master';
+import initMaster, { InitRenderMasterOptions } from './master';
 
-export interface SetupRenderOptions extends InitMasterOptions {}
+export interface SetupRenderOptions extends InitRenderMasterOptions {}
 
 async function setupRender(options: SetupRenderOptions): Promise<void> {
   return new Promise((resolve) => {

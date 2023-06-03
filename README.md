@@ -1,8 +1,9 @@
 # Electron+React 从 0 到 1 打造音视频采编一体应用实战
 
-## 第九章-基建篇-项目基础建设
+## 第八章-基建篇-项目基础建设
 
-- redux
-- @reduxjs/toolkit
-- electron-redux
-- electron-store
+- 制定项目目录结构
+- 应用程序的全局变量和环境变量配置
+- master 的初始化
+- 接入 ipc
+- 接入 ffmpeg

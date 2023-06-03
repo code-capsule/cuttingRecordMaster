@@ -1,21 +1,21 @@
 import { Master } from '@typings/node';
-import ReduxStore from './reduxStore';
 import { MainIpc } from '@common/services/ipc';
+import { MAIN_PROCESS_KEY } from '@common/constants/processKey';
 
-export function initMaster(): Master {
-  const reduxStore = ReduxStore;
-  const ipc = new MainIpc({ processKey: 'main' });
+export interface InitMainMasterOptions {}
 
-  const master: Master = {
-    service: {
-      ipc,
-    },
-    store: {
-      reduxStore,
-    },
-  };
+export function initMaster(options?: InitMainMasterOptions): Promise<Master> {
+  return new Promise((resolve) => {
+    const ipc = new MainIpc({ processKey: MAIN_PROCESS_KEY });
 
-  return master;
+    const master: Master = {
+      service: {
+        ipc,
+      },
+    };
+
+    resolve(master);
+  });
 }
 
-export default initMaster();
+export default initMaster;

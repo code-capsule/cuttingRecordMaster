@@ -18,8 +18,8 @@ function createRecord() {
   });
 }
 
-app.whenReady().then(() => {
-  setupMain();
+app.whenReady().then(async () => {
+  await setupMain();
   createHome();
   global.master.service.ipc.on('open.record.window', () => {
     createRecord();
