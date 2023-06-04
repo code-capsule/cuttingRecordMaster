@@ -8,7 +8,9 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.48.0
   '@typescript-eslint/parser': ^5.48.0
   '@vitejs/plugin-react': 2.2.0
+  dayjs: ^1.11.8
   electron: 21.3.0
+  electron-log: ^4.4.8
   eslint: ^8.31.0
   eslint-config-prettier: ^8.6.0
   eslint-plugin-prettier: ^4.2.1
@@ -24,6 +26,7 @@ specifiers:
   react-dom: 18.2.0
   typescript: ^4.9.3
   vite: 3.2.2
+  vite-plugin-commonjs-externals: ^0.1.3
   vite-plugin-svgr: ^3.2.0
 
 devDependencies:
@@ -34,7 +37,9 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.48.0_k73wpmdolxikpyqun3p36akaaq
   '@typescript-eslint/parser': 5.48.0_iukboom6ndih5an6iafl45j2fe
   '@vitejs/plugin-react': 2.2.0_vite@3.2.2
+  dayjs: 1.11.8
   electron: 21.3.0
+  electron-log: 4.4.8
   eslint: 8.31.0
   eslint-config-prettier: 8.6.0_eslint@8.31.0
   eslint-plugin-prettier: 4.2.1_32m5uc2milwdw3tnkcq5del26y
@@ -50,6 +55,7 @@ devDependencies:
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.4
   vite: 3.2.2_less@4.1.3
+  vite-plugin-commonjs-externals: 0.1.3_vite@3.2.2
   vite-plugin-svgr: 3.2.0_vite@3.2.2
 
 packages:
@@ -1046,6 +1052,12 @@ packages:
     hasBin: true
     dev: true
 
+  /acorn/8.8.2:
+    resolution: {integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+    dev: true
+
   /agent-base/6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
@@ -1389,6 +1401,10 @@ packages:
     dev: true
     optional: true
 
+  /dayjs/1.11.8:
+    resolution: {integrity: sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==}
+    dev: true
+
   /debug/3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
     peerDependencies:
@@ -1504,6 +1520,10 @@ packages:
     resolution: {integrity: sha512-1A8za6ws41LQgv9HrE/66jyC5yuSjQ3L/KOpFtoBilsAK2iA2wuS5rTt1OCzIvtS2V7nVmedsUU+DGRcjBmOYA==}
     dev: true
 
+  /electron-log/4.4.8:
+    resolution: {integrity: sha512-QQ4GvrXO+HkgqqEOYbi+DHL7hj5JM+nHi/j+qrN9zeeXVKy8ZABgbu4CnG+BBqDZ2+tbeq9tUC4DZfIWFU5AZA==}
+    dev: true
+
   /electron-to-chromium/1.4.284:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
     dev: true
@@ -1599,6 +1619,10 @@ packages:
       typed-array-length: 1.0.4
       unbox-primitive: 1.0.2
       which-typed-array: 1.1.9
+    dev: true
+
+  /es-module-lexer/1.2.1:
+    resolution: {integrity: sha512-9978wrXM50Y4rTMmW5kXIC09ZdXQZqkE4mxhwkd8VbzsGkXGPgV4zWuqQJgCEzYngdo2dYDa0l8xhX4fkSwJSg==}
     dev: true
 
   /es-set-tostringtag/2.0.1:
@@ -2696,7 +2720,7 @@ packages:
         optional: true
     dependencies:
       abab: 2.0.6
-      acorn: 8.8.1
+      acorn: 8.8.2
       acorn-globals: 6.0.0
       canvas: 2.11.2
       cssom: 0.5.0
@@ -2874,6 +2898,13 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       sourcemap-codec: 1.4.8
+    dev: true
+
+  /magic-string/0.30.0:
+    resolution: {integrity: sha512-LA+31JYDJLs82r2ScLrlz1GjSgu66ZV518eyWT+S8VhyQn/JL0u9MeBOvQMGYiPk1DBiSN9DDMOcXvigJZaViQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
   /make-dir/2.1.0:
@@ -3895,6 +3926,17 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
     optional: true
+
+  /vite-plugin-commonjs-externals/0.1.3_vite@3.2.2:
+    resolution: {integrity: sha512-Oi2RPo0jJP3pLPPM1Dj5s7PDfCh1t/NiJfyvKL3rgVIfRTyAno9bZng0MBtNY8eeSRR54SlnLFPa7YuvI4k1ZA==}
+    peerDependencies:
+      vite: ^4.3.9
+    dependencies:
+      acorn: 8.8.2
+      es-module-lexer: 1.2.1
+      magic-string: 0.30.0
+      vite: 3.2.2_less@4.1.3
+    dev: true
 
   /vite-plugin-svgr/3.2.0_vite@3.2.2:
     resolution: {integrity: sha512-Uvq6niTvhqJU6ga78qLKBFJSDvxWhOnyfQSoKpDPMAGxJPo5S3+9hyjExE5YDj6Lpa4uaLkGc1cBgxXov+LjSw==}

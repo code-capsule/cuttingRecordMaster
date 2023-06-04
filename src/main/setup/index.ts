@@ -14,8 +14,10 @@ export default async function setupMain(
   const master = await initMaster(options);
   global.master = master;
 
+  global.master.tools.log.info('the main process started successfully!');
+
   createHome();
-  global.master.service.ipc.on('open.record.window', () => {
+  global.master.services.ipc.on('open.record.window', () => {
     createRecord();
   });
 }
