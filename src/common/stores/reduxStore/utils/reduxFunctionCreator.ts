@@ -3,7 +3,7 @@ import type { SingleParameters } from './typeUtils';
 import { AppState } from '../typings';
 import { Slice } from '@reduxjs/toolkit';
 
-const { dispatch } = window.master.store.reduxStore;
+const { dispatch } = window.master.stores.reduxStore;
 
 type AppDispatch = typeof dispatch;
 

@@ -1,5 +1,7 @@
-import { IMainIpc } from '@common/services/ipc';
-import { Store } from 'redux';
+import { IRenderIpc } from '@common/services/ipc';
+import WindowService from '@common/services/windowService';
+import log from 'electron-log';
+import Store from 'react-redux';
 
 declare global {
   interface Window {
@@ -8,14 +10,20 @@ declare global {
 }
 
 interface Master {
-  service: MasterService;
-  store: MasterStore;
+  services: MasterServices;
+  tools: MasterTools;
+  stores: MasterStores;
 }
 
-interface MasterService {
-  ipc: IMainIpc;
+interface MasterServices {
+  ipc: IRenderIpc;
+  windowService: WindowService;
 }
 
-interface MasterStore {
+interface MasterTools {
+  log: typeof log;
+}
+
+interface MasterStores {
   reduxStore: Store;
 }

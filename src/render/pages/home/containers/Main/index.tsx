@@ -1,14 +1,15 @@
 import React from 'react';
 import './index.less';
+const logger = window.master.tools.log.scope('home');
 import { useSelector } from 'react-redux';
 import { AppState } from '@common/stores/reduxStore/typings';
 import { recordPageActions } from '@common/stores/reduxStore/actions';
 
 function Main() {
   const count = useSelector((state: AppState) => state.recordPage.count);
-
   const handleOpenRecordWindow = () => {
-    window.master.service.ipc.send('open.record.window');
+    logger.info('open record window');
+    window.master.services.ipc.send('open.record.window');
   };
   return (
     <div className="home-main">
