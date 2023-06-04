@@ -4,7 +4,7 @@ import WindowService from '@common/services/windowService';
 import { registerWindow } from '@common/services/windowService/windows';
 import { MAIN_PROCESS_KEY } from '@common/constants/processKey';
 import initMainLog from './log';
-import ReduxStore from './reduxStore';
+import initReduxStore from '@common/stores/reduxStore';
 
 export interface InitMainMasterOptions {}
 
@@ -15,7 +15,7 @@ export function initMaster(options?: InitMainMasterOptions): Promise<Master> {
     const windowService = WindowService;
     registerWindow();
 
-    const reduxStore = ReduxStore;
+    const reduxStore = initReduxStore();
 
     const master: Master = {
       services: {

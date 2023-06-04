@@ -3,7 +3,7 @@ import { Master } from '@typings/browser';
 import { Master as MainMaster } from '@typings/node';
 import initRenderLog from './log';
 const remote = require('@electron/remote');
-import initReduxStore, { AppState } from './reduxStore';
+import initReduxStore from '@common/stores/reduxStore';
 
 export interface InitRenderMasterOptions {
   /**
@@ -24,9 +24,9 @@ export async function initMaster(
     const ipc = new RenderIpc({ processKey });
     const log = initRenderLog();
 
-    const state: AppState = stores.reduxStore.getState();
+    const state: MasterAppStoreType.AppState = stores.reduxStore.getState();
 
-    const reduxStore = initReduxStore(state);
+    const reduxStore = initReduxStore(state, 'render');
 
     const master: Master = {
       services: {

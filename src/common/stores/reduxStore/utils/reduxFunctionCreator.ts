@@ -1,14 +1,14 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import type { SingleParameters } from './typeUtils';
-import { AppState } from '../typings';
 import { Slice } from '@reduxjs/toolkit';
 
-const { dispatch } = window.master.stores.reduxStore;
+const { dispatch } = global.master.stores.reduxStore;
 
 type AppDispatch = typeof dispatch;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
+export const useAppSelector: TypedUseSelectorHook<MasterAppStoreType.AppState> =
+  useSelector;
 
 export const createReduxFunction = <S extends Slice>(slice: S) => {
   return <T extends keyof S['actions']>(name: T) => {
