@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.less';
-const logger = window.master.tools.log.scope('home');
+import { getLogger } from '@common/tools/log';
+const logger = getLogger('home');
 
 function Main() {
   const handleOpenRecordWindow = () => {
