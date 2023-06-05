@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.less';
-const logger = window.master.tools.log.scope('home');
+import { getLogger } from '@common/tools/log';
+const logger = getLogger('home');
 import { useSelector } from 'react-redux';
 import { recordPageActions } from '@common/stores/reduxStore/actions';
 

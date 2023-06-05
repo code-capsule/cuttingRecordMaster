@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import path from 'path';
 const remote = require('@electron/remote');
-import initLog from '@common/tools/log';
+import { initLog } from '@common/tools/log';
 
 function initRenderLog() {
   const _path = path.join(

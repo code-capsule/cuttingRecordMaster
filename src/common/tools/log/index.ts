@@ -9,4 +9,12 @@ function initLog(logRootPath: string) {
   return log;
 }
 
-export default initLog;
+function getLogger(label?: string) {
+  if (label) {
+    return global.master.tools.log.scope(label);
+  } else {
+    return global.master.tools.log;
+  }
+}
+
+export { initLog, getLogger };
