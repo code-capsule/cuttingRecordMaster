@@ -9,10 +9,13 @@ export const devMainPlugin = () => {
         let { spawn } = require("child_process");
         let electronProcess = spawn(
           require("electron").toString(),
-          [mainOutPath, "--inspect=9229", "--remote-debugging-port=9222", "--env=dev"],
+          [mainOutPath, "--inspect=9229", "--remote-debugging-port=9222"],
           {
             cwd: process.cwd(),
             stdio: "inherit",
+            env: {
+              mode: 'dev'
+            },
           }
         );
         electronProcess.on("close", () => {
