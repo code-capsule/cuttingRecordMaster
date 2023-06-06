@@ -1,31 +1,28 @@
-import { Plugin } from 'vite';
-import { buildMain, mainOutPath } from '../scripts/build.main';
+import { buildMain, mainOutPath } from "../scripts/build.main";
 
-export const devMainPlugin = (): Plugin => {
+export const devMainPlugin = () => {
   return {
-    name: 'vite-plugin-dev-main',
+    name: "vite-plugin-dev-main",
     configureServer(server) {
       buildMain();
-      server.httpServer?.once('listening', () => {
-        const { spawn } = require('child_process');
-        const electronProcess = spawn(
-          require('electron').toString(),
-          [
-            mainOutPath,
-            '--inspect=9229',
-            '--remote-debugging-port=9222',
-            '--env=dev',
-          ],
+      server.httpServer.once("listening", () => {
+        let { spawn } = require("child_process");
+        let electronProcess = spawn(
+          require("electron").toString(),
+          [mainOutPath, "--inspect=9229", "--remote-debugging-port=9222"],
           {
             cwd: process.cwd(),
-            stdio: 'inherit',
+            stdio: "inherit",
+            env: {
+              mode: 'dev'
+            },
           }
         );
-        electronProcess.on('close', () => {
+        electronProcess.on("close", () => {
           server.close();
           process.exit();
         });
-        server.httpServer?.once('close', () => {
+        server.httpServer.once("close", () => {
           electronProcess.close();
           process.exit();
         });
