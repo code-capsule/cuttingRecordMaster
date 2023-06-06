@@ -1,6 +1,7 @@
 import { IRenderIpc } from '@common/services/ipc';
 import WindowService from '@common/services/windowService';
 import log from 'electron-log';
+import FFmpegTool from '@common/tools/ffmpegTool';
 
 declare global {
   interface Window {
@@ -16,6 +17,7 @@ interface Master {
 interface MasterServices {
   ipc: IRenderIpc;
   windowService: WindowService;
+  ffmpegTool: FFmpegTool;
 }
 
 interface MasterTools {
