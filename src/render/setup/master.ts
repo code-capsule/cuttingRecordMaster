@@ -27,10 +27,10 @@ export async function initMaster(
       services: {
         ipc,
         windowService: services.windowService,
-        ffmpegTool: FFmpegTool, 
       },
       tools: {
         log,
+        ffmpegTool: FFmpegTool, 
       },
     };
 

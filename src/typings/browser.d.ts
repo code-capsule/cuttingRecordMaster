@@ -17,9 +17,9 @@ interface Master {
 interface MasterServices {
   ipc: IRenderIpc;
   windowService: WindowService;
-  ffmpegTool: FFmpegTool;
 }
 
 interface MasterTools {
   log: typeof log;
+  ffmpegTool: FFmpegTool;
 }
