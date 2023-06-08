@@ -30,7 +30,7 @@ export async function initMaster(
       },
       tools: {
         log,
-        ffmpegTool: FFmpegTool, 
+        ffmpegTool: new FFmpegTool(), 
       },
     };
 

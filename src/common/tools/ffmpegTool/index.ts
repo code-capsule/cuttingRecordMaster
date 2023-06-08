@@ -34,9 +34,9 @@ class FFmpegTool {
     return '';
   }
 
-  public static async getMetaInfo(inputPath: string): Promise<any> {
+  async getMetaInfo(inputPath: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.Ffprobe(inputPath, (e: Error, metadata: any) => {
+      FFmpegTool.Ffprobe(inputPath, (e: Error, metadata: any) => {
         if (e) {
           reject(e);
           return;
