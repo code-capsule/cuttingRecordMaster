@@ -36,7 +36,7 @@ export async function initMaster(
       },
       tools: {
         log,
-        ffmpegTool: new FFmpegTool(), 
+        ffmpegTool: new FFmpegTool(),
       },
       stores: {
         reduxStore,

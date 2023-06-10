@@ -2,7 +2,8 @@ import path from 'path';
 import { find } from 'lodash';
 import { ICustomMediaMetadata } from './types';
 import { IParserVideoMetadataStream, IParserAudioMetadataStream } from './types/parserMetadataType';
-import ff, { FfprobeData } from 'fluent-ffmpeg';
+const ff = require('fluent-ffmpeg');
+const FfprobeData = ff.FfprobeData;
 
 class FFmpegTool {
   static Ffprobe = ff.ffprobe;
@@ -37,7 +38,7 @@ class FFmpegTool {
 
   async getMetaInfo(inputPath: string): Promise<ICustomMediaMetadata> {
     return new Promise((resolve, reject) => {
-      FFmpegTool.Ffprobe(inputPath, (e: Error, metadata: FfprobeData) => {
+      FFmpegTool.Ffprobe(inputPath, (e: Error, metadata: typeof FfprobeData) => {
         if (e) {
           reject(e);
           return;
