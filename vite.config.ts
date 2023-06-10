@@ -5,7 +5,7 @@ import svgr from 'vite-plugin-svgr';
 import commonjs from 'vite-plugin-commonjs-externals';
 import { join } from 'path';
 
-const commonjsPackages = ['path', 'electron-log', 'electron-redux'];
+const commonjsPackages = ['path', 'electron-log', 'lodash', 'fluent-ffmpeg', 'electron-redux'];
 
 export default defineConfig({
   root: join(__dirname, 'src/render'),

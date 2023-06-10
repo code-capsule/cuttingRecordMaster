@@ -2,6 +2,7 @@ import { IRenderIpc } from '@common/services/ipc';
 import WindowService from '@common/services/windowService';
 import log from 'electron-log';
 import Store from 'react-redux';
+import FFmpegTool from '@common/tools/ffmpegTool';
 
 declare global {
   interface Window {
@@ -22,6 +23,7 @@ interface MasterServices {
 
 interface MasterTools {
   log: typeof log;
+  ffmpegTool: FFmpegTool;
 }
 
 interface MasterStores {

@@ -8,19 +8,14 @@ export const devMainPlugin = (): Plugin => {
       buildMain();
       server.httpServer?.once('listening', () => {
         const { spawn } = require('child_process');
-        const electronProcess = spawn(
-          require('electron').toString(),
-          [
-            mainOutPath,
-            '--inspect=9229',
-            '--remote-debugging-port=9222',
-            '--env=dev',
-          ],
-          {
-            cwd: process.cwd(),
-            stdio: 'inherit',
-          }
-        );
+        const electronProcess = spawn(require('electron').toString(), [mainOutPath, '--inspect=9229', '--remote-debugging-port=9222', '--env=dev'], {
+          cwd: process.cwd(),
+          stdio: 'inherit',
+          env: {
+            FLUENTFFMPEG_COV: '',
+            mode: 'dev',
+          },
+        });
         electronProcess.on('close', () => {
           server.close();
           process.exit();
