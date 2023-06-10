@@ -2,15 +2,13 @@ import path from 'path';
 import { find } from 'lodash';
 import { ICustomMediaMetadata } from './types';
 import { IParserVideoMetadataStream, IParserAudioMetadataStream } from './types/parserMetadataType';
-import { getLogger } from '@common/tools/log';
 import ff, { FfprobeData } from 'fluent-ffmpeg';
-const logger = getLogger('ffmpegTool');
 
 class FFmpegTool {
   static Ffprobe = ff.ffprobe;
   static FFmpeg = (inputPath: string) => {
     return ff(inputPath).on('start', (cmd: string) => {
-      logger.info('[ffmpegTool] run ffmpeg', cmd);
+      console.log('[ffmpegTool] run ffmpeg', cmd);
     });
   };
 
@@ -30,7 +28,6 @@ class FFmpegTool {
 
   private static parseDevelopmentPath(appPath: string, exePath: string) {
     const devPath = path.join(appPath, '../', `./src/common/tools/ffmpegTool/${exePath}`);
-    logger.info('[ffmpegTool] devPath: ', devPath);
     return devPath;
   }
 
@@ -45,7 +42,6 @@ class FFmpegTool {
           reject(e);
           return;
         }
-        logger.info('[ffmpegTool] get metadata info');
         const { streams } = metadata;
         const videoInfo = find(streams, { codec_type: 'video' }) as IParserVideoMetadataStream;
         const audioInfo = find(streams, { codec_type: 'audio' }) as IParserAudioMetadataStream;
