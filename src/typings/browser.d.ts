@@ -14,22 +14,22 @@ interface Master {
   /**
    * @description 应用存储路径
    */
-  appSavePath: string;
-  services: MasterServices;
-  tools: MasterTools;
-  stores: MasterStores;
+  appSavePath?: string;
+  services?: MasterServices;
+  tools?: MasterTools;
+  stores?: MasterStores;
 }
 
 interface MasterServices {
-  ipc: IRenderIpc;
-  windowService: WindowService;
+  ipc?: IRenderIpc;
+  windowService?: WindowService;
 }
 
 interface MasterTools {
-  log: typeof log;
-  ffmpegTool: FFmpegTool;
+  log?: typeof log;
+  ffmpegTool?: FFmpegTool;
 }
 
 interface MasterStores {
-  reduxStore: Store;
+  reduxStore?: Store;
 }
