@@ -8,6 +8,10 @@ declare global {
 }
 
 interface Master {
+  /**
+   * @description 应用存储路径
+   */
+  appSavePath: string;
   services: MasterServices;
   tools: MasterTools;
   stores: MasterStores;
