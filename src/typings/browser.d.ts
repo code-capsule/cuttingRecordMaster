@@ -3,6 +3,7 @@ import WindowService from '@common/services/windowService';
 import log from 'electron-log';
 import Store from 'react-redux';
 import FFmpegTool from '@common/tools/ffmpegTool';
+import UserStore from '@common/services/mainService/userStoreService/instance';
 
 declare global {
   interface Window {
@@ -23,6 +24,7 @@ interface Master {
 interface MasterServices {
   ipc: IRenderIpc;
   windowService: WindowService;
+  userStore?: UserStore;
 }
 
 interface MasterTools {

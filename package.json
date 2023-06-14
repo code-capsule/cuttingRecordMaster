@@ -25,6 +25,7 @@
     "electron": "21.3.0",
     "electron-log": "^4.4.8",
     "electron-redux": "^1.5.4",
+    "electron-store": "^8.1.0",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",

@@ -4,6 +4,7 @@ import {
   createRecord,
 } from '@common/services/windowService/windows';
 import initAppSavePath from './appSavePath';
+import userStoreService from '@common/services/mainService/userStoreService';
 
 interface SetUpMainOptions extends InitMainMasterOptions {}
 
@@ -14,14 +15,17 @@ export default async function setupMain(
   require('@electron/remote/main').initialize();
 
   const master = await initMaster(options);
+  global.master = master; 
 
   // 应用存储路径
   const appSavePath = await initAppSavePath();
   master.appSavePath = appSavePath;  
   
-
-  global.master = master;
-
+  // 挂载 userStoreService 服务
+  const userStoreInstance = await userStoreService.install();
+  // global.master.services.userStore = userStoreInstance;
+  
+  
   global.master.tools.log.info('the main process started successfully!');
 
   createHome();
