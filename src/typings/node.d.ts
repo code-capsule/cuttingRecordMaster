@@ -2,7 +2,7 @@ import { IMainIpc } from '@common/services/ipc';
 import WindowService from '@common/services/windowService';
 import log from 'electron-log';
 import Store from 'react-redux';
-import UserStore from '@common/services/mainService/userStoreService/instance';
+import UserStoreService from '@common/services/userStoreService/instance';
 
 declare global {
   var master: Master;
@@ -12,7 +12,7 @@ interface Master {
   /**
    * @description 应用存储路径
    */
-  appSavePath?: string;
+  appSavePath: string;
   services: MasterServices;
   tools: MasterTools;
   stores: MasterStores;
@@ -21,7 +21,7 @@ interface Master {
 interface MasterServices {
   ipc: IMainIpc;
   windowService: WindowService;
-  userStore?: UserStore;
+  userStoreService: UserStoreService;
 }
 
 interface MasterTools {

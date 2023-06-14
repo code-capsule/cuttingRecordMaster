@@ -4,7 +4,7 @@ import { Master as MainMaster } from '@typings/node';
 import initRenderLog from './log';
 const remote = require('@electron/remote');
 import initReduxStore from '@common/stores/reduxStore';
-import FFmpegTool from '@common/tools/ffmpegTool';
+// import FFmpegTool from '@common/tools/ffmpegTool';
 
 export interface InitRenderMasterOptions {
   /**
@@ -20,7 +20,7 @@ export async function initMaster(
     const { processKey } = options;
 
     const Master: MainMaster = remote.getGlobal('master');
-    const { services, stores } = Master;
+    const { services, stores, appSavePath } = Master;
 
     const ipc = new RenderIpc({ processKey });
     const log = initRenderLog();
@@ -30,20 +30,22 @@ export async function initMaster(
     const reduxStore = initReduxStore(state, 'render');
 
     const master: Master = {
+      appSavePath,
       services: {
         ipc,
         windowService: services.windowService,
+        userStoreService: services.userStoreService,
       },
       tools: {
         log,
-        ffmpegTool: new FFmpegTool(),
+        // ffmpegTool: new FFmpegTool(),
       },
       stores: {
         reduxStore,
       },
     };
 
-    FFmpegTool.init({ devAppPath: remote?.app?.getAppPath(), buildAppPath: '' });
+    // FFmpegTool.init({ devAppPath: remote?.app?.getAppPath(), buildAppPath: '' });
     resolve(master);
   });
 }

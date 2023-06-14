@@ -1,12 +1,18 @@
-import initMaster, { InitMainMasterOptions } from './master';
 import {
   createHome,
   createRecord,
 } from '@common/services/windowService/windows';
+import { Master } from '@typings/node';
+import { MainIpc } from '@common/services/ipc';
+import WindowService from '@common/services/windowService';
+import { registerWindow } from '@common/services/windowService/windows';
+import { MAIN_PROCESS_KEY } from '@common/constants/processKey';
+import initMainLog from './log';
+import initReduxStore from '@common/stores/reduxStore';
+import userStoreService from '@common/services/userStoreService';
 import initAppSavePath from './appSavePath';
-import userStoreService from '@common/services/mainService/userStoreService';
 
-interface SetUpMainOptions extends InitMainMasterOptions {}
+interface SetUpMainOptions {}
 
 export default async function setupMain(
   options?: SetUpMainOptions
@@ -14,18 +20,33 @@ export default async function setupMain(
   // remote模块注入
   require('@electron/remote/main').initialize();
 
-  const master = await initMaster(options);
-  global.master = master; 
+  const ipc = new MainIpc({ processKey: MAIN_PROCESS_KEY });
+  const log = initMainLog();
+  const windowService = WindowService;
+  registerWindow();
 
   // 应用存储路径
   const appSavePath = await initAppSavePath();
-  master.appSavePath = appSavePath;  
-  
-  // 挂载 userStoreService 服务
-  const userStoreInstance = await userStoreService.install();
-  // global.master.services.userStore = userStoreInstance;
-  
-  
+
+  const reduxStore = initReduxStore();
+  const userStoreInstance = await userStoreService.initialize({ reduxStore });
+
+  const master: Master = {
+    appSavePath,
+    services: {
+      ipc,
+      windowService,
+      userStoreService: userStoreInstance,
+    },
+    tools: {
+      log,
+    },
+    stores: {
+      reduxStore,
+    },
+  };
+  global.master = master; 
+
   global.master.tools.log.info('the main process started successfully!');
 
   createHome();

@@ -1,18 +1,21 @@
-import BaseService from '../BaseService';
 import UserStore from './instance';
 import CuttingRecordMasterElectronStore from '@common/stores/localStore';
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
-class userStoreService extends BaseService {
+interface InitializeProps {
+  reduxStore: ToolkitStore
+}
+
+class userStoreService {
   _instance?: UserStore;
 
-  async install() {
+  async initialize(props: InitializeProps) {
     const UserLocalStore = new CuttingRecordMasterElectronStore({
       name: 'userInfo',
     });
 
-    const { reduxStore } = global.master.stores;
     this._instance = new UserStore({
-      reduxStore,
+      reduxStore: props.reduxStore,
       localStore: UserLocalStore,
     });
     return this._instance;

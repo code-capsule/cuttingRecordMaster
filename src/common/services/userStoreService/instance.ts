@@ -1,6 +1,6 @@
 import CuttingRecordMasterElectronStore from '@common/stores/localStore';
+import { userPageSlice } from '@common/stores/reduxStore/reducers/userPage';
 import { userPage as initialUserState } from '@common/stores/reduxStore/reducers/userPage';
-import { userPageActions } from '@common/stores/reduxStore/actions';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
 interface IProps {
@@ -30,20 +30,14 @@ class UserStore {
    * @param {IUserDataInfo} userInfo 用户信息
    * @param {boolean} isOverride 是否覆盖
    */
-  // public setUserInfo(userInfo: MasterUserType.IUserInfo, isOverride = true) {
-  //   const info: MasterUserType.IUserInfo = isOverride ? { ...Object.assign(initialUserState, userInfo) } : { ...userInfo };
-  //   userPageActions.updateUserInfo(info);
-  //   // 更新localStore
-  //   this.localStore?.set({
-  //     userInfo: info,
-  //   });
-  // }
+  public setUserInfo(userInfo: MasterUserType.IUserInfo, isOverride = true) {
+    const info: MasterUserType.IUserInfo = isOverride ? { ...Object.assign(initialUserState, userInfo) } : { ...userInfo };
+    this.reduxStore?.dispatch(userPageSlice.actions.updateUserInfo(info));
+    // 更新localStore
+    this.localStore?.set({
+      userInfo: info,
+    });
+  }
 }
 
 export default UserStore;
-
-
-
-
-
-
