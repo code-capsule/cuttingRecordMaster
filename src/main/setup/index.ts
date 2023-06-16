@@ -33,7 +33,7 @@ export default async function setupMain(options?: SetUpMainOptions): Promise<voi
   const log = initMainLog();
   global.master.tools.log = log;
 
-  // 挂载 reduxStore 数据存储
+  // 挂载 reduxStore 数据管理
   const reduxStore = initReduxStore();
   global.master.stores.reduxStore = reduxStore;
 
