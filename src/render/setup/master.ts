@@ -35,6 +35,8 @@ export async function initMaster(
         ipc,
         windowService: services.windowService,
         userStoreService: services.userStoreService,
+        draftStoreService: services.draftStoreService,
+        projectStoreService: services.projectStoreService,
       },
       tools: {
         log,
