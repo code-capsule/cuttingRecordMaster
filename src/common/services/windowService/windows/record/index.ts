@@ -3,8 +3,8 @@ import { RECORD_PROCESS_KEY } from '@common/constants/processKey';
 
 export function registerRecord() {
   windowService.register(RECORD_PROCESS_KEY, {
-    width: 750,
-    height: 600,
+    width: 880,
+    height: 496,
     frame: false,
     vibrancy: 'light',
     visualEffectState: 'active',

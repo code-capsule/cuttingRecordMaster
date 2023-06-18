@@ -1,10 +1,13 @@
 import React from 'react';
+import RecordUnStart from './containers/RecordUnStart';
 import './index.less';
 
 const Main = () => {
-  return <div className="container">
-  <div className="title">Hello World!</div>
-</div>;
+  return (
+    <div className="record-page">
+      <RecordUnStart />
+    </div>
+  );
 };
 
 export default Main;

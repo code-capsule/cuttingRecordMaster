@@ -1,0 +1,86 @@
+.recording-mode {
+  width: 100%;
+  height: 100%;
+
+  .recording-mode-title {
+    width: 100%;
+    height: 35px;
+    font-size: 26px;
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 35px;
+    text-align: center;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+
+  .recording-mode-options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 266px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+
+    .recording-mode-select-item {
+      display: flex;
+      flex-direction: column;
+      width: 260px;
+      height: 100%;
+      padding-top: 20px;
+      box-shadow: 0 5px 40px 0 rgba(205, 205, 205, 0.5);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+      opacity: 0.9;
+
+      &:hover {
+        border: 1px solid #dee0e3;
+        box-shadow: none;
+      }
+
+      &.active {
+        opacity: 1;
+        border: 1px solid #dee0e3;
+      }
+
+      .recording-mode-select-item-img {
+        width: 100%;
+        height: 146px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .recording-mode-select-item-title {
+        width: 100%;
+        color: #ffffff;
+        font-size: 14px;
+        text-align: center;
+        height: 65px;
+        line-height: 65px;
+      }
+    }
+  }
+
+  .recording-next-step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+
+    .recording-next-step-btn {
+      background-color: #ffffff;
+      padding: 0 75px;
+      height: 45px;
+      line-height: 45px;
+      font-size: 14px;
+      border-radius: 26px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+}
