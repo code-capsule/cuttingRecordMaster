@@ -28,7 +28,7 @@ const RecordUnStart = () => {
         {recordingStep === RECORDING_STEP.recordingMode ? (
           <RecordingMode recordingMode={recordingMode} onChangeMode={handleChangeMode} onNextStep={handleClickNextStep} />
         ) : (
-          <RecordingSettings recordingMode={recordingMode} onChooseRecordingMode={handleClickChooseRecordingMode} />
+          <RecordingSettings recordingMode={recordingMode} />
         )}
       </div>
     </div>
