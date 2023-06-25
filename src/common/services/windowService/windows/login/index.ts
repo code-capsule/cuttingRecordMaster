@@ -3,10 +3,10 @@ import { LOGIN_PROCESS_KEY } from '@common/constants/processKey';
 
 export function registerLogin() {
   windowService.register(LOGIN_PROCESS_KEY, {
-    width: 960,
-    height: 600,
+    width: 768,
+    height: 480,
     frame: false,
-    transparent: false,
+    transparent: true,
     resizable: false,
     webPreferences: {
       webSecurity: false,
