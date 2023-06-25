@@ -3,7 +3,17 @@
   height: 100vh;
   background-color: #eee8f5;
   display: flex;
+  position: relative;
   border-radius: 24px;
+  .login-drag-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 48px;
+    width: 100%;
+    background-color: transparent;
+    -webkit-app-region: drag;
+  }
   .login-landing {
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;

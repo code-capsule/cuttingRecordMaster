@@ -10,6 +10,7 @@ const Main = () => {
   const [password, setPassword] = useState(DEFAULT_COUNT.password);
   return (
     <div className="login-container">
+      <div className='login-drag-box' />
       <div className="login-landing">
         <p className="title">前端音视频采编一体化</p>
         <p className="label">带你探索前端音视频领域，点亮 Electron、WebRTC、FFmpeg 等热门技术</p>
