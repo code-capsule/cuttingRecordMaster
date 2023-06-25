@@ -1,4 +1,4 @@
-import { createHome, createRecord } from '@common/services/windowService/windows';
+import { createLogin, createRecord } from '@common/services/windowService/windows';
 import { Master, MasterServices, MasterStores, MasterTools } from '@typings/node';
 import { MainIpc } from '@common/services/ipc';
 import WindowService from '@common/services/windowService';
@@ -57,7 +57,7 @@ export default async function setupMain(options?: SetUpMainOptions): Promise<voi
 
   global.master.tools.log.info('the main process started successfully!');
 
-  createHome();
+  createLogin();
   global.master.services.ipc.on('open.record.window', () => {
     createRecord();
   });
