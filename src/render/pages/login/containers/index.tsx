@@ -12,8 +12,8 @@ const Main = () => {
     <div className="login-container">
       <div className='login-drag-box' />
       <div className="login-landing">
-        <p className="title">前端音视频采编一体化</p>
-        <p className="label">带你探索前端音视频领域，点亮 Electron、WebRTC、FFmpeg 等热门技术</p>
+        <p className="title">音视频采编一体化</p>
+        <p className="label">探索前端音视频领域，点亮 Electron、WebRTC、FFmpeg 等热门技术</p>
       </div>
       <div className="login-sign-in">
         <p className="form-title">登录</p>
