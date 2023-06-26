@@ -9,8 +9,8 @@ interface IProps {
 }
 
 class UserStore {
-  reduxStore?: ToolkitStore;
-  localStore?: CuttingRecordMasterElectronStore;
+  private reduxStore?: ToolkitStore;
+  private localStore?: CuttingRecordMasterElectronStore;
 
   constructor(props: IProps) {
     this.reduxStore = props.reduxStore;
