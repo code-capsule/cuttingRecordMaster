@@ -1,8 +1,8 @@
-import { recordPageSlice, recordPage } from './recordPage';
+import { recordPageSlice, initialRecordPageState } from './recordPage';
 import { userPageSlice, initialUserState } from './userPage';
 
 export const initialState: MasterAppStoreType.AppState = {
-  recordPage,
+  recordPage: initialRecordPageState,
   userPage: initialUserState
 };
 

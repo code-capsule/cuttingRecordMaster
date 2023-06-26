@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-export const recordPage: MasterRecordType.IRecordPageInfo = {
+export const initialRecordPageState: MasterRecordType.IRecordPageInfo = {
   sharedNumber: 0,
   privateNumber: 0,
 };
 
 export const recordPageSlice = createSlice({
   name: 'recordPage',
-  initialState: recordPage,
+  initialState: initialRecordPageState,
   reducers: {
     incrementSharedNumber: (state) => {
       state.sharedNumber += 1;
