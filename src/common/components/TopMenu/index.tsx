@@ -22,7 +22,7 @@ interface IProps {
   svgColor?: string;
 }
 
-const Menu = (props: IProps) => {
+const TopMenu = (props: IProps) => {
   return (
     <div className="common-menu">
       <IcCommonMinimizeSvg
@@ -51,4 +51,4 @@ const Menu = (props: IProps) => {
   );
 };
 
-export default Menu;
+export default TopMenu;
