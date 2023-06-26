@@ -8,20 +8,21 @@ import './index.less';
 interface IProps {
   camKey: string;
   micKey: string;
+  micVisible?: boolean;
   camVisible?: boolean;
   onChangeCamKey: (camKey: string) => void;
   onChangeMicKey: (micKey: string) => void;
 }
 
 const EquipmentOptions = (props: IProps) => {
-  const { camKey, micKey, camVisible = true, onChangeCamKey, onChangeMicKey } = props;
+  const { camKey, micKey, micVisible = true, camVisible = true, onChangeCamKey, onChangeMicKey } = props;
 
   const renderMicIcon = () => {
-    return <MicIcon width={20} height={20} style={{ 'marginRight': '8px' }} />;
+    return <MicIcon width={20} height={20} style={{ marginRight: '8px' }} />;
   };
 
   const renderCamIcon = () => {
-    return <CamIcon width={20} height={20} style={{ 'marginRight': '8px' }} />;
+    return <CamIcon width={20} height={20} style={{ marginRight: '8px' }} />;
   };
 
   const handleClickCamKey = (selectItem: ISelectItem) => {
@@ -34,13 +35,16 @@ const EquipmentOptions = (props: IProps) => {
 
   return (
     <div className="equipment-options">
-      <div className="equipment-option">
-        <Select Icon={renderMicIcon} list={MIC_OPTIONS} currentKey={micKey} onChange={handleClickMicKey} ></Select>
-      </div>
-      { camVisible ? <div className="equipment-option">
-          <Select Icon={renderCamIcon} list={CAM_OPTIONS} currentKey={camKey} onChange={handleClickCamKey} ></Select>
-        </div> : null
-      }
+      {micVisible ? (
+        <div className="equipment-option">
+          <Select Icon={renderMicIcon} list={MIC_OPTIONS} currentKey={micKey} onChange={handleClickMicKey}></Select>
+        </div>
+      ) : null}
+      {camVisible ? (
+        <div className="equipment-option">
+          <Select Icon={renderCamIcon} list={CAM_OPTIONS} currentKey={camKey} onChange={handleClickCamKey}></Select>
+        </div>
+      ) : null}
     </div>
   );
 };
