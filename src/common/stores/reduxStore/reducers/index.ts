@@ -1,7 +1,7 @@
-import { recordPageSlice, recordPage } from './recordPage';
+import { recordPageSlice, initialRecordPageState } from './recordPage';
 
 export const initialState: MasterAppStoreType.AppState = {
-  recordPage,
+  recordPage: initialRecordPageState,
 };
 
 export default function initialReducers() {
