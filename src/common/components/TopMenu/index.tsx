@@ -7,7 +7,7 @@ interface IProps {
   /**
    * @description 当前窗口标识
    */
-  currentWindow?: string;
+  currentWindow: string;
   /**
    * @description 最小化回调
    */
@@ -27,7 +27,7 @@ const TopMenu = (props: IProps) => {
     <div className="common-menu">
       <IcCommonMinimizeSvg
         className="small"
-        style={{ color: props?.svgColor }}
+        style={{ color: props?.svgColor || '#F8F8F8' }}
         onClick={() => {
           props?.onMinimize?.();
           const currentWindowInstance = window.master?.services?.windowService?.get(props?.currentWindow)?._instance;
@@ -36,7 +36,7 @@ const TopMenu = (props: IProps) => {
       />
       <IcCommonCloseSvg
         className="small"
-        style={{ color: props?.svgColor }}
+        style={{ color: props?.svgColor || '#F8F8F8' }}
         onClick={() => {
           // 可能关闭回调是个异步行为，导致异步未处理完就直接 close 关闭窗口造成非期望的结果，为此存在回调时用户自行处理关闭
           if (props?.onClose) {
