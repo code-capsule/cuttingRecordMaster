@@ -1,5 +1,5 @@
 import { IMainIpc } from '@common/services/ipc';
-import WindowService from '@common/services/windowService';
+import { WindowService } from '@common/services/windowService';
 import log from 'electron-log';
 
 declare global {
