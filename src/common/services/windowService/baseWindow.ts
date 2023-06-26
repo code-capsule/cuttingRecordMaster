@@ -51,6 +51,12 @@ class BaseWindow {
     return this._instance;
   }
 
+  public show() {
+    if (!this.getInstance().isVisible()) {
+      this.getInstance().show();
+    }
+  }
+
   public destroy() {
     this.getInstance().destroy();
     this._instance = null;
