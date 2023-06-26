@@ -8,7 +8,7 @@ class UserStoreService {
     const userLocalStore = new CuttingRecordMasterElectronStore({
       name: 'userInfo',
     });
-    const { reduxStore } = global.master.stores.reduxStore;
+    const reduxStore = global.master.stores.reduxStore;
     this._instance = new UserStore({
       reduxStore: reduxStore,
       localStore: userLocalStore,

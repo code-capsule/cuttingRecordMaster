@@ -1,7 +1,6 @@
 import CuttingRecordMasterElectronStore from '@common/stores/localStore';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import { userPageSlice } from '@common/stores/reduxStore/reducers/userPage';
-import { initialUserState } from '@common/stores/reduxStore/reducers/userPage';
 
 interface IProps {
   reduxStore: ToolkitStore;
