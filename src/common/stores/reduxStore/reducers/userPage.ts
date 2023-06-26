@@ -15,13 +15,10 @@ export const userPageSlice = createSlice({
   initialState: initialUserState,
   reducers: {
     updateUserInfo: (state, action: PayloadAction<MasterUserType.IUserInfo>) => {
-      state = {
+      return {
         ...state,
-        ...action.payload,
+        ...action.payload
       };
-    },
-    overrideUserInfo: (state, action: PayloadAction<MasterUserType.IUserInfo>) => {
-      state = action.payload;
     },
   },
 });
