@@ -10,9 +10,18 @@
     top: 0;
     left: 0;
     height: 48px;
-    width: 100%;
+    width: calc(100% - 96px);
+    z-index: 1;
     background-color: transparent;
     -webkit-app-region: drag;
+  }
+  .login-top-menu {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    height: 24px;
+    z-index: 999;
+    width: 96px;
   }
   .login-landing {
     border-top-left-radius: 24px;
