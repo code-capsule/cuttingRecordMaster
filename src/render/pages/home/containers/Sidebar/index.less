@@ -1,0 +1,112 @@
+.home-sidebar {
+  width: 256px;
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  user-select: none;
+  .home-title {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 34px;
+    top: 0;
+  }
+  .side-wrapper {
+    padding: 36px 0;
+    .side-title {
+      font-size: 14px;
+      letter-spacing: 0.07em;
+      margin-bottom: 24px;
+      color: #808191;
+    }
+    .side-menu {
+      display: flex;
+      align-items: center;
+      height: 32px;
+      line-height: 32px;
+      margin-bottom: 24px;
+      cursor: pointer;
+      .side-svg-box {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        margin-right: 16px;
+        background-color: #353340;
+        .svg {
+          color: #808191;
+          width: 16px;
+          height: 16px;
+          margin-top: 8px;
+          margin-left: 8px;
+        }
+      }
+      .side-svg-label {
+        font-size: 14px;
+        color: #808191;
+      }
+
+      &.active {
+        .side-svg-box {
+          .svg {
+            color: #ffffff;
+          }
+        }
+        .side-svg-label {
+          color: #ffffff;
+          font-weight: 600;
+        }
+        &.discover {
+          .side-svg-box {
+            background-color: #ff7551;
+          }
+        }
+        &.video {
+          .side-svg-box {
+            background-color: #6c5ecf;
+          }
+        }
+        &.community {
+          .side-svg-box {
+            background-color: #32a7e2;
+          }
+        }
+      }
+
+      &:hover {
+        .side-svg-box {
+          .svg {
+            color: #ffffff;
+          }
+        }
+        .side-svg-label {
+          color: #ffffff;
+          font-weight: 600;
+        }
+      }
+
+      &.discover {
+        &:hover {
+          .side-svg-box {
+            background-color: #ff7551;
+          }
+        }
+      }
+      &.video {
+        &:hover {
+          .side-svg-box {
+            background-color: #6c5ecf;
+          }
+        }
+      }
+      &.community {
+        &:hover {
+          .side-svg-box {
+            background-color: #32a7e2;
+          }
+        }
+      }
+    }
+  }
+}
