@@ -1,0 +1,55 @@
+.product-video {
+  background-color: #252936;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.4s;
+  cursor: pointer;
+  width: 220px;
+  &:hover {
+    .product-video-source {
+      transform: scale(1.2);
+      transition: all 0.5s;
+    }
+  }
+  .product-video-time {
+    position: absolute;
+    background: rgba(21, 13, 13, 0.44);
+    color: rgb(255 255 255 / 85%);
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    top: 10px;
+    z-index: 1;
+    right: 8px;
+  }
+  .product-video-source {
+    width: 220px;
+    height: 126px;
+  }
+  .product-cover {
+    width: 220px;
+    height: 126px;
+    object-fit: cover;
+  }
+  .product-video-name {
+    color: #fff;
+    font-size: 16px;
+    line-height: 22px;
+    height: 60px;
+    padding: 16px;
+    overflow: hidden;
+    z-index: 9;
+    position: relative;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+  }
+  .product-video-view {
+    font-size: 12px;
+    padding: 16px;
+    position: relative;
+    color: #808191;
+  }
+}
