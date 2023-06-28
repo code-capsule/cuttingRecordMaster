@@ -9,7 +9,9 @@ function Main() {
 
   return (
     <div className="home-container">
-      <Sidebar currentSideMenu={sideMenu} onChange={setSideMenu} />
+      <div className='home-left'>
+        <Sidebar currentSideMenu={sideMenu} onChange={setSideMenu} />
+      </div>
     </div>
   );
 }
