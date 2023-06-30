@@ -60,8 +60,9 @@ export default async function setupMain(options?: SetUpMainOptions): Promise<voi
 
   createLogin();
 
-  global.master.services.ipc.on(WINDOW_IPC_KEY.OPEN_HOME_WINDOW, () => {
+  global.master.services.ipc.on(WINDOW_IPC_KEY.OPEN_HOME_WINDOW, (e) => {
     createHome();
+    e.request.resolve();
   });
 
   global.master.services.ipc.on('open.record.window', () => {
