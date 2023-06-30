@@ -23,6 +23,11 @@ export const projectPageSlice = createSlice({
   name: 'projectPage',
   initialState: initialProjectState,
   reducers: {
+    overrideProjectInfo: (state, action: PayloadAction<MasterProjectType.IProjectDataInfo>) => {
+      return {
+        ...action.payload,
+      };
+    },
     updateProjectInfo: (state, action: PayloadAction<MasterProjectType.IProjectDataInfo>) => {
       return {
         ...state,

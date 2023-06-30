@@ -1,4 +1,5 @@
 import ProjectStore from './instance';
+import baseConfig from '@src/config/config.base.json';
 import { generateUUid } from '@common/utils/uuid';
 import { PROJECT_STORE_IPC_KEY } from '@common/constants/ipcEventKey';
 import CuttingRecordMasterElectronStore from '@common/stores/localStore';
@@ -62,7 +63,7 @@ class ProjectStoreService {
 
     // 4.读取工程数据
     const reduxStore = global.master.stores.reduxStore;
-    await this._instance.connectStore(reduxStore, projectLocalStore, projectMapStore);
+    await this._instance.connectStore(reduxStore, projectLocalStore);
 
     // 5.监听 reduxStore 变化，同步至本地工程文件
     this._onInstanceUnmount = this._instance.subscribeProjectStore(reduxStore);
@@ -70,11 +71,11 @@ class ProjectStoreService {
     if (isNewLocalProject) {
       this._instance.updateProjectInfo({
         id: localProjectId,
-        projectName: projectName,
+        projectName: params?.projectName,
         projectHash: this._instance.createHash(),
         createTime: new Date().valueOf(),
         updateTime: new Date().valueOf(),
-        appVersion: config?.version,
+        appVersion: baseConfig.version
       });
     }
   }
