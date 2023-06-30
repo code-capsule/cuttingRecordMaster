@@ -54,7 +54,6 @@ class ProjectStore {
     return _hash;
   }
 
-
   /**
    * @description 获取工程信息
    */
