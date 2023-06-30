@@ -11,6 +11,7 @@ class ProjectStoreService {
   async initialize() {
     global.master.services.ipc.on(PROJECT_STORE_IPC_KEY.INIT_PROJECT_STORE, async (e, params: MasterProjectType.ICreateProjectStoreParams) => {
       await this.initProjectStore(params);
+      e?.request?.resolve(true);
     });
     global.master.services.ipc.on(PROJECT_STORE_IPC_KEY.UNMOUNT_PROJECT_STORE, () => {
       this._onInstanceUnmount();
