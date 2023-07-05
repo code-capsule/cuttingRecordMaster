@@ -21,10 +21,11 @@ class WindowService {
       throw new Error(
         `the ${name} window is not registered, please register first!`
       );
-    if (this._cacheWindows[name].isCreated())
-      throw new Error(
-        `the ${name} window has been created! do not create it again!`
-      );
+    if (this._cacheWindows[name].isCreated()) {
+      console.log(`the ${name} window has been created and will display it`);
+      this._cacheWindows[name].show();
+      return this._cacheWindows[name];
+    }
     const win = this._cacheWindows[name].create(options);
     return win;
   }

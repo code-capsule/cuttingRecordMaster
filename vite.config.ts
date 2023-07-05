@@ -22,6 +22,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      '@src': join(__dirname, 'src'),
       '@typings': join(__dirname, 'src/typings'),
       '@addon': join(__dirname, 'src/addon'),
       '@common': join(__dirname, 'src/common'),

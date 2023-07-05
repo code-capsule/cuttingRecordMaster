@@ -1,0 +1,33 @@
+.home-cutting-record-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 200px;
+  margin-top: 24px;
+  user-select: none;
+  .home-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 24px;
+    cursor: pointer;
+    .label {
+      font-size: 18px;
+      color: #ffffff;
+    }
+    &:hover {
+      .label {
+        transform: scale(1.4);
+        transition: all 1s;
+      }
+    }
+  }
+  .home-recording {
+    width: 55%;
+    background-image: linear-gradient(280.2deg, #bbe2e8 0%, #31abbd 100%);
+  }
+  .home-cutting {
+    width: calc(100% - 55% - 24px);
+    background-image: linear-gradient(280.2deg, #e7c6b6 0%, #f3a37a 100%);
+  }
+}

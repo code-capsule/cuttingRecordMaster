@@ -1,18 +1,22 @@
 declare namespace MasterUserType {
   interface IUserInfo {
-    uid: string;
-    token: string;
+    uid?: string;
+    token?: string;
     /**
      * @description 手机号
      */
-    phone: string;
+    phone?: string;
     /**
      * @description 名称
      */
-    username: string;
+    username?: string;
     /**
      * @description 头像链接
      */
-    photoUrl: string;
+    photoUrl?: string;
+    /**
+     * @description 密码
+     */
+    password?: string;
   }
 }
