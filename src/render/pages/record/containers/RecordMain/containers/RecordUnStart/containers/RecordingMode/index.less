@@ -79,17 +79,34 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #ffffff;
-      padding: 0 30px;
+      background-color: #353340;
+      color: #808191;
+      padding: 0 15px 0 30px;
       height: 45px;
       line-height: 45px;
       font-size: 14px;
       border-radius: 26px;
       font-weight: 500;
       cursor: pointer;
+      transition: all 0.3s;
 
       svg {
-        margin-left: 10px;
+        margin-left: 15px;
+        path {
+          transition: all 0.3s;
+          fill: #808191;
+        }
+      }
+
+      &:hover {
+        // background-color: #32a7e2;
+        color: #ffffff;
+
+        svg {
+          path {
+            fill: #ffffff;
+          }
+        }
       }
     }
   }
