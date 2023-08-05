@@ -1,4 +1,5 @@
 import fileTool from '@common/tools/fileTool';
+import { draftPageSlice, initialDraftState } from '@common/stores/reduxStore/reducers/draftPage';
 
 class DraftStore {
   /**
@@ -19,9 +20,10 @@ class DraftStore {
    * @description 获取首页的草稿列表
    */
   async getHomeDraftList() {
-    console.log('[draftStore] get home draft list!');
     const draftList = await this.readDraftList({ isDelete: false });
-    console.log('@@@', draftList);
+    console.log('[draftStore] get home draft list!');
+    // 同步到 redux 中
+    global.master.stores.reduxStore?.dispatch(draftPageSlice?.actions.updateDraftList(draftList));
     return draftList;
   }
 
