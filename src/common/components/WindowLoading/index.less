@@ -1,0 +1,36 @@
+.window-loading-box {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  .window-loading {
+    height: 200px;
+    padding: 5px;
+    width: 48px;
+    height: 48px;
+    border: 3px solid #808191;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    animation: rotation 1s linear infinite;
+    transition: 0.3s linear;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px + 8px;
+      height: 48px + 8px;
+      border-radius: 50%;
+      border: 3px solid;
+      border-color: #ff3d00 transparent;
+    }
+  }
+}
