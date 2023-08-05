@@ -2,7 +2,7 @@ import React from 'react';
 import './index.less';
 import { SideMenuType, SIDEBAR_MENU_LIST } from './constant';
 import { ReactComponent as IcCommonHomeSvg } from '@common/svgs/ic_common_home.svg';
-import { ReactComponent as IcCommonLiveVideoSvg } from '@common/svgs/ic_common_live_video.svg';
+import { ReactComponent as IcCommonDeleteSvg } from '@common/svgs/ic_common_recycle.svg';
 import { ReactComponent as IcCommonCommunitySvg } from '@common/svgs/ic_common_community.svg';
 
 interface IProps {
@@ -24,8 +24,8 @@ const Sidebar = (props: IProps) => {
               className={`side-menu ${sidebar?.className} ${props?.currentSideMenu === sidebar?.type ? 'active' : ''}`}
             >
               <div className="side-svg-box">
-                {sidebar?.type === SideMenuType.DISCOVER && <IcCommonHomeSvg className="svg" />}
-                {sidebar?.type === SideMenuType.LIVE_VIDEO && <IcCommonLiveVideoSvg className="svg" />}
+                {sidebar?.type === SideMenuType.HOME && <IcCommonHomeSvg className="svg" />}
+                {sidebar?.type === SideMenuType.RECYCLE && <IcCommonDeleteSvg className="svg" />}
                 {sidebar?.type === SideMenuType.COMMUNITY && <IcCommonCommunitySvg className="svg" />}
               </div>
               <div className="side-svg-label">{sidebar?.title}</div>
