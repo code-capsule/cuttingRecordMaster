@@ -1,23 +1,42 @@
+import CuttingRecordMasterElectronStore from '@common/stores/localStore';
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
+import { userPageSlice } from '@common/stores/reduxStore/reducers/userPage';
+
+interface IProps {
+  reduxStore: ToolkitStore;
+  localStore?: CuttingRecordMasterElectronStore;
+}
+
 class UserStore {
+  private reduxStore?: ToolkitStore;
+  private localStore?: CuttingRecordMasterElectronStore;
+
+  constructor(props: IProps) {
+    this.reduxStore = props.reduxStore;
+    this.localStore = props.localStore;
+  }
+
   /**
    * @description 获取用户信息
    */
-  public getUserInfo() {
+  public getUserInfo(): MasterUserType.IUserInfo {
     console.log('[userStoreService] get user info');
+    return this.localStore?.get('userInfo') as MasterUserType.IUserInfo;
   }
 
   /**
    * @description 更新用户信息
+   * @param {IUserDataInfo} userInfo 用户信息
+   * @param {boolean} isOverride 是否覆盖
    */
-  public updateUserInfo() {
+  public updateUserInfo(userInfo: MasterUserType.IUserInfo, isOverride?: boolean) {
     console.log('[userStoreService] update user info');
-  }
-
-  /**
-   * @description 重写用户信息
-   */
-  public overrideUserInfo() {
-    console.log('[userStoreService] override user info');
+    const info: MasterUserType.IUserInfo = isOverride ? { ...Object.assign(userPageSlice.getInitialState(), userInfo) } : { ...userInfo };
+    this.reduxStore?.dispatch(userPageSlice?.actions?.updateUserInfo(info));
+    // 同步更新本地json
+    this.localStore?.set({
+      userInfo: info,
+    });
   }
 }
 

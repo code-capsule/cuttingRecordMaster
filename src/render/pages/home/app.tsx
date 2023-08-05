@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { HOME_PROCESS_KEY } from '@common/constants/processKey';
 import setupRender, { SetupRenderOptions } from '@render/setup';
 import { Provider } from 'react-redux';
-import './index.less';
+import '@common/styles/base.css';
 
-const Main = lazy(() => import('./containers/Main'));
+const Main = lazy(() => import('./containers'));
 
 const setupOptions: SetupRenderOptions = {
   processKey: HOME_PROCESS_KEY,

@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import { createHome } from '@common/services/windowService/windows';
+import { createLogin } from '@common/services/windowService/windows';
 import setupMain from './setup';
 
 app.whenReady().then(async () => {
@@ -14,6 +14,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createHome();
+    createLogin();
   }
 });

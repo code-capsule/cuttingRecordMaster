@@ -1,0 +1,23 @@
+.common-modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6);
+  .common-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 24px;
+    width: 960px;
+    height: 600px;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: flex-start;
+    background-color: #333333;
+    z-index: 1;
+  }
+}

@@ -1,0 +1,103 @@
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  border-radius: 24px;
+  .login-drag-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 48px;
+    width: calc(100% - 96px);
+    z-index: 1;
+    background-color: transparent;
+    -webkit-app-region: drag;
+  }
+  .login-top-menu {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    height: 24px;
+    z-index: 999;
+    width: 96px;
+  }
+  .login-landing {
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+    background-color: #1f1d2b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    position: relative;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    .title,
+    .label {
+      font-weight: 100;
+      letter-spacing: 0.5px;
+      margin: 10px 0 30px;
+    }
+    .title {
+      font-size: 24px;
+      line-height: 32px;
+      font-weight: bold;
+    }
+    .label {
+      font-size: 16px;
+      line-height: 28px;
+    }
+  }
+  .login-sign-in {
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    .form-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+    .form-input {
+      background-color: #eee;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px 0;
+      width: 100%;
+      color: #8e8b8b;
+      border-radius: 8px;
+    }
+    .form-tip {
+      color: #8e8b8b;
+      margin: 12px 0;
+      span {
+        margin-left: 12px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+    .form-submit {
+      border-radius: 32px;
+      border: 1px solid #252936;
+      background: #252936;
+      color: #fff;
+      font-weight: bold;
+      padding: 12px 32px;
+      margin-top: 24px;
+      cursor: pointer;
+    }
+  }
+}
