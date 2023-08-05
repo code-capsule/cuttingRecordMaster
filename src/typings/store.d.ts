@@ -3,5 +3,6 @@ declare namespace MasterAppStoreType {
     userPage?: MasterUserType.IUserInfo;
     recordPage?: MasterRecordType.IRecordPageInfo;
     projectPage?: MasterProjectType.IProjectDataInfo;
+    draftPage?: MasterDraftType.IDraftDataInfo;
   }
 }
