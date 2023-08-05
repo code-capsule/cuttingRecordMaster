@@ -22,7 +22,7 @@ const EquipmentOptions = (props: IProps) => {
   };
 
   const renderCamIcon = () => {
-    return <CamIcon width={20} height={20} style={{ marginRight: '8px' }} />;
+    return <CamIcon width={25} height={25} style={{ marginRight: '8px' }} />;
   };
 
   const handleClickCamKey = (selectItem: ISelectItem) => {
