@@ -49,7 +49,7 @@ const DRAFT_LIST: MasterDraftType.IDraftItem[] = [
 ];
 
 function Main() {
-  const [sideMenu, setSideMenu] = useState<SideMenuType>(SideMenuType.DISCOVER);
+  const [sideMenu, setSideMenu] = useState<SideMenuType>(SideMenuType.HOME);
 
   return (
     <div className="home-container">
