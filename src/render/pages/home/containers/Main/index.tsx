@@ -28,7 +28,7 @@ function Main() {
       properties: ['openFile', 'multiSelections'],
     });
     const tasks =  result?.filePaths?.map(async (inputPath: string) => {
-      // return window.master.tools.ffmpegTool.getMetaInfo(inputPath);
+      return window.master.tools.ffmpegTool.getMetaInfo(inputPath);
     });
     const rsp = (await Promise.all(tasks)).map((metadata, idx) => {
       return {
