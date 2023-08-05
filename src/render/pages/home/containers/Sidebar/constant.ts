@@ -1,20 +1,14 @@
 
 export enum SideMenuType {
-  DISCOVER = 'DISCOVER',
-  LIVE_VIDEO = 'LIVE_VIDEO',
+  HOME = 'HOME',
   COMMUNITY = 'COMMUNITY',
 }
 
 export const SIDEBAR_MENU_LIST = [
   {
-    title: 'Discover',
-    className: 'discover',
-    type: SideMenuType.DISCOVER,
-  },
-  {
-    title: 'Live Video',
-    className: 'video',
-    type: SideMenuType.LIVE_VIDEO,
+    title: 'Home',
+    className: 'home',
+    type: SideMenuType.HOME,
   },
   {
     title: 'Community',
