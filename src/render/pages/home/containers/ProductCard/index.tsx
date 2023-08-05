@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.less';
 import { formatSeconds, formatTransformUpdateTime } from '@common/utils/time';
+import DefaultProjectCoverPNG from '@common/svgs/default_project_cover.png';
 
 const ProductCard = (props: { data: MasterDraftType.IDraftItem }) => {
   return (
@@ -29,7 +30,7 @@ const ProductCard = (props: { data: MasterDraftType.IDraftItem }) => {
           <source src={props?.data?.firstVideoPool} type="video/mp4" />
         </video>
       ) : (
-        <img src={props?.data?.cover} className="product-cover" alt="" />
+        <img src={props?.data?.cover || DefaultProjectCoverPNG} className="product-cover" alt="" />
       )}
       <div className="product-video-name">{props?.data?.projectName}</div>
       <div className="product-video-view">{formatTransformUpdateTime(props?.data?.updateTime)}</div>
