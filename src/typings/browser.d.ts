@@ -2,7 +2,7 @@ import { IRenderIpc } from '@common/services/ipc';
 import WindowService from '@common/services/windowService';
 import log from 'electron-log';
 import Store from 'react-redux';
-// import FFmpegTool from '@common/tools/ffmpegTool';
+import FFmpegTool from '@common/tools/ffmpegTool';
 import UserStoreService from '@common/services/userStoreService/instance';
 import DraftStoreService from '@common/services/draftStoreService/instance';
 import ProjectStoreService from '@common/services/projectStoreService/instance';
@@ -33,7 +33,7 @@ interface MasterServices {
 
 interface MasterTools {
   log: typeof log;
-  // ffmpegTool: FFmpegTool;
+  ffmpegTool: FFmpegTool;
 }
 
 interface MasterStores {
