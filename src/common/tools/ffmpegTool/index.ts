@@ -2,7 +2,7 @@ import path from 'path';
 import { find } from 'lodash';
 import { ICustomMediaMetadata } from './types';
 import { IParserVideoMetadataStream, IParserAudioMetadataStream } from './types/parserMetadataType';
-const ff = require('fluent-ffmpeg');
+const ff = require('@codecapsule/fluent-ffmpeg');
 const FfprobeData = ff.FfprobeData;
 
 class FFmpegTool {
@@ -18,21 +18,27 @@ class FFmpegTool {
    */
   static init(opts: { devAppPath: string; buildAppPath: string }) {
     const mode = process?.env?.mode || 'dev';
+    const isWindows = process?.platform !== 'darwin';
     if (mode === 'dev') {
-      ff.setFfmpegPath(this.parseDevelopmentPath(opts?.devAppPath, 'ffmpeg.exe'));
-      ff.setFfprobePath(this.parseDevelopmentPath(opts?.devAppPath, 'ffprobe.exe'));
+      ff.setFfmpegPath(this.parseDevelopmentPath(opts?.devAppPath, 'ffmpeg', isWindows));
+      ff.setFfprobePath(this.parseDevelopmentPath(opts?.devAppPath, 'ffprobe', isWindows));
     } else {
-      ff.setFfmpegPath(this.parseProductionPath(opts?.buildAppPath, 'ffmpeg.exe'));
-      ff.setFfprobePath(this.parseProductionPath(opts?.buildAppPath, 'ffprobe.exe'));
+      ff.setFfmpegPath(this.parseProductionPath(opts?.buildAppPath, 'ffmpeg', isWindows));
+      ff.setFfprobePath(this.parseProductionPath(opts?.buildAppPath, 'ffprobe', isWindows));
     }
   }
 
-  private static parseDevelopmentPath(appPath: string, exePath: string) {
-    const devPath = path.join(appPath, '../', `./src/common/tools/ffmpegTool/${exePath}`);
-    return devPath;
+  private static parseDevelopmentPath(appPath: string, exePath: string, isWindows: boolean) {
+    if (isWindows) {
+      const devPath = path.join(appPath, '../', `./src/common/tools/ffmpegTool/ffmpeg/windows/${exePath}.exe`);
+      return devPath;
+    } else {
+      const devPath = path.join(appPath, '../', `./src/common/tools/ffmpegTool/ffmpeg/mac/${exePath}`);
+      return devPath;
+    }
   }
 
-  private static parseProductionPath(appPath: string, exePath: string) {
+  private static parseProductionPath(appPath: string, exePath: string, isWindows: boolean) {
     return '';
   }
 
