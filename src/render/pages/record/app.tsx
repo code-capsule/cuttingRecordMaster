@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { RECORD_PROCESS_KEY } from '@common/constants/processKey';
 import setupRender, { SetupRenderOptions } from '@render/setup';
 import { Provider } from 'react-redux';
-import './index.less';
+import '@common/styles/base.css';
 
 const Main = lazy(() => import('./containers/Main'));
 
