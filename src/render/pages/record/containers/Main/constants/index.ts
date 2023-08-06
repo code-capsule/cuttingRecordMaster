@@ -1,22 +1,10 @@
-import { ISelectItem } from '@render/pages/record/containers/RecordMain/components/Select';
+import { ISelectItem } from '@render/pages/record/containers/Main/components/Select';
 
-export enum RECORDING_STEP {
+export enum ERecordingStep {
   'recordingMode' = 'recordingMode',
   'recordingSettings' = 'recordingSettings',
 }
 
-export enum RECORDING_MODE {
-  'camOnly' = 'camOnly',
-  'screenAndCam' = 'screenAndCam',
-  'screenOnly' = 'screenOnly',
-}
-
-export enum RECORDING_AUDIO_MODE {
-  'micAndSystem' = 'micAndSystem',
-  'systemOnly' = 'systemOnly',
-  'micOnly' = 'micOnly',
-  'mute' = 'mute',
-}
 
 export const AUDIO_RECORDING_OPTIONS = [
   {

@@ -2,22 +2,32 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialRecordPageState: MasterRecordType.IRecordPageInfo = {
-  sharedNumber: 0,
-  privateNumber: 0,
+  recordStatus: 'unStart',
+  recordingMode: 'camOnly',
+  recordingAudioMode: 'micAndSystem',
 };
 
 export const recordPageSlice = createSlice({
   name: 'recordPage',
   initialState: initialRecordPageState,
   reducers: {
-    incrementSharedNumber: (state) => {
-      state.sharedNumber += 1;
+    updateRecordStatus: (state, action: PayloadAction<MasterRecordType.TRecordStatus>) => {
+      return {
+        ...state,
+        recordStatus: action.payload,
+      };
     },
-    incrementPrivateNumber: (state) => {
-      state.privateNumber += 1;
+    updateRecordingMode: (state, action: PayloadAction<MasterRecordType.TRecordingMode>) => {
+      return {
+        ...state,
+        recordingMode: action.payload,
+      };
     },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.sharedNumber += action.payload;
+    updateRecordingAudioMode: (state, action: PayloadAction<MasterRecordType.TRecordingAudioMode>) => {
+      return {
+        ...state,
+        recordingAudioMode: action.payload,
+      };
     },
   },
 });

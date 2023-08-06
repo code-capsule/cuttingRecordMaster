@@ -1,0 +1,53 @@
+.recording-widget {
+  display: flex;
+  width: 210px;
+  height: 48px;
+  color: #ffffff;
+  border-radius: 24px;
+  background: rgba(0, 0, 0, 0.2);
+
+  .widget-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .recording-timer {
+    flex: 1;
+    font-size: 14px;
+    user-select: none;
+  }
+  .stop-recording {
+    width: 60px;
+
+    .border {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 34px;
+      height: 34px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
+    .content {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background: #e80415;
+      cursor: pointer;
+    }
+  }
+  .pause-recording {
+    flex: 1;
+    svg {
+      cursor: pointer;
+    }
+  }
+}

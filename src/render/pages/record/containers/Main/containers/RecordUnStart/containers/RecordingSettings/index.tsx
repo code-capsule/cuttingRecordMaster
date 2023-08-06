@@ -1,40 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { RECORDING_MODE, RECORDING_AUDIO_MODE } from '../../../../constants';
 import AudioOptions from './components/AudioOptions';
 import EquipmentOptions from './components/EquipmentOptions';
 import StartRecording from './components/StartRecording';
+import { recordPageActions } from '@common/stores/reduxStore/actions';
 import './index.less';
 
 interface IProps {
-  recordingMode: RECORDING_MODE;
+  recordingMode: MasterRecordType.TRecordingMode;
 }
 
 const RecordingSettings = (props: IProps) => {
   const { recordingMode } = props;
-  const [audioMode, setAudioMode] = useState<RECORDING_AUDIO_MODE>(() => {
-    return recordingMode === RECORDING_MODE.camOnly ? RECORDING_AUDIO_MODE.micOnly : RECORDING_AUDIO_MODE.micAndSystem;
+  const [audioMode, setAudioMode] = useState<MasterRecordType.TRecordingAudioMode>(() => {
+    return recordingMode === 'camOnly' ? 'micOnly' : 'micAndSystem';
   });
   const [camKey, setCamKey] = useState<string>('1');
   const [micKey, setMicKey] = useState<string>('1');
   const [systemSoundVisible, setSystemSoundVisible] = useState<boolean>(() => {
-    return recordingMode !== RECORDING_MODE.camOnly;
+    return recordingMode !== 'camOnly';
   });
   const [micVisible, setMicVisible] = useState<boolean>(() => {
-    return audioMode !== RECORDING_AUDIO_MODE.mute;
+    return audioMode !== 'mute';
   });
   const [camVisible, setCamVisible] = useState<boolean>(() => {
-    return recordingMode !== RECORDING_MODE.screenOnly;
+    return recordingMode !== 'screenOnly';
   });
 
   useEffect(() => {
-    setMicVisible(audioMode !== RECORDING_AUDIO_MODE.mute);
+    setMicVisible(audioMode !== 'mute');
   }, [audioMode]);
 
   useEffect(() => {
-    setCamVisible(audioMode === RECORDING_AUDIO_MODE.micAndSystem || audioMode === RECORDING_AUDIO_MODE.systemOnly);
+    setCamVisible(audioMode === 'micAndSystem' || audioMode === 'systemOnly');
   }, [audioMode]);
 
-  const handleChangeAudioMode = (audioMode: RECORDING_AUDIO_MODE) => {
+  const handleChangeAudioMode = (audioMode: MasterRecordType.TRecordingAudioMode) => {
     setAudioMode(audioMode);
   };
 
@@ -44,6 +44,12 @@ const RecordingSettings = (props: IProps) => {
 
   const handleChangeMicKey = (micKey: string) => {
     setMicKey(micKey);
+  };
+
+  const handleClickStartRecording = () => {
+    recordPageActions.updateRecordingMode(recordingMode);
+    recordPageActions.updateRecordingAudioMode(audioMode);
+    recordPageActions.updateRecordStatus('recording');
   };
 
   return (
@@ -66,8 +72,7 @@ const RecordingSettings = (props: IProps) => {
             </>
           ) : null}
         </div>
-
-        <StartRecording />
+        <StartRecording onStartRecording={handleClickStartRecording} />
       </div>
     </div>
   );

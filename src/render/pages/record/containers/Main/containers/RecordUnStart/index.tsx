@@ -1,31 +1,39 @@
 import React, { useState } from 'react';
-import { RECORDING_MODE, RECORDING_STEP } from '../../constants';
+import { ERecordingStep } from '../../constants';
 import UnStartHeader from './containers/UnStartHeader';
 import RecordingMode from './containers/RecordingMode';
 import RecordingSettings from './containers/RecordingSettings';
+import { HOME_PROCESS_KEY, RECORD_PROCESS_KEY } from '@src/common/constants/processKey';
 import './index.less';
 
 const RecordUnStart = () => {
-  const [recordingStep, setRecordingStep] = useState<RECORDING_STEP>(RECORDING_STEP.recordingMode);
-  const [recordingMode, setRecordingMode] = useState<RECORDING_MODE>(RECORDING_MODE.screenAndCam);
+  const [recordingStep, setRecordingStep] = useState<ERecordingStep>(ERecordingStep.recordingMode);
+  const [recordingMode, setRecordingMode] = useState<MasterRecordType.TRecordingMode>('camOnly');
 
-  const handleChangeMode = (mode: RECORDING_MODE) => {
+  const handleChangeMode = (mode: MasterRecordType.TRecordingMode) => {
     setRecordingMode(mode);
   };
 
   const handleClickNextStep = () => {
-    setRecordingStep(RECORDING_STEP.recordingSettings);
+    setRecordingStep(ERecordingStep.recordingSettings);
   };
 
   const handleClickChooseRecordingMode = () => {
-    setRecordingStep(RECORDING_STEP.recordingMode);
+    setRecordingStep(ERecordingStep.recordingMode);
+  };
+
+  const handleClickClose = () =>  {
+    const homeWindowInstance = window.master?.services?.windowService?.get(HOME_PROCESS_KEY)?._instance;
+    homeWindowInstance.show();
+    const recordWindowInstance = window.master?.services?.windowService?.get(RECORD_PROCESS_KEY)?._instance;
+    recordWindowInstance?.close();
   };
 
   return (
     <div className="record-un-start">
-      <UnStartHeader recordingStep={recordingStep} onChooseRecordingMode={handleClickChooseRecordingMode} />
+      <UnStartHeader recordingStep={recordingStep} onChooseRecordingMode={handleClickChooseRecordingMode} onClose={handleClickClose} />
       <div className="record-un-start-content">
-        {recordingStep === RECORDING_STEP.recordingMode ? (
+        {recordingStep === ERecordingStep.recordingMode ? (
           <RecordingMode recordingMode={recordingMode} onChangeMode={handleChangeMode} onNextStep={handleClickNextStep} />
         ) : (
           <RecordingSettings recordingMode={recordingMode} />
