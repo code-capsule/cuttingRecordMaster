@@ -1,0 +1,46 @@
+.clip-frame-layout {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #141415;
+  .clip-frame-header {
+    width: 100%;
+    height: 60px;
+    background: #1e1e1f;
+  }
+  .clip-frame-content {
+    width: 100%;
+    height: calc(100% - 60px - 450px - 8px); // 头部60，底部450，底部间距8
+    padding: 8px 8px 8px 8px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    .clip-content-left {
+      height: 100%;
+      background: #1e1e1f;
+      margin-right: 8px;
+      width: 45%;
+    }
+    .clip-content-center {
+      height: 100%;
+      background: #1e1e1f;
+      width: 35%;
+      margin-right: 8px;
+    }
+    .clip-content-right {
+      height: 100%;
+      background: #1e1e1f;
+      width: 20%;
+    }
+  }
+  .clip-frame-bottom {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - 8px - 8px);
+    height: 450px;
+    margin-left: 8px;
+    margin-right: 8px;
+    background: #1e1e1f;
+  }
+}
