@@ -3,6 +3,9 @@ import AudioOptions from './components/AudioOptions';
 import EquipmentOptions from './components/EquipmentOptions';
 import StartRecording from './components/StartRecording';
 import { recordPageActions } from '@common/stores/reduxStore/actions';
+import { setWindowIgnoreMouseEvent } from '@common/utils/ignoreMouseEvent';
+const remote = require('@electron/remote');
+const screen = remote.screen;
 import './index.less';
 
 interface IProps {
@@ -47,6 +50,12 @@ const RecordingSettings = (props: IProps) => {
   };
 
   const handleClickStartRecording = () => {
+    const size = screen.getPrimaryDisplay().workAreaSize;
+    const recordInstance = window.master?.services?.windowService?.get('record')?.getInstance();
+    recordInstance.setSize(size.width, size.height);
+    recordInstance.center();
+    recordInstance.setAlwaysOnTop(true);
+    setWindowIgnoreMouseEvent({ ignore: true });
     recordPageActions.updateRecordingMode(recordingMode);
     recordPageActions.updateRecordingAudioMode(audioMode);
     recordPageActions.updateRecordStatus('recording');
