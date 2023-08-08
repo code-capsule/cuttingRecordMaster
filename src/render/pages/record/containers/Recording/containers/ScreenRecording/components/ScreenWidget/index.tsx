@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import RecordingWidget from '@render/pages/record/containers/Main/components/RecordingWidget';
+import RecordingWidget from '@src/render/pages/record/components/RecordingWidget';
 import useSetIgnoreMouseEvent from '@common/hooks/useSetIgnoreMouseEvent';
 import './index.less';
 
