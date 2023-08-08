@@ -4,13 +4,12 @@ import { ReactComponent as MicAndSystemIcon } from '@render/pages/record/assets/
 import { ReactComponent as SystemOnlyIcon } from '@render/pages/record/assets/system_only.svg';
 import { ReactComponent as MicOnlyIcon } from '@render/pages/record/assets/mic_only.svg';
 import { ReactComponent as MuteIcon } from '@render/pages/record/assets/mute.svg';
-import { RECORDING_AUDIO_MODE } from '../../../../../../constants';
 import './index.less';
 
 interface IProps {
-  audioMode: RECORDING_AUDIO_MODE;
+  audioMode: MasterRecordType.TRecordingAudioMode;
   systemSoundVisible?: boolean;
-  onChangeAudioMode: (audioMode: RECORDING_AUDIO_MODE) => void;
+  onChangeAudioMode: (audioMode: MasterRecordType.TRecordingAudioMode) => void;
 }
 
 const AudioOptions = (props: IProps) => {
@@ -32,7 +31,7 @@ const AudioOptions = (props: IProps) => {
     return <MuteIcon width={20} height={20} style={{ 'marginRight': '8px' }} />;
   };
 
-  const handleClickCard = (audioMode: RECORDING_AUDIO_MODE) => {
+  const handleClickCard = (audioMode: MasterRecordType.TRecordingAudioMode) => {
     onChangeAudioMode(audioMode);
   };
 
@@ -40,10 +39,10 @@ const AudioOptions = (props: IProps) => {
     return (
       <>
         <div className="audio-recording-option">
-          <Card Icon={renderMicAndSystemIcon} selected={audioMode === RECORDING_AUDIO_MODE.micAndSystem} text="麦克风 + 系统声音" onClick={() => handleClickCard(RECORDING_AUDIO_MODE.micAndSystem)}></Card>
+          <Card Icon={renderMicAndSystemIcon} selected={audioMode === 'micAndSystem'} text="麦克风 + 系统声音" onClick={() => handleClickCard('micAndSystem')}></Card>
         </div>
         <div className="audio-recording-option">
-          <Card Icon={renderSystemOnlyIcon} selected={audioMode === RECORDING_AUDIO_MODE.systemOnly} text="系统声音" onClick={() => handleClickCard(RECORDING_AUDIO_MODE.systemOnly)}></Card>
+          <Card Icon={renderSystemOnlyIcon} selected={audioMode === 'systemOnly'} text="系统声音" onClick={() => handleClickCard('systemOnly')}></Card>
         </div>
       </>
     );
@@ -53,10 +52,10 @@ const AudioOptions = (props: IProps) => {
     <div className="audio-recording-options">
       { systemSoundVisible ? renderSystemSoundOptions() : null }
       <div className="audio-recording-option">
-        <Card Icon={renderMicOnlyIcon} selected={audioMode === RECORDING_AUDIO_MODE.micOnly} text="麦克风" onClick={() => handleClickCard(RECORDING_AUDIO_MODE.micOnly)}></Card>
+        <Card Icon={renderMicOnlyIcon} selected={audioMode === 'micOnly'} text="麦克风" onClick={() => handleClickCard('micOnly')}></Card>
       </div>
       <div className="audio-recording-option">
-        <Card Icon={renderMuteIcon} selected={audioMode === RECORDING_AUDIO_MODE.mute} text="静音" onClick={() => handleClickCard(RECORDING_AUDIO_MODE.mute)}></Card>
+        <Card Icon={renderMuteIcon} selected={audioMode === 'mute'} text="静音" onClick={() => handleClickCard('mute')}></Card>
       </div>
     </div>
   );

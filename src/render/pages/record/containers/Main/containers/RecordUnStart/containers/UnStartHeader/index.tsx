@@ -1,16 +1,17 @@
 import React from 'react';
 import { ReactComponent as CloseIcon } from '@render/pages/record/assets/un_start_close.svg';
 import { ReactComponent as ReturnIcon } from '@render/pages/record/assets/un_start_return.svg';
-import { RECORDING_STEP } from '../../../../constants';
+import { ERecordingStep } from '../../../../constants';
 import './index.less';
 
 interface IProps {
-  recordingStep: RECORDING_STEP;
+  recordingStep: ERecordingStep;
   onChooseRecordingMode: () => void;
+  onClose: () => void;
 }
 
 const UnStartHeader = (props: IProps) => {
-  const { recordingStep, onChooseRecordingMode } = props;
+  const { recordingStep, onChooseRecordingMode, onClose } = props;
 
   const ChooseRecordingMode = () => {
     return (
@@ -22,14 +23,14 @@ const UnStartHeader = (props: IProps) => {
   };
 
   const CloseRecording = () => {
-    return <div className="un-start-close">
+    return <div className="un-start-close" onClick={() => onClose()}>
       <CloseIcon />
     </div>;
   };
 
   return (
     <div className="un-start-header">
-      { recordingStep === RECORDING_STEP.recordingSettings ? <ChooseRecordingMode /> : null }
+      { recordingStep === ERecordingStep.recordingSettings ? <ChooseRecordingMode /> : null }
       <CloseRecording />
     </div>
   );
