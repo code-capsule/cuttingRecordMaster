@@ -3,7 +3,6 @@ import AudioOptions from './components/AudioOptions';
 import EquipmentOptions from './components/EquipmentOptions';
 import StartRecording from './components/StartRecording';
 import { recordPageActions } from '@common/stores/reduxStore/actions';
-import { setWindowIgnoreMouseEvent } from '@common/utils/ignoreMouseEvent';
 const remote = require('@electron/remote');
 const screen = remote.screen;
 import './index.less';
@@ -55,7 +54,6 @@ const RecordingSettings = (props: IProps) => {
     recordInstance.setSize(size.width, size.height);
     recordInstance.center();
     recordInstance.setAlwaysOnTop(true);
-    setWindowIgnoreMouseEvent({ ignore: true });
     recordPageActions.updateRecordingMode(recordingMode);
     recordPageActions.updateRecordingAudioMode(audioMode);
     recordPageActions.updateRecordStatus('recording');
