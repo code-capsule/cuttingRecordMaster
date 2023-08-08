@@ -1,0 +1,35 @@
+.clip-name-container {
+  position: relative;
+  .clip-name-input {
+    width: 118px;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: 'FZLanTingYuanS-M-GB';
+    font-style: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: none;
+    outline: none;
+    border: none;
+    height: 48px;
+    box-sizing: content-box;
+    padding: 0 12px;
+    display: flex;
+    &.hover {
+      background-color: rgba(65, 65, 65, 0.4);
+      border-radius: 8px;
+      padding-right: 52px;
+      width: 300px;
+    }
+  }
+  .name-count {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+  }
+}
