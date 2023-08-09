@@ -1,0 +1,107 @@
+.resource-video-card-item {
+  width: 166px;
+  height: 122px;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  &:hover {
+    border-radius: 8.4px;
+    .resource-video-card-cover {
+      .resource-video-card-cover-url {
+        transform: scale(1.2);
+      }
+    }
+    .resource-video-card-hover-mask {
+      visibility: visible;
+      transform: scale(1.2);
+    }
+  }
+  // 图片
+  .resource-video-card-cover {
+    width: 100%;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    .resource-video-card-cover-url {
+      border-radius: 8px;
+      pointer-events: none;
+      transition: all 0.15s ease-in-out;
+      position: relative;
+      width: 166px;
+      height: 94px;
+      top: 0;
+      left: 0;
+    }
+  }
+  // 蒙层
+  .resource-video-card-hover-mask {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 166px;
+    height: 94px;
+    border-radius: 8px;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    .add-resource-icon {
+      position: absolute;
+      right: 4px;
+      top: calc(100% - 28px - 8px);
+    }
+  }
+  .resource-video-card-duration {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-family: 'FZLanTingYuanS-M-GB';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+    padding: 2px 8px;
+  }
+  .resource-video-card-name {
+    font-family: 'FZLanTingYuanS-M-GB';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 5px;
+    height: 20px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // 资源未找到
+  .resource-video-card-not-found {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 166px;
+    height: 94px;
+    border-radius: 8px;
+    background-color: rgba(113, 55, 58, 1);
+    opacity: 0.8;
+    text-align: center;
+    &.is-exist-video-resource {
+      visibility: visible;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .resource-video-card-not-found-label {
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+}
