@@ -70,9 +70,9 @@ declare namespace MasterProjectType {
      */
     isDelete?: boolean;
     /**
-     * @description 工程中的资源池数据
+     * @description 工程中的资源数据
      */
-    resource?: { [key: string]: any };
+    resource?: IProjectResource;
     /**
      * @description 工程中的剪辑轨道数据
      */
@@ -89,5 +89,25 @@ declare namespace MasterProjectType {
   interface ISaveLocalProjectJson {
     projectVersion?: number;
     projectData?: IProjectDataInfo;
+  }
+
+  /**
+   * @description 资源数据
+   */
+  interface IResourceStructure {
+    video?: MasterResourceType.IVideoResource[];
+    audio?: MasterResourceType.IAudioResource[];
+    image?: MasterResourceType.IImageResource[];
+    text?: MasterResourceType.ITextResource[];
+  }
+  interface IProjectResource {
+    /**
+     * @description 资源池中的数据
+     */
+    pool?: IResourceStructure;
+    /**
+     * @description 云模板数据
+     */
+    cloud?: IResourceStructure;
   }
 }
