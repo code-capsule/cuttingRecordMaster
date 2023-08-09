@@ -2,12 +2,19 @@
   width: 100%;
   height: 100%;
   display: flex;
-  .clip-resource-pool-fill-line {
+  .clip-resource-pool-sidebar-container {
+    width: 86px;
+  }
+  .clip-resource-pool-fill-container {
     width: 8px;
     height: 100%;
     background-color: #141415;
   }
   .clip-resource-pool-content-container {
-    width: 100%;
+    flex: 1;
+    .clip-resource-pool-content-list {
+      width: 100%;
+      height: calc(100% - 48px);
+    }
   }
 }
