@@ -15,6 +15,14 @@
     .resource-video-card-hover-mask {
       visibility: visible;
       height: 98px;
+      .resource-video-card-add-svg {
+        visibility: visible;
+      }
+    }
+    .not-exist-video-resource-mask {
+      .resource-video-card-add-svg {
+        visibility: hidden;
+      }
     }
   }
   // 图片
@@ -45,10 +53,16 @@
     border-radius: 8px;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.4);
-    .add-resource-icon {
+    &.not-exist-video-resource-mask {
+    }
+    .resource-video-card-add-svg {
       position: absolute;
+      bottom: 4px;
       right: 4px;
-      top: calc(100% - 28px - 8px);
+      width: 24px;
+      height: 24px;
+      color: #ffffff;
+      visibility: hidden;
     }
   }
   .resource-video-card-duration {
@@ -90,7 +104,7 @@
     background-color: rgba(113, 55, 58, 1);
     opacity: 0.8;
     text-align: center;
-    &.is-exist-video-resource {
+    &.not-exist-video-resource {
       visibility: visible;
       display: flex;
       align-items: center;

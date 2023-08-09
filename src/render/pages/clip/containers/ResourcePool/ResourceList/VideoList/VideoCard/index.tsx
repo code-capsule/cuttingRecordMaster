@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './index.less';
 import { formatSeconds } from '@common/utils/time';
 import DefaultVideoImage from './defaultVideoImage.png';
-
+import { ReactComponent as IcCommonAddSvg } from '@common/svgs/ic_common_add.svg';
 interface IProps {
   /**
    * @description 视频资源
@@ -48,14 +48,15 @@ const VideoCard = React.memo((props: IProps) => {
           onError={onloadImageError}
         />
       </div>
-      <div className="resource-video-card-hover-mask" />
+      <div className={`resource-video-card-hover-mask ${!props?.resourceVideo?.isExistResource ? 'not-exist-video-resource-mask' : ''}`}>
+        <IcCommonAddSvg className="resource-video-card-add-svg" />
+      </div>
       <div className="resource-video-card-duration">
         {props?.resourceVideo?.data?.duration && formatSeconds(props?.resourceVideo?.data?.duration)}
       </div>
       <div className="resource-video-card-name">{props?.resourceVideo?.name}</div>
-
       {/* 不存在资源 */}
-      <div className={`resource-video-card-not-found ${!props?.resourceVideo?.isExistResource ? 'is-exist-video-resource' : ''}`}>
+      <div className={`resource-video-card-not-found ${!props?.resourceVideo?.isExistResource ? 'not-exist-video-resource' : ''}`}>
         <div className="resource-video-card-not-found-label">媒体丢失</div>
         <div className="resource-video-card-not-found-label">Media Not Found</div>
       </div>
