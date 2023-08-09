@@ -22,14 +22,14 @@ const RecordingSettings = (props: IProps) => {
     return recordingMode !== 'camOnly';
   });
   const [micVisible, setMicVisible] = useState<boolean>(() => {
-    return audioMode !== 'mute';
+    return audioMode === 'micAndSystem' || audioMode === 'micOnly';
   });
   const [camVisible, setCamVisible] = useState<boolean>(() => {
     return recordingMode !== 'screenOnly';
   });
 
   useEffect(() => {
-    setMicVisible(audioMode !== 'mute');
+    setMicVisible(audioMode === 'micAndSystem' || audioMode === 'micOnly');
   }, [audioMode]);
 
   useEffect(() => {
