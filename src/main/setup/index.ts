@@ -11,12 +11,14 @@ import initReduxStore from '@common/stores/reduxStore';
 import userStoreService from '@common/services/userStoreService';
 import draftStoreService from '@common/services/draftStoreService';
 import projectStoreService from '@common/services/projectStoreService';
+import proxyFileProtocol2Master from './protocol';
 
 interface SetUpMainOptions {}
 
 export default async function setupMain(options?: SetUpMainOptions): Promise<void> {
   // remote模块注入
   require('@electron/remote/main').initialize();
+  proxyFileProtocol2Master();
   global.master = {} as Master;
   global.master.tools = {} as MasterTools;
   global.master.stores = {} as MasterStores;
