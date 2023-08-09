@@ -16,7 +16,20 @@ export const initialProjectState: MasterProjectType.IProjectDataInfo = {
   isDelete: false,
   clip: {},
   record: {},
-  resource: {},
+  resource: {
+    pool: {
+      video: [],
+      audio: [],
+      image: [],
+      text: [],
+    },
+    cloud: {
+      video: [],
+      audio: [],
+      image: [],
+      text: [],
+    },
+  },
 };
 
 export const projectPageSlice = createSlice({
