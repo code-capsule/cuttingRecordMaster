@@ -9,8 +9,8 @@ const ResourceTab = () => {
   return (
     <div className="clip-resource-tab">
       <div
-        className={`clip-resource-tab-item ${resourceContextReducer?.tabType === EResourceFromType.template ? 'active' : ''}`}
-        onClick={() => resourceContextReducer?.updateTabType?.(EResourceFromType.template)}
+        className={`clip-resource-tab-item ${resourceContextReducer?.tabType === EResourceFromType.cloud ? 'active' : ''}`}
+        onClick={() => resourceContextReducer?.updateTabType?.(EResourceFromType.cloud)}
       >
         云模板
       </div>

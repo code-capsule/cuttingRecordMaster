@@ -1,5 +1,5 @@
 declare namespace MasterResourceType {
-  type TResourceFromType = 'local' | 'template';
+  type TResourceFromType = 'local' | 'cloud';
   type TResourceType = 'text' | 'video' | 'audio' | 'image';
 
   // 基础资源类型声明

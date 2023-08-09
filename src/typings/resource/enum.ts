@@ -13,5 +13,5 @@ export enum EResourceType {
  */
 export enum EResourceFromType {
   local = 'local', // 本地
-  template = 'template', // 模板
+  cloud = 'cloud', // 云模板
 }
