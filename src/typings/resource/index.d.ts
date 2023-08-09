@@ -110,6 +110,10 @@ declare namespace MasterResourceType {
   // 音频
   interface ICustomResourceAudioData {
     /**
+     * @description 资源封面
+     */
+    cover?: string;
+    /**
      * @description 资源时长
      */
     duration?: number;
@@ -133,6 +137,10 @@ declare namespace MasterResourceType {
 
   // 图片
   interface ICustomResourceImageData {
+    /**
+     * @description 资源封面
+     */
+    cover?: string;
     /**
      * @description 分辨率高
      */
