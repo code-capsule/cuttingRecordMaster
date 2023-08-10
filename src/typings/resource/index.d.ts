@@ -47,6 +47,14 @@ declare namespace MasterResourceType {
      * @summary 可能用户在加入资源池后，把本地真实资源给删除了，此时的资源是不存在的
      */
     isExistResource?: boolean;
+    /**
+     * @description 资源存于本地的路径
+     */
+    inputPath?: string;
+    /**
+     * @description 资源封面
+     */
+    cover?: string;
   }
 
   // 视频
@@ -67,14 +75,6 @@ declare namespace MasterResourceType {
      * @description 起播时间
      */
     startTime?: number;
-    /**
-     * @description 资源存于本地的路径
-     */
-    inputPath?: string;
-    /**
-     * @description 资源封面
-     */
-    cover?: string;
     /**
      * @description 资源缩略图
      */
@@ -110,10 +110,6 @@ declare namespace MasterResourceType {
   // 音频
   interface ICustomResourceAudioData {
     /**
-     * @description 资源封面
-     */
-    cover?: string;
-    /**
      * @description 资源时长
      */
     duration?: number;
@@ -137,10 +133,6 @@ declare namespace MasterResourceType {
 
   // 图片
   interface ICustomResourceImageData {
-    /**
-     * @description 资源封面
-     */
-    cover?: string;
     /**
      * @description 分辨率高
      */
