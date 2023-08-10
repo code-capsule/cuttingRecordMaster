@@ -7,15 +7,15 @@ interface IProps {
   /**
    * @description 视频资源
    */
-  resourceVideo: MasterResourceType.IVideoResource;
+  resource: MasterResourceType.IVideoResource;
   /**
    * @description 预览卡片
    */
-  onPreviewResource?: (resourceVideo?: MasterResourceType.IVideoResource) => void;
+  onPreviewResource?: (resource?: MasterResourceType.IVideoResource) => void;
   /**
    * @description 添加资源到轨道区
    */
-  onInsertResourceToVideoTrackCell?: (resourceVideo?: MasterResourceType.IVideoResource) => void;
+  onInsertResourceToVideoTrackCell?: (resource?: MasterResourceType.IVideoResource) => void;
 }
 
 const VideoCard = React.memo((props: IProps) => {
@@ -35,8 +35,8 @@ const VideoCard = React.memo((props: IProps) => {
       onClick={(e) => {
         e?.stopPropagation();
         e?.nativeEvent?.stopImmediatePropagation();
-        if (props?.resourceVideo?.isExistResource) {
-          props?.onPreviewResource?.(props?.resourceVideo);
+        if (props?.resource?.isExistResource) {
+          props?.onPreviewResource?.(props?.resource);
         }
       }}
     >
@@ -44,19 +44,17 @@ const VideoCard = React.memo((props: IProps) => {
         <img
           ref={imageRef}
           className="resource-video-card-cover-url"
-          src={props?.resourceVideo?.isExistResource ? props?.resourceVideo?.data?.cover : DefaultVideoImage}
+          src={props?.resource?.isExistResource ? props?.resource?.cover : DefaultVideoImage}
           onError={onloadImageError}
         />
       </div>
-      <div className={`resource-video-card-hover-mask ${!props?.resourceVideo?.isExistResource ? 'not-exist-video-resource-mask' : ''}`}>
+      <div className={`resource-video-card-hover-mask ${!props?.resource?.isExistResource ? 'not-exist-video-resource-mask' : ''}`}>
         <IcCommonAddSvg className="resource-video-card-add-svg" />
       </div>
-      <div className="resource-video-card-duration">
-        {props?.resourceVideo?.data?.duration && formatSeconds(props?.resourceVideo?.data?.duration)}
-      </div>
-      <div className="resource-video-card-name">{props?.resourceVideo?.name}</div>
+      <div className="resource-video-card-duration">{props?.resource?.data?.duration && formatSeconds(props?.resource?.data?.duration)}</div>
+      <div className="resource-video-card-name">{props?.resource?.name}</div>
       {/* 不存在资源 */}
-      <div className={`resource-video-card-not-found ${!props?.resourceVideo?.isExistResource ? 'not-exist-video-resource' : ''}`}>
+      <div className={`resource-video-card-not-found ${!props?.resource?.isExistResource ? 'not-exist-video-resource' : ''}`}>
         <div className="resource-video-card-not-found-label">媒体丢失</div>
         <div className="resource-video-card-not-found-label">Media Not Found</div>
       </div>

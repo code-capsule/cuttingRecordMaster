@@ -8,15 +8,15 @@ interface IProps {
   /**
    * @description 视频资源
    */
-  resourceVideo: MasterResourceType.IVideoResource;
+  resource: MasterResourceType.IAudioResource;
   /**
    * @description 预览卡片
    */
-  onPreviewResource?: (resourceVideo?: MasterResourceType.IVideoResource) => void;
+  onPreviewResource?: (resource?: MasterResourceType.IAudioResource) => void;
   /**
    * @description 添加资源到轨道区
    */
-  onInsertResourceToVideoTrackCell?: (resourceVideo?: MasterResourceType.IVideoResource) => void;
+  onInsertResourceToVideoTrackCell?: (resource?: MasterResourceType.IAudioResource) => void;
 }
 
 const VideoCard = React.memo((props: IProps) => {
@@ -36,8 +36,8 @@ const VideoCard = React.memo((props: IProps) => {
       onClick={(e) => {
         e?.stopPropagation();
         e?.nativeEvent?.stopImmediatePropagation();
-        if (props?.resourceVideo?.isExistResource) {
-          props?.onPreviewResource?.(props?.resourceVideo);
+        if (props?.resource?.isExistResource) {
+          props?.onPreviewResource?.(props?.resource);
         }
       }}
     >
@@ -45,19 +45,17 @@ const VideoCard = React.memo((props: IProps) => {
         <img
           ref={imageRef}
           className="resource-audio-card-cover-url"
-          src={props?.resourceVideo?.isExistResource ? props?.resourceVideo?.data?.cover : DefaultVideoImage}
+          src={props?.resource?.isExistResource ? props?.resource?.cover : DefaultVideoImage}
           onError={onloadImageError}
         />
         <div className="resource-audio-card-content">
-          <div className="resource-audio-card-name">{props?.resourceVideo?.name}</div>
-          <div className="resource-audio-card-duration">
-            {props?.resourceVideo?.data?.duration && formatSeconds(props?.resourceVideo?.data?.duration)}
-          </div>
+          <div className="resource-audio-card-name">{props?.resource?.name}</div>
+          <div className="resource-audio-card-duration">{props?.resource?.data?.duration && formatSeconds(props?.resource?.data?.duration)}</div>
           <IcCommonAddSvg className="resource-audio-card-add-svg" />
         </div>
       </div>
       {/* 不存在资源 */}
-      <div className={`resource-audio-card-not-found ${!props?.resourceVideo?.isExistResource ? 'is-exist-audio-resource' : ''}`}>
+      <div className={`resource-audio-card-not-found ${!props?.resource?.isExistResource ? 'is-exist-audio-resource' : ''}`}>
         <div className="resource-audio-card-not-found-label">媒体丢失</div>
         <div className="resource-audio-card-not-found-label">Media Not Found</div>
       </div>
