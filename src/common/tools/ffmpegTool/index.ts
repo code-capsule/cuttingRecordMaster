@@ -4,6 +4,7 @@ import { ICustomMediaMetadata } from './types';
 import { IParserVideoMetadataStream, IParserAudioMetadataStream } from './types/parserMetadataType';
 const ff = require('@codecapsule/fluent-ffmpeg');
 const FfprobeData = ff.FfprobeData;
+import StreamTool from './tool/streamTool';
 
 class FFmpegTool {
   static Ffprobe = ff.ffprobe;
@@ -12,6 +13,8 @@ class FFmpegTool {
       console.log('[ffmpegTool] run ffmpeg', cmd);
     });
   };
+
+  static streamTool = new StreamTool();
 
   /**
    * @description 初始化配置
