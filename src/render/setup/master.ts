@@ -5,6 +5,7 @@ import initRenderLog from './log';
 const remote = require('@electron/remote');
 import initReduxStore from '@common/stores/reduxStore';
 import FFmpegTool from '@common/tools/ffmpegTool';
+import RecorderService from '@src/common/services/recordService';
 
 export interface InitRenderMasterOptions {
   /**
@@ -29,6 +30,8 @@ export async function initMaster(
 
     const reduxStore = initReduxStore(state, 'render');
 
+    const recordService = new RecorderService();
+
     const master: Master = {
       appSavePath,
       services: {
@@ -37,6 +40,7 @@ export async function initMaster(
         userStoreService: services.userStoreService,
         draftStoreService: services.draftStoreService,
         projectStoreService: services.projectStoreService,
+        recordService,
       },
       tools: {
         log,
@@ -48,6 +52,7 @@ export async function initMaster(
     };
 
     FFmpegTool.init({ devAppPath: remote?.app?.getAppPath(), buildAppPath: '' });
+    recordService.initialize({ recordEvent: ipc });
     resolve(master);
   });
 }
