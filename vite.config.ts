@@ -2,10 +2,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { devMainPlugin } from './plugins/vite-plugin-dev-main';
 import svgr from 'vite-plugin-svgr';
+import { builtinModules } from 'module';
 import commonjs from 'vite-plugin-commonjs-externals';
 import { join } from 'path';
 
-const commonjsPackages = ['path', 'electron-log', 'lodash', 'electron-redux'];
+const commonjsPackages = [...builtinModules, 'electron-log', 'lodash', 'electron-redux'];
 
 export default defineConfig({
   root: join(__dirname, 'src/render'),
