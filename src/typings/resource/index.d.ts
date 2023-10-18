@@ -55,6 +55,14 @@ declare namespace MasterResourceType {
      * @description 资源封面
      */
     cover?: string;
+    /**
+     * @description 云端资源 uid
+     */
+    cloudRemoteUid?: string;
+    /**
+     * @description 云端资源链接
+     */
+    cloudRemoteUrl?: string;
   }
 
   // 视频
@@ -143,13 +151,6 @@ declare namespace MasterResourceType {
     resolutionWidth?: number;
   }
 
-  // 文字
-  interface IResourcePointer {
-    x?: number;
-    y?: number;
-    x1?: number;
-    y1?: number;
-  }
   interface ICustomResourceTextData {
     /**
      * @description 文字内容
@@ -163,10 +164,6 @@ declare namespace MasterResourceType {
      * @description 文本大小
      */
     fontSize?: number;
-    /**
-     * @description 坐标位置
-     */
-    pointer?: IResourcePointer;
   }
 
   interface IVideoResource extends InitializeResource {
@@ -182,7 +179,7 @@ declare namespace MasterResourceType {
   }
 
   interface ITextResource extends InitializeResource {
-    data: ICustomResourceImageData;
+    data: ICustomResourceTextData;
   }
 
   type IResourceItem = IVideoResource | IAudioResource | IImageResource | ITextResource;

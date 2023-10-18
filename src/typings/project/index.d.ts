@@ -105,9 +105,5 @@ declare namespace MasterProjectType {
      * @description 资源池中的数据
      */
     pool?: IResourceStructure;
-    /**
-     * @description 云模板数据
-     */
-    cloud?: IResourceStructure;
   }
 }
