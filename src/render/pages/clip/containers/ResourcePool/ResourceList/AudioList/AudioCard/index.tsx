@@ -3,10 +3,11 @@ import './index.less';
 import { formatSeconds } from '@common/utils/time';
 import DefaultVideoImage from './defaultVideoImage.png';
 import { ReactComponent as IcCommonAddSvg } from '@common/svgs/ic_common_add.svg';
+import { ReactComponent as IcCommonMp3Svg } from '@common/svgs/ic_common_mp3.svg';
 
 interface IProps {
   /**
-   * @description 视频资源
+   * @description 音频资源
    */
   resource: MasterResourceType.IAudioResource;
   /**
@@ -36,18 +37,25 @@ const VideoCard = React.memo((props: IProps) => {
       onClick={(e) => {
         e?.stopPropagation();
         e?.nativeEvent?.stopImmediatePropagation();
-        if (props?.resource?.isExistResource) {
-          props?.onPreviewResource?.(props?.resource);
-        }
       }}
     >
       <div className="resource-audio-card-flex">
-        <img
-          ref={imageRef}
-          className="resource-audio-card-cover-url"
-          src={props?.resource?.isExistResource ? props?.resource?.cover : DefaultVideoImage}
-          onError={onloadImageError}
-        />
+        <div className="resource-audio-card-cover">
+          {props?.resource?.cover && (
+            <img
+              ref={imageRef}
+              className="image"
+              src={props?.resource?.isExistResource ? props?.resource?.cover : DefaultVideoImage}
+              onError={onloadImageError}
+            />
+          )}
+          {!props?.resource?.cover && (
+            <div className="svg-box">
+              <IcCommonMp3Svg className="svg" />
+            </div>
+          )}
+        </div>
+
         <div className="resource-audio-card-content">
           <div className="resource-audio-card-name">{props?.resource?.name}</div>
           <div className="resource-audio-card-duration">{props?.resource?.data?.duration && formatSeconds(props?.resource?.data?.duration)}</div>
