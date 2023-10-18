@@ -5,6 +5,7 @@ import initRenderLog from './log';
 const remote = require('@electron/remote');
 import initReduxStore from '@common/stores/reduxStore';
 import FFmpegTool from '@common/tools/ffmpegTool';
+import path from 'path';
 
 export interface InitRenderMasterOptions {
   /**
@@ -13,9 +14,7 @@ export interface InitRenderMasterOptions {
   processKey: string;
 }
 
-export async function initMaster(
-  options: InitRenderMasterOptions
-): Promise<Master> {
+export async function initMaster(options: InitRenderMasterOptions): Promise<Master> {
   return new Promise((resolve) => {
     const { processKey } = options;
 
@@ -29,8 +28,10 @@ export async function initMaster(
 
     const reduxStore = initReduxStore(state, 'render');
 
+    const appRootPath = path.join(remote?.app.getAppPath(), '../');
     const master: Master = {
       appSavePath,
+      appRootPath,
       services: {
         ipc,
         windowService: services.windowService,
