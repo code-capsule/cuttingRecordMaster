@@ -18,6 +18,10 @@ interface Master {
    * @description 应用存储路径
    */
   appSavePath: string;
+  /**
+   * @description 应用在本机中的根路径
+   */
+  appRootPath?: string;
   services: MasterServices;
   tools: MasterTools;
   stores: MasterStores;
