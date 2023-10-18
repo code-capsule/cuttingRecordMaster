@@ -23,12 +23,6 @@ export const initialProjectState: MasterProjectType.IProjectDataInfo = {
       image: [],
       text: [],
     },
-    cloud: {
-      video: [],
-      audio: [],
-      image: [],
-      text: [],
-    },
   },
 };
 
