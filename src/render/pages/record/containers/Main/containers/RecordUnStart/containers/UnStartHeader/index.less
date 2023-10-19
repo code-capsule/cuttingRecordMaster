@@ -1,0 +1,75 @@
+.un-start-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 100%;
+  height: 60px;
+  font-size: 12px;
+  box-sizing: border-box;
+  -webkit-app-region: drag;
+
+  .choose-recording-mode-btn {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: gainsboro;
+    height: 20px;
+    -webkit-app-region: none;
+
+    &:hover {
+      span {
+        color: #ffffff;
+      }
+
+      svg {
+        path {
+          fill: #ffffff;
+        }
+      }
+    }
+
+    span {
+      color: #808191;
+      transition: color 0.5s;
+    }
+
+    svg {
+      width: 12px;
+      height: 12px;
+      path {
+        transition: all 0.5s;
+      }
+    }
+  }
+
+  .un-start-close {
+    align-self: flex-end;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.5s;
+    -webkit-app-region: none;
+
+    &:hover {
+      background-color: #808191;
+
+      svg {
+        path {
+          fill: #ffffff;
+        }
+      }
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      path {
+        transition: all 0.5s;
+      }
+    }
+  }
+}
