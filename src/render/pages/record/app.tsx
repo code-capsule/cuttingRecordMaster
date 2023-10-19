@@ -5,7 +5,7 @@ import setupRender, { SetupRenderOptions } from '@render/setup';
 import { Provider } from 'react-redux';
 import '@common/styles/base.css';
 
-const Main = lazy(() => import('./containers/Main'));
+const Main = lazy(() => import('./containers'));
 
 const setupOptions: SetupRenderOptions = {
   processKey: RECORD_PROCESS_KEY,

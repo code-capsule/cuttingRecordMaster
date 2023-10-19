@@ -1,18 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import RecordingWidget from '@render/pages/record/containers/Main/components/RecordingWidget';
+import RecordingWidget from '@src/render/pages/record/components/RecordingWidget';
 import useSetIgnoreMouseEvent from '@common/hooks/useSetIgnoreMouseEvent';
-import { setWindowIgnoreMouseEvent } from '@common/utils/ignoreMouseEvent';
 import './index.less';
 
 const ScreenWidget = () => {
   const recordStatus = useSelector((state: MasterAppStoreType.AppState) => state.recordPage.recordStatus);
   const recordingWidgetRef = React.useRef<HTMLDivElement | null>(null);
 
-  useSetIgnoreMouseEvent({ ignoreElementRef: recordingWidgetRef.current });
+  useSetIgnoreMouseEvent({ ignoreElementRef: recordingWidgetRef });
 
   const handleClickStop = () => {
-    setWindowIgnoreMouseEvent({ ignore: false });
+    const recordInstance = window.master?.services?.windowService?.get('record')?.getInstance();
+    recordInstance.setSize(880, 466);
+    recordInstance.center();
+    recordInstance.setAlwaysOnTop(false);
   };
 
   const handleClickPause = () => {};

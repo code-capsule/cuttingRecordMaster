@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import '../../index.less';
-import RecordingWidget from '@render/pages/record/containers/Main/components/RecordingWidget';
+import RecordingWidget from '@src/render/pages/record/components/RecordingWidget';
 
 const CamOnlyWidget = () => {
   const recordStatus = useSelector((state: MasterAppStoreType.AppState) => state.recordPage.recordStatus);

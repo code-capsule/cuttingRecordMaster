@@ -8,7 +8,7 @@ interface IUseSetIgnoreMouseEventProps {
   /**
    * 要忽略的元素，值为 useRef 的结果
    */
-  ignoreElementRef: HTMLDivElement | null;
+  ignoreElementRef: React.RefObject<HTMLElement | null>;
   /**
    * capsule.windowCenter.windows 的 key
    */
@@ -23,7 +23,7 @@ const useSetIgnoreMouseEvent = (props: IUseSetIgnoreMouseEventProps) => {
   const { ignoreElementRef, processKey = RECORD_PROCESS_KEY } = props;
 
   useEffect(() => {
-    if (!ignoreElementRef) {
+    if (!ignoreElementRef.current) {
       log.error('ignoreElementRef is null');
       return;
     }
@@ -40,17 +40,21 @@ const useSetIgnoreMouseEvent = (props: IUseSetIgnoreMouseEventProps) => {
       setWindowIgnoreMouseEvent({ ignore: true, processKey });
     };
 
-    ignoreElementRef.addEventListener('mouseenter', handleMouseEnter);
-    ignoreElementRef.addEventListener('mouseleave', handleMouseLeave);
-    // ignoreElementRef.current.addEventListener('mousemove', handleMouseEnter);
+    ignoreElementRef.current.addEventListener('mouseenter', handleMouseEnter);
+    ignoreElementRef.current.addEventListener('mouseleave', handleMouseLeave);
+    window.requestIdleCallback(() => {
+      setWindowIgnoreMouseEvent({ ignore: true, processKey });
+      log.info(`RenderInit: set window mouse event ignore is true, the windowKey is ${processKey}`);
+    });
     return () => {
-      if (ignoreElementRef) {
-        ignoreElementRef.removeEventListener('mouseenter', handleMouseEnter);
-        ignoreElementRef.removeEventListener('mouseleave', handleMouseLeave);
-        // ignoreElementRef.current.removeEventListener('mousemove', handleMouseEnter);
+      if (ignoreElementRef.current) {
+        ignoreElementRef.current.removeEventListener('mouseenter', handleMouseEnter);
+        ignoreElementRef.current.removeEventListener('mouseleave', handleMouseLeave);
+        setWindowIgnoreMouseEvent({ ignore: false, processKey });
+        log.info('useSetIgnoreMouseEvent useEffect removeEventListener');
       }
     };
-  }, [ignoreElementRef]);
+  }, [ignoreElementRef.current]);
 };
 
 export default useSetIgnoreMouseEvent;
