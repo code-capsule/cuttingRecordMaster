@@ -12,13 +12,13 @@ const ResourceTab = () => {
         className={`clip-resource-tab-item ${resourceContextReducer?.tabType === EResourceFromType.cloud ? 'active' : ''}`}
         onClick={() => resourceContextReducer?.updateTabType?.(EResourceFromType.cloud)}
       >
-        云模板
+        云素材
       </div>
       <div
         className={`clip-resource-tab-item ${resourceContextReducer?.tabType === EResourceFromType.local ? 'active' : ''}`}
         onClick={() => resourceContextReducer?.updateTabType?.(EResourceFromType.local)}
       >
-        本地文件
+        本地素材
       </div>
     </div>
   );
