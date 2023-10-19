@@ -12,3 +12,8 @@ export const PROJECT_STORE_IPC_KEY = {
   INIT_PROJECT_STORE: 'INIT_PROJECT_STORE', // 初始化工程
   UNMOUNT_PROJECT_STORE: 'UNMOUNT_PROJECT_STORE', // 卸载工程
 };
+
+// 草稿数据相关
+export const DRAFT_STORE_IPC_KEY = {
+  GET_LIST: 'draftStoreService.get.draft.list', // 获取草稿列表
+};

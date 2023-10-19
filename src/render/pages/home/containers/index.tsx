@@ -9,6 +9,7 @@ import { SideMenuType } from './Sidebar/constant';
 import { HOME_PROCESS_KEY } from '@common/constants/processKey';
 import CuttingRecordingBox from './CuttingRecordingBox';
 import ProductCard from './ProductCard';
+import { DRAFT_STORE_IPC_KEY } from '@src/common/constants/ipcEventKey';
 
 function Main() {
   const [sideMenu, setSideMenu] = useState<SideMenuType>(SideMenuType.HOME);
@@ -16,6 +17,13 @@ function Main() {
 
   useEffect(() => {
     window.master?.services?.draftStoreService?.getHomeDraftList();
+    window.master.services.ipc.on(DRAFT_STORE_IPC_KEY.GET_LIST, async (e) => {
+      await window.master?.services?.draftStoreService?.getHomeDraftList();
+      e?.request?.resolve(true);
+    });
+    return () => {
+      window.master.services.ipc.off(DRAFT_STORE_IPC_KEY.GET_LIST);
+    };
   }, []);
 
   return (
