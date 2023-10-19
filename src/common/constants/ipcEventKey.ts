@@ -9,6 +9,6 @@ export const WINDOW_IPC_KEY = {
 
 // 工程数据相关
 export const PROJECT_STORE_IPC_KEY = {
-  INIT_PROJECT_STORE: 'INIT_PROJECT_STORE', // 初始化工程
-  UNMOUNT_PROJECT_STORE: 'UNMOUNT_PROJECT_STORE', // 卸载工程
+  INIT_PROJECT_STORE: 'projectStoreService.init.store', // 初始化工程
+  UNMOUNT_PROJECT_STORE: 'projectStoreService.unmount.store', // 卸载工程
 };
