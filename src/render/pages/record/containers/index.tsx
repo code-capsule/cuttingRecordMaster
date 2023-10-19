@@ -1,6 +1,6 @@
 import React from 'react';
-import RecordUnStart from './containers/RecordUnStart';
-import Recording from './containers/Recording';
+import RecordUnStart from './RecordUnStart';
+import Recording from './Recording';
 import { useSelector } from 'react-redux';
 import './index.less';
 

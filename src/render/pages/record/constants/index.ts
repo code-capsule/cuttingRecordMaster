@@ -1,4 +1,4 @@
-import { ISelectItem } from '@render/pages/record/containers/Main/components/Select';
+import { ISelectItem } from '@src/render/pages/record/components/Select';
 
 export enum ERecordingStep {
   'recordingMode' = 'recordingMode',

@@ -4,9 +4,11 @@ import { ICustomMediaMetadata } from './types';
 import { IParserVideoMetadataStream, IParserAudioMetadataStream } from './types/parserMetadataType';
 const ff = require('@codecapsule/fluent-ffmpeg');
 const FfprobeData = ff.FfprobeData;
+import StreamTool from './tool/streamTool';
 
 class FFmpegTool {
   static Ffprobe = ff.ffprobe;
+  static streamTool: StreamTool;
   static FFmpeg = (inputPath: string) => {
     return ff(inputPath).on('start', (cmd: string) => {
       console.log('[ffmpegTool] run ffmpeg', cmd);
@@ -26,6 +28,10 @@ class FFmpegTool {
       ff.setFfmpegPath(this.parseProductionPath(opts?.buildAppPath, 'ffmpeg', isWindows));
       ff.setFfprobePath(this.parseProductionPath(opts?.buildAppPath, 'ffprobe', isWindows));
     }
+  }
+
+  static initTools() {
+    this.streamTool = new StreamTool();
   }
 
   private static parseDevelopmentPath(appPath: string, exePath: string, isWindows: boolean) {

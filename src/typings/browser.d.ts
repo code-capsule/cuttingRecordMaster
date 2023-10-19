@@ -3,6 +3,7 @@ import WindowService from '@common/services/windowService';
 import log from 'electron-log';
 import Store from 'react-redux';
 import FFmpegTool from '@common/tools/ffmpegTool';
+import { IRecordService } from '@common/services/recordService/typings';
 import UserStoreService from '@common/services/userStoreService/instance';
 import DraftStoreService from '@common/services/draftStoreService/instance';
 import ProjectStoreService from '@common/services/projectStoreService/instance';
@@ -29,6 +30,7 @@ interface MasterServices {
   userStoreService: UserStoreService;
   draftStoreService: DraftStoreService;
   projectStoreService: ProjectStoreService;
+  recordService: IRecordService;
 }
 
 interface MasterTools {

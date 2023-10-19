@@ -66,6 +66,26 @@ class FileTool {
   public readdirSync(path: string): Promise<string[]> {
     return fsPromiseAPIs.readdir(path);
   }
+
+  /**
+   * @description 确定文件流是否存在，并返回文件流
+   * @param filename 文件名
+   */
+  public ensureWriteStream = (filename: string): fs.WriteStream => {
+    try {
+      const exists = fs.existsSync(filename);
+      if (!exists) {
+        console.log('the write steam is not exists, will create');
+        return fs.createWriteStream(filename);
+      } else {
+        console.log('the write steam is exists, will return write stream');
+        return fs.createWriteStream(filename, { flags: 'a' });
+      }
+    } catch (error) {
+      console.error('ensureStreamFile error', error);
+      throw error;
+    }
+  };
 }
 
 export default new FileTool() as FileTool;
