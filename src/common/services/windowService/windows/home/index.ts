@@ -7,7 +7,3 @@ export function registerHome() {
     height: 800,
   });
 }
-
-export function createHome() {
-  windowService.create(HOME_PROCESS_KEY);
-}
