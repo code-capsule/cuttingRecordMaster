@@ -42,6 +42,11 @@ specifiers:
 dependencies:
   '@codecapsule/fluent-ffmpeg': 1.0.0
 
+dependencies:
+  '@codecapsule/fluent-ffmpeg':
+    specifier: 1.0.0
+    version: 1.0.0
+
 devDependencies:
   '@electron/remote': 2.0.9_electron@21.3.0
   '@reduxjs/toolkit': 1.9.5_nnem43rer6rxr5uhc4j6bxdlmm
@@ -449,7 +454,7 @@ packages:
     resolution: {integrity: sha512-wDb5pWm4WDdF6LFUde3Jl8WzPA+3ZbxYqkC6xAXuD3irdEHN1k0NfTRrJD8ZD378SJ61miMLCqIOXYhd8x+AJQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      regenerator-runtime: 0.13.11
+      regenerator-runtime: 0.14.0
     dev: true
 
   /@babel/template/7.20.7:
@@ -3333,7 +3338,7 @@ packages:
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /run-parallel/1.2.0:
@@ -3715,7 +3720,7 @@ packages:
       resolve: 1.22.1
       rollup: 2.79.1
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /which-boxed-primitive/1.0.2:

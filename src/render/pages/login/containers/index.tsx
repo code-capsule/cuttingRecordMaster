@@ -44,7 +44,7 @@ const Main = () => {
    */
   const onOpenHomeWindowAndCloseLoginWindow = () => {
     window.master.services.ipc.request(WINDOW_IPC_KEY.OPEN_HOME_WINDOW).then(() => {
-      const loginWindowInstance = window.master?.services?.windowService?.get(LOGIN_PROCESS_KEY)?._instance;
+      const loginWindowInstance = window.master?.services?.windowService?.get(LOGIN_PROCESS_KEY);
       loginWindowInstance?.close();
     });
   };
