@@ -1,11 +1,14 @@
 /**
- * @description 应用的数据存储路径
+ * @TODO 应用启动时的一些处理
  */
-import { app } from 'electron';
 import path from 'path';
-import { PROJECT_NAME } from '@common/constants/processKey';
 import fileTool from '@common/tools/fileTool';
+import { app } from 'electron';
+import { PROJECT_NAME } from '@common/constants/processKey';
 
+/**
+ * @description 启动时应用数据存档路径设置
+ */
 async function initAppArchivePath() {
   const appArchivePath = path.join(app.getPath('userData'), '../', PROJECT_NAME);
   try {
