@@ -16,6 +16,3 @@ export function registerLogin() {
   });
 }
 
-export function createLogin() {
-  windowService.create(LOGIN_PROCESS_KEY);
-}
