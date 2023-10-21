@@ -4,7 +4,7 @@ import WindowService from '@common/services/windowService';
 import { registerWindow } from '@common/services/windowService/windows';
 import { MAIN_PROCESS_KEY, HOME_PROCESS_KEY, RECORD_PROCESS_KEY } from '@common/constants/processKey';
 import initMainLog from './log';
-import initAppSavePath from './appSavePath';
+import { initAppArchivePath } from './app';
 import initReduxStore from '@common/stores/reduxStore';
 import userLocalStore from '@common/stores/localStore/user';
 import draftLocalStore from '@common/stores/localStore/draft';
@@ -37,9 +37,9 @@ export default async function setupMain(options?: SetUpMainOptions): Promise<voi
   const reduxStore = initReduxStore();
   global.master.stores.reduxStore = reduxStore;
 
-  // 应用存储路径
-  const appSavePath = await initAppSavePath();
-  global.master.appSavePath = appSavePath;
+  // 应用数据存档路径
+  const appArchivePath = await initAppArchivePath();
+  global.master.appArchivePath = appArchivePath;
 
   // 挂载本地用户数据服务
   const userStoreInstance = await userLocalStore.initialize();

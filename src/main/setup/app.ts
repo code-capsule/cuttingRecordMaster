@@ -6,14 +6,14 @@ import path from 'path';
 import { PROJECT_NAME } from '@common/constants/processKey';
 import fileTool from '@common/tools/fileTool';
 
-async function initAppSavePath() {
-  const appSavePath = path.join(app.getPath('userData'), '../', PROJECT_NAME);
+async function initAppArchivePath() {
+  const appArchivePath = path.join(app.getPath('userData'), '../', PROJECT_NAME);
   try {
-    await fileTool.mkdirDir(appSavePath);
+    await fileTool.mkdirDir(appArchivePath);
   } catch (err) {
     console.log(`create ${PROJECT_NAME} folder fail !`);
   }
-  return appSavePath;
+  return appArchivePath;
 }
 
-export default initAppSavePath;
+export { initAppArchivePath };

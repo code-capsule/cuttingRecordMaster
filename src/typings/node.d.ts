@@ -12,9 +12,9 @@ declare global {
 
 interface Master {
   /**
-   * @description 应用存储路径
+   * @description 应用数据存档路径
    */
-  appSavePath: string;
+  appArchivePath: string;
   services: MasterServices;
   tools: MasterTools;
   stores: MasterStores;
