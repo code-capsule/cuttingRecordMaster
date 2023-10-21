@@ -110,6 +110,7 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  user-select: none;
 }
 
 input::-ms-clear {
