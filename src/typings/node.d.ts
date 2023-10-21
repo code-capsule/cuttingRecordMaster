@@ -31,9 +31,11 @@ interface MasterTools {
 
 interface MasterStores {
   reduxStore: Store;
-  localStore: {
-    userStoreService: UserLocalStore;
-    draftStoreService: DraftLocalStore;
-    projectStoreService: ProjectLocalStore;
-  };
+  localStore: MasterLocalStoreType;
+}
+
+interface MasterLocalStoreType {
+  user: UserLocalStore;
+  draft: DraftLocalStore;
+  project: ProjectLocalStore;
 }
