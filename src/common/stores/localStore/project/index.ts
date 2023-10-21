@@ -24,7 +24,7 @@ class ProjectStoreService {
    * @summary 需注意，工程数据中没有与用户信息相关的字段，用户以uid作为文件夹名，该文件夹下存放该用户创作的作品
    */
   async initProjectStore(params: MasterProjectType.ICreateProjectStoreParams) {
-    const userInfo = global.master.services?.userStoreService?.getUserInfo();
+    const userInfo = global.master.stores?.localStore?.user?.getUserInfo();
     let localProjectId: string;
 
     // 创建一份工程 project id 映射表
@@ -36,7 +36,7 @@ class ProjectStoreService {
     let isNewLocalProject = false;
     if (!params?.projectId) {
       // 1.参数中不携带 projectId，表示新增工程，则在该用户目录下新增一份新工程
-      console.log('[projectStoreService] no project id provided, generate new one!');
+      console.log('[stores.project] no project id provided, generate new one!');
       localProjectId = generateUUid();
       isNewLocalProject = true;
       projectMapStore.set(localProjectId, localProjectId);
@@ -44,17 +44,17 @@ class ProjectStoreService {
       // 2.携带 projectId，寻找 projectMapStore 下的工程
       const findProjectId = projectMapStore.get(params?.projectId) as string;
       if (!findProjectId) {
-        console.log(`[projectStoreService] no found for the project id ${params?.projectId} in map, will generate new one!`);
+        console.log(`[stores.project] no found for the project id ${params?.projectId} in map, will generate new one!`);
         localProjectId = params?.projectId;
         isNewLocalProject = true;
         projectMapStore.set(localProjectId, localProjectId);
       } else {
-        console.log(`[projectStoreService] find the project file with project id ${params?.projectId}`);
+        console.log(`[stores.project] find the project file with project id ${params?.projectId}`);
         localProjectId = params?.projectId;
       }
     }
 
-    console.log('[projectStoreService] local project id: ', localProjectId);
+    console.log('[stores.project] local project id: ', localProjectId);
 
     // 3.生成一份本地工程文件 json 文件，存于用户 uid 目录下
     const projectLocalStore = new CuttingRecordMasterElectronStore({
@@ -76,7 +76,7 @@ class ProjectStoreService {
         projectHash: this._instance.createHash(),
         createTime: new Date().valueOf(),
         updateTime: new Date().valueOf(),
-        appVersion: baseConfig.version
+        appVersion: baseConfig.version,
       });
     }
   }
