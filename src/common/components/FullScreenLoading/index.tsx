@@ -6,9 +6,9 @@ interface IProps extends ILoadingProps {
   style?: React.CSSProperties;
 }
 
-const MaskLoading = (props: IProps) => {
+const FullScreenLoading = (props: IProps) => {
   return (
-    <div className="common-mask-loading" style={props?.style}>
+    <div className="common-fullscreen-loading" style={props?.style}>
       <div className="box-loading">
         <Loading size={props?.size} type={props?.type} />
       </div>
@@ -16,4 +16,4 @@ const MaskLoading = (props: IProps) => {
   );
 };
 
-export default MaskLoading;
+export default FullScreenLoading;
