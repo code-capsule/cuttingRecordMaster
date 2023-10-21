@@ -1,16 +1,18 @@
 import React from 'react';
 import './index.less';
-import Loading, { ILoadingProps } from '@common/components/Loading';
+import Loading from '@common/components/Loading';
 
-interface IProps extends ILoadingProps {
+interface IProps {
   style?: React.CSSProperties;
+  mask?: boolean;
+  loadingSize?: number;
 }
 
 const FullScreenLoading = (props: IProps) => {
   return (
-    <div className="common-fullscreen-loading" style={props?.style}>
+    <div className={`common-fullscreen-loading ${props?.mask ? 'common-mask-loading' : ''}`} style={props?.style}>
       <div className="box-loading">
-        <Loading size={props?.size} type={props?.type} />
+        <Loading size={props?.loadingSize ||  32} type={props?.mask ? 'white' : 'grey'} />
       </div>
     </div>
   );
