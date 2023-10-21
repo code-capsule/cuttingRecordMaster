@@ -1,9 +1,9 @@
-import { registerHome, createHome } from './home';
-import { registerRecord, createRecord } from './record';
+import { registerHome } from './home';
+import { registerRecord } from './record';
 
 function registerWindow() {
   registerHome();
   registerRecord();
 }
 
-export { registerWindow, createHome, createRecord };
+export { registerWindow };

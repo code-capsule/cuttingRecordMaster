@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import { createHome } from '@common/services/windowService/windows';
+import { HOME_PROCESS_KEY } from '@common/constants/processKey';
 import setupMain from './setup';
 
 app.whenReady().then(async () => {
@@ -14,6 +14,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createHome();
+    global.master.services.windowService.create(HOME_PROCESS_KEY);
   }
 });

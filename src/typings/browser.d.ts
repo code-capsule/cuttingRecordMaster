@@ -1,5 +1,5 @@
 import { IRenderIpc } from '@common/services/ipc';
-import WindowService from '@common/services/windowService';
+import { WindowService } from '@common/services/windowService';
 import log from 'electron-log';
 import Store from 'react-redux';
 import FFmpegTool from '@common/tools/ffmpegTool';

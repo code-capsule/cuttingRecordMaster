@@ -12,7 +12,6 @@ export const devMainPlugin = (): Plugin => {
           cwd: process.cwd(),
           stdio: 'inherit',
           env: {
-            FLUENTFFMPEG_COV: '',
             mode: 'dev',
           },
         });

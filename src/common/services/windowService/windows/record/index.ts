@@ -7,7 +7,3 @@ export function registerRecord() {
     height: 600,
   });
 }
-
-export function createRecord() {
-  windowService.create(RECORD_PROCESS_KEY);
-}
