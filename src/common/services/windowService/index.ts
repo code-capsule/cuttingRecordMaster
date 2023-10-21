@@ -1,7 +1,7 @@
 import { BrowserWindowConstructorOptions } from 'electron';
 import BaseWindow, { CreateBaseWindowProps } from './baseWindow';
 
-class WindowService {
+export class WindowService {
   private _cacheWindows: { [key: string]: BaseWindow } = {};
   constructor() {}
 
