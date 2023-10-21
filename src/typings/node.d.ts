@@ -2,9 +2,9 @@ import { IMainIpc } from '@common/services/ipc';
 import { WindowService } from '@common/services/windowService';
 import log from 'electron-log';
 import Store from 'react-redux';
-import UserStoreService from '@common/services/userStoreService/instance';
-import DraftStoreService from '@common/services/draftStoreService/instance';
-import ProjectStoreService from '@common/services/projectStoreService/instance';
+import UserStoreService from '@common/stores/localStore/user/instance';
+import DraftStoreService from '@common/stores/localStore/draft/instance';
+import ProjectStoreService from '@common/stores/localStore/project/instance';
 
 declare global {
   var master: Master;

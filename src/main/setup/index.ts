@@ -6,9 +6,9 @@ import { MAIN_PROCESS_KEY, HOME_PROCESS_KEY, RECORD_PROCESS_KEY } from '@common/
 import initMainLog from './log';
 import initAppSavePath from './appSavePath';
 import initReduxStore from '@common/stores/reduxStore';
-import userStoreService from '@common/services/userStoreService';
-import draftStoreService from '@common/services/draftStoreService';
-import projectStoreService from '@common/services/projectStoreService';
+import userStoreService from '@common/stores/localStore/user';
+import draftStoreService from '@common/stores/localStore/draft';
+import projectStoreService from '@common/stores/localStore/project';
 
 interface SetUpMainOptions {}
 
