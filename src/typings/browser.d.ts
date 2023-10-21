@@ -3,9 +3,9 @@ import { WindowService } from '@common/services/windowService';
 import log from 'electron-log';
 import Store from 'react-redux';
 import FFmpegTool from '@common/tools/ffmpegTool';
-import UserStoreService from '@common/stores/localStore/user/instance';
-import DraftStoreService from '@common/stores/localStore/draft/instance';
-import ProjectStoreService from '@common/stores/localStore/project/instance';
+import UserLocalStore from '@common/stores/localStore/user/instance';
+import DraftLocalStore from '@common/stores/localStore/draft/instance';
+import ProjectLocalStore from '@common/stores/localStore/project/instance';
 
 declare global {
   interface Window {
@@ -26,9 +26,6 @@ interface Master {
 interface MasterServices {
   ipc: IRenderIpc;
   windowService: WindowService;
-  userStoreService: UserStoreService;
-  draftStoreService: DraftStoreService;
-  projectStoreService: ProjectStoreService;
 }
 
 interface MasterTools {
@@ -38,4 +35,9 @@ interface MasterTools {
 
 interface MasterStores {
   reduxStore: Store;
+  localStore: {
+    userStoreService: UserLocalStore;
+    draftStoreService: DraftLocalStore;
+    projectStoreService: ProjectLocalStore;
+  };
 }
