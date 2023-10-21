@@ -1,16 +1,15 @@
-import { createHome, createLogin, createRecord } from '@common/services/windowService/windows';
-import { Master, MasterServices, MasterStores, MasterTools } from '@typings/node';
+import { Master, MasterServices, MasterStores, MasterTools, MasterLocalStoreType } from '@typings/node';
 import { MainIpc } from '@common/services/ipc';
 import WindowService from '@common/services/windowService';
 import { registerWindow } from '@common/services/windowService/windows';
-import { MAIN_PROCESS_KEY } from '@common/constants/processKey';
+import { MAIN_PROCESS_KEY, HOME_PROCESS_KEY, LOGIN_PROCESS_KEY, RECORD_PROCESS_KEY } from '@common/constants/processKey';
 import { WINDOW_IPC_KEY } from '@common/constants/ipcEventKey';
 import initMainLog from './log';
-import initAppSavePath from './appSavePath';
+import { initAppArchivePath } from './app';
 import initReduxStore from '@common/stores/reduxStore';
-import userStoreService from '@common/services/userStoreService';
-import draftStoreService from '@common/services/draftStoreService';
-import projectStoreService from '@common/services/projectStoreService';
+import userLocalStore from '@common/stores/localStore/user';
+import draftLocalStore from '@common/stores/localStore/draft';
+import projectLocalStore from '@common/stores/localStore/project';
 
 interface SetUpMainOptions {}
 
@@ -20,6 +19,7 @@ export default async function setupMain(options?: SetUpMainOptions): Promise<voi
   global.master = {} as Master;
   global.master.tools = {} as MasterTools;
   global.master.stores = {} as MasterStores;
+  global.master.stores.localStore = {} as MasterLocalStoreType;
   global.master.services = {} as MasterServices;
 
   // 挂载通信服务
@@ -38,34 +38,34 @@ export default async function setupMain(options?: SetUpMainOptions): Promise<voi
   const reduxStore = initReduxStore();
   global.master.stores.reduxStore = reduxStore;
 
-  // 应用存储路径
-  const appSavePath = await initAppSavePath();
-  global.master.appSavePath = appSavePath;
+  // 应用数据存档路径
+  const appArchivePath = await initAppArchivePath();
+  global.master.appArchivePath = appArchivePath;
 
   // 挂载本地用户数据服务
-  const userStoreInstance = await userStoreService.initialize();
-  global.master.services.userStoreService = userStoreInstance;
+  const userStoreInstance = await userLocalStore.initialize();
+  global.master.stores.localStore.user = userStoreInstance;
 
   // 挂载本地工程数据服务
-  const projectStoreInstance = await projectStoreService.initialize();
-  global.master.services.projectStoreService = projectStoreInstance;
+  const projectStoreInstance = await projectLocalStore.initialize();
+  global.master.stores.localStore.project = projectStoreInstance;
 
   // 挂载本地草稿数据服务
-  const draftStoreInstance = await draftStoreService.initialize();
-  global.master.services.draftStoreService = draftStoreInstance;
+  const draftStoreInstance = await draftLocalStore.initialize();
+  global.master.stores.localStore.draft = draftStoreInstance;
 
   registerWindow();
 
   global.master.tools.log.info('the main process started successfully!');
 
-  createLogin();
+  windowService.create(LOGIN_PROCESS_KEY);
 
   global.master.services.ipc.on(WINDOW_IPC_KEY.OPEN_HOME_WINDOW, (e) => {
-    createHome();
+  windowService.create(HOME_PROCESS_KEY);
     e.request.resolve();
   });
 
-  global.master.services.ipc.on('open.record.window', () => {
-    createRecord();
+  global.master.services.ipc.on(WINDOW_IPC_KEY.OPEN_RECORD_WINDOW, () => {
+    windowService.create(RECORD_PROCESS_KEY);
   });
 }

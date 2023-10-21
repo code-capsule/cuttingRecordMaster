@@ -3,20 +3,6 @@ import { draftPageSlice, initialDraftState } from '@common/stores/reduxStore/red
 
 class DraftStore {
   /**
-   * @description 获取本地草稿读取的目录路径
-   */
-  private getProjectPath = () => {
-    const appSavePath = global.master.appSavePath;
-    const userStoreService = global.master.services.userStoreService;
-    const uid = userStoreService?.getUserInfo()?.uid || undefined;
-    if (!uid) return '';
-    else {
-      console.log('[draftStore] get project draft path is: ', `${appSavePath}\\${uid}\\projectData`);
-      return `${appSavePath}\\${uid}\\projectData`;
-    }
-  };
-
-  /**
    * @description 获取首页的草稿列表
    */
   async getHomeDraftList() {

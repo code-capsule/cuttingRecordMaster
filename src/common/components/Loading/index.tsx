@@ -28,7 +28,7 @@ const Loading = (props: ILoadingProps) => {
 
   return (
     <div
-      className={`loading ${props?.className} ${props?.type === 'white' ? 'white-loading' : 'grey-loading'}`}
+      className={`loading ${props?.className} ${props?.type === 'grey' ? 'grey-loading' : 'white-loading'}`}
       style={{
         transform: `rotate(${deg}deg)`,
         width: props?.size || 48,

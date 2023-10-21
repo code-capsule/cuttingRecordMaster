@@ -1,7 +1,7 @@
-import { registerHome, createHome } from './home';
-import { registerLogin, createLogin } from './login';
-import { registerRecord, createRecord } from './record';
-import { registerClip, createClip } from './clip';
+import { registerHome } from './home';
+import { registerLogin } from './login';
+import { registerRecord } from './record';
+import { registerClip } from './clip';
 
 function registerWindow() {
   registerHome();
@@ -10,4 +10,4 @@ function registerWindow() {
   registerClip();
 }
 
-export { registerWindow, createHome, createLogin, createRecord, createClip };
+export { registerWindow };
