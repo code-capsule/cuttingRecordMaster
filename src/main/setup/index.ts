@@ -1,9 +1,8 @@
-import { createHome, createRecord } from '@common/services/windowService/windows';
 import { Master, MasterServices, MasterStores, MasterTools } from '@typings/node';
 import { MainIpc } from '@common/services/ipc';
 import WindowService from '@common/services/windowService';
 import { registerWindow } from '@common/services/windowService/windows';
-import { MAIN_PROCESS_KEY } from '@common/constants/processKey';
+import { MAIN_PROCESS_KEY, HOME_PROCESS_KEY, RECORD_PROCESS_KEY } from '@common/constants/processKey';
 import initMainLog from './log';
 import initAppSavePath from './appSavePath';
 import initReduxStore from '@common/stores/reduxStore';
@@ -57,8 +56,8 @@ export default async function setupMain(options?: SetUpMainOptions): Promise<voi
 
   global.master.tools.log.info('the main process started successfully!');
 
-  createHome();
+  windowService.create(HOME_PROCESS_KEY);
   global.master.services.ipc.on('open.record.window', () => {
-    createRecord();
+    windowService.create(RECORD_PROCESS_KEY);
   });
 }
