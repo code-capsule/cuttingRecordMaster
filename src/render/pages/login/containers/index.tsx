@@ -27,7 +27,7 @@ const Main = () => {
   useEffect(() => {
     // 1. 本地json获取用户信息
     setIsLoading(true);
-    const userInfo = window.master.services.userStoreService?.getUserInfo();
+    const userInfo = window.master.stores?.localStore?.user?.getUserInfo();
     if (isUndefined(userInfo) || isNull(userInfo)) {
       // 2. 不存在用户信息，展示登录表单
       setRenderSlotType(SlotType.FORM);
@@ -63,7 +63,7 @@ const Main = () => {
         password: DEFAULT_COUNT.password,
         photoUrl: 'https://p3-passport.byteimg.com/img/user-avatar/27a2d6e99d49991c8cf91dcdafe0c291~100x100.awebp',
       };
-      window.master.services.userStoreService.updateUserInfo(userResponse);
+      window.master.stores?.localStore?.user?.updateUserInfo(userResponse);
       setIsFormLoading(false);
       onOpenHomeWindowAndCloseLoginWindow();
     }, 1500);
@@ -83,8 +83,18 @@ const Main = () => {
         {renderSlotType === SlotType.FORM && (
           <>
             <p className="form-title">登录</p>
-            <input className="form-input" value={phone} onChange={(e) => setPhone(e?.target?.value)} placeholder={`默认手机: ${DEFAULT_COUNT.phone}`} />
-            <input className="form-input" value={password} onChange={(e) => setPassword(e?.target?.value)} placeholder={`默认密码: ${DEFAULT_COUNT.password}`} />
+            <input
+              className="form-input"
+              value={phone}
+              onChange={(e) => setPhone(e?.target?.value)}
+              placeholder={`默认手机: ${DEFAULT_COUNT.phone}`}
+            />
+            <input
+              className="form-input"
+              value={password}
+              onChange={(e) => setPassword(e?.target?.value)}
+              placeholder={`默认密码: ${DEFAULT_COUNT.password}`}
+            />
             <div
               className="form-submit"
               onClick={() => {
