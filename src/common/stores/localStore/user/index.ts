@@ -1,7 +1,7 @@
 import UserStore from './instance';
 import CuttingRecordMasterElectronStore from '@common/stores/localStore';
 
-class UserStoreService {
+class UserLocalStore {
   _instance?: UserStore;
 
   async initialize() {
@@ -17,4 +17,4 @@ class UserStoreService {
   }
 }
 
-export default new UserStoreService();
+export default new UserLocalStore();
