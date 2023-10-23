@@ -1,6 +1,6 @@
 import UserStore from './instance';
 
-class UserStoreService {
+class UserLocalStore {
   _instance: UserStore = new UserStore();
 
   async initialize() {
@@ -8,4 +8,4 @@ class UserStoreService {
   }
 }
 
-export default new UserStoreService();
+export default new UserLocalStore();

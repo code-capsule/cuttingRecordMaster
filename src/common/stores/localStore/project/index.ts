@@ -1,6 +1,6 @@
 import ProjectStore from './instance';
 
-class ProjectStoreService {
+class ProjectLocalStore {
   _instance: ProjectStore = new ProjectStore();
   _onInstanceUnmount: () => void = () => {};
 
@@ -26,4 +26,4 @@ class ProjectStoreService {
   }
 }
 
-export default new ProjectStoreService();
+export default new ProjectLocalStore();
