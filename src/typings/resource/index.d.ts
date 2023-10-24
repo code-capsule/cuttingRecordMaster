@@ -1,5 +1,4 @@
 declare namespace MasterResourceType {
-  type TResourceFromType = 'local' | 'cloud';
   type TResourceType = 'text' | 'video' | 'audio' | 'image';
 
   // 基础资源类型声明
@@ -15,14 +14,6 @@ declare namespace MasterResourceType {
      */
     type?: TResourceType;
     /**
-     * @description 资源后缀
-     */
-    ext?: string;
-    /**
-     * @description 资源来源
-     */
-    fromType?: TResourceFromType;
-    /**
      * @description 资源大小
      */
     size?: number;
@@ -30,10 +21,6 @@ declare namespace MasterResourceType {
      * @description 资源名
      */
     name?: string;
-    /**
-     * @description 是否显示
-     */
-    visible?: boolean;
     /**
      * @description 创建时间
      */
@@ -55,14 +42,6 @@ declare namespace MasterResourceType {
      * @description 资源封面
      */
     cover?: string;
-    /**
-     * @description 云端资源 uid
-     */
-    cloudRemoteUid?: string;
-    /**
-     * @description 云端资源链接
-     */
-    cloudRemoteUrl?: string;
   }
 
   // 视频
@@ -149,6 +128,7 @@ declare namespace MasterResourceType {
      * @description 分辨率宽
      */
     resolutionWidth?: number;
+    pointer?: IPointerData;
   }
 
   interface ICustomResourceTextData {
@@ -164,6 +144,15 @@ declare namespace MasterResourceType {
      * @description 文本大小
      */
     fontSize?: number;
+    pointer?: IPointerData;
+  }
+
+  interface IPointerData {
+    x?: number;
+    y?: number;
+    offsetWidth?: number; // 在画布中的宽度
+    offsetHeight?: number; // 在画布中的高度
+    scale?: number; // 缩放倍数
   }
 
   interface IVideoResource extends InitializeResource {
