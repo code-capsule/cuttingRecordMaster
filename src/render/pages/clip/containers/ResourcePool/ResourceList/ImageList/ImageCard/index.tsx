@@ -7,14 +7,6 @@ interface IProps {
    * @description 图片资源
    */
   resource: MasterResourceType.IImageResource;
-  /**
-   * @description 预览卡片
-   */
-  onPreviewResource?: (resource?: MasterResourceType.IImageResource) => void;
-  /**
-   * @description 添加资源到轨道区
-   */
-  onInsertResourceToVideoTrackCell?: (resource?: MasterResourceType.IImageResource) => void;
 }
 
 const TextCard = (props: IProps) => {
