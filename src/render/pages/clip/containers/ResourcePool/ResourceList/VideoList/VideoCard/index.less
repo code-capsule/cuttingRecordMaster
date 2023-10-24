@@ -1,12 +1,12 @@
 .resource-video-card-item {
-  width: 166px;
-  height: 122px;
+  width: 320px;
+  height: 180px;
   position: relative;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
   &:hover {
-    border-radius: 8.4px;
+    border-radius: 16px;
     .resource-video-card-cover {
       .resource-video-card-cover-url {
         transform: scale(1.2);
@@ -14,7 +14,7 @@
     }
     .resource-video-card-hover-mask {
       visibility: visible;
-      height: 98px;
+      height: 160px;
       .resource-video-card-add-svg {
         visibility: visible;
       }
@@ -36,8 +36,8 @@
       pointer-events: none;
       transition: all 0.15s ease-in-out;
       position: relative;
-      width: 166px;
-      height: 94px;
+      width: 320px;
+      height: 156px;
       top: 0;
       left: 0;
     }
@@ -48,21 +48,29 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 166px;
-    height: 94px;
+    width: 320px;
+    height: 156px;
     border-radius: 8px;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     &.not-exist-video-resource-mask {
     }
-    .resource-video-card-add-svg {
-      position: absolute;
-      bottom: 4px;
-      right: 4px;
-      width: 24px;
-      height: 24px;
-      color: #ffffff;
-      visibility: hidden;
+    .resource-video-button {
+      width: 72px;
+      height: 32px;
+      margin: 0 8px;
+      border-radius: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
   .resource-video-card-duration {
@@ -99,7 +107,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 166px;
+    width: 320px;
     border-radius: 8px;
     background-color: rgba(113, 55, 58, 1);
     opacity: 0.8;
@@ -110,7 +118,7 @@
       align-items: center;
       flex-direction: column;
       justify-content: center;
-      height: 98px;
+      height: 160px;
     }
     .resource-video-card-not-found-label {
       color: #ffffff;

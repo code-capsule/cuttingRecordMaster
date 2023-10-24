@@ -49,7 +49,8 @@ const VideoCard = React.memo((props: IProps) => {
         />
       </div>
       <div className={`resource-video-card-hover-mask ${!props?.resource?.isExistResource ? 'not-exist-video-resource-mask' : ''}`}>
-        <IcCommonAddSvg className="resource-video-card-add-svg" />
+        <div className="resource-video-button">重录</div>
+        <div className="resource-video-button">删除</div>
       </div>
       <div className="resource-video-card-duration">{props?.resource?.data?.duration && formatSeconds(props?.resource?.data?.duration)}</div>
       <div className="resource-video-card-name">{props?.resource?.name}</div>
