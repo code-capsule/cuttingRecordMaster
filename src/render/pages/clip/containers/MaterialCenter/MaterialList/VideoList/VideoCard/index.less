@@ -1,4 +1,4 @@
-.resource-video-card-item {
+.material-video-card-item {
   width: 320px;
   height: 180px;
   position: relative;
@@ -7,31 +7,31 @@
   transition: all 0.15s ease-in-out;
   &:hover {
     border-radius: 16px;
-    .resource-video-card-cover {
-      .resource-video-card-cover-url {
+    .material-video-card-cover {
+      .material-video-card-cover-url {
         transform: scale(1.2);
       }
     }
-    .resource-video-card-hover-mask {
+    .material-video-card-hover-mask {
       visibility: visible;
       height: 160px;
-      .resource-video-card-add-svg {
+      .material-video-card-add-svg {
         visibility: visible;
       }
     }
-    .not-exist-video-resource-mask {
-      .resource-video-card-add-svg {
+    .not-exist-video-material-mask {
+      .material-video-card-add-svg {
         visibility: hidden;
       }
     }
   }
   // 图片
-  .resource-video-card-cover {
+  .material-video-card-cover {
     width: 100%;
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    .resource-video-card-cover-url {
+    .material-video-card-cover-url {
       border-radius: 8px;
       pointer-events: none;
       transition: all 0.15s ease-in-out;
@@ -43,7 +43,7 @@
     }
   }
   // 蒙层
-  .resource-video-card-hover-mask {
+  .material-video-card-hover-mask {
     visibility: hidden;
     position: absolute;
     left: 0;
@@ -56,9 +56,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &.not-exist-video-resource-mask {
+    &.not-exist-video-material-mask {
     }
-    .resource-video-button {
+    .material-video-button {
       width: 72px;
       height: 32px;
       margin: 0 8px;
@@ -73,7 +73,7 @@
       }
     }
   }
-  .resource-video-card-duration {
+  .material-video-card-duration {
     position: absolute;
     top: 4px;
     right: 4px;
@@ -87,7 +87,7 @@
     border-radius: 16px;
     padding: 2px 8px;
   }
-  .resource-video-card-name {
+  .material-video-card-name {
     font-family: 'FZLanTingYuanS-M-GB';
     font-style: normal;
     font-weight: 400;
@@ -102,7 +102,7 @@
   }
 
   // 资源未找到
-  .resource-video-card-not-found {
+  .material-video-card-not-found {
     visibility: hidden;
     position: absolute;
     left: 0;
@@ -112,7 +112,7 @@
     background-color: rgba(113, 55, 58, 1);
     opacity: 0.8;
     text-align: center;
-    &.not-exist-video-resource {
+    &.not-exist-video-material {
       visibility: visible;
       display: flex;
       align-items: center;
@@ -120,7 +120,7 @@
       justify-content: center;
       height: 160px;
     }
-    .resource-video-card-not-found-label {
+    .material-video-card-not-found-label {
       color: #ffffff;
       font-size: 12px;
       line-height: 20px;

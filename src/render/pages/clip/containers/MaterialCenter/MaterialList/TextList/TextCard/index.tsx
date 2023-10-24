@@ -6,28 +6,28 @@ interface IProps {
   /**
    * @description 文字资源
    */
-  resource: MasterResourceType.ITextResource;
+  material: MasterResourceType.ITextResource;
 }
 
 const TextCard = (props: IProps) => {
   return (
     <div
-      className="resource-text-card-item"
+      className="material-text-card-item"
       onClick={(e) => {
         e?.stopPropagation();
         e?.nativeEvent?.stopImmediatePropagation();
       }}
     >
-      <IcCommonAddSvg className="resource-text-card-add-svg" />
+      <IcCommonAddSvg className="material-text-card-add-svg" />
       <div
-        className="resource-text-card-content"
+        className="material-text-card-content"
         style={{
-          color: props?.resource?.data?.fontColor,
-          fontSize: props?.resource?.data?.fontSize,
-          lineHeight: `${props?.resource?.data?.fontSize ? props?.resource?.data?.fontSize + 8 : 16}px`,
+          color: props?.material?.data?.fontColor,
+          fontSize: props?.material?.data?.fontSize,
+          lineHeight: `${props?.material?.data?.fontSize ? props?.material?.data?.fontSize + 8 : 16}px`,
         }}
       >
-        {props?.resource?.data?.content}
+        {props?.material?.data?.content}
       </div>
     </div>
   );

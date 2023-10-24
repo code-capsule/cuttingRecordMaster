@@ -6,20 +6,20 @@ interface IProps {
   /**
    * @description 图片资源
    */
-  resource: MasterResourceType.IImageResource;
+  material: MasterResourceType.IImageResource;
 }
 
 const TextCard = (props: IProps) => {
   return (
     <div
-      className="resource-image-card-item"
+      className="material-image-card-item"
       onClick={(e) => {
         e?.stopPropagation();
         e?.nativeEvent?.stopImmediatePropagation();
       }}
     >
-      <IcCommonAddSvg className="resource-image-card-add-svg" />
-      <img src={props?.resource?.cover} className="resource-image-card-cover" />
+      <IcCommonAddSvg className="material-image-card-add-svg" />
+      <img src={props?.material?.cover} className="material-image-card-cover" />
     </div>
   );
 };
