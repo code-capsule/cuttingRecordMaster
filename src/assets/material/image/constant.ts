@@ -1,7 +1,7 @@
 import { EResourceType } from '@typings/resource/enum';
 import path from 'path';
 
-const cloudImageFilePath = `${window?.master?.appRootPath || ''}\\src\\assets\\cloudResource\\image`;
+const cloudImageFilePath = `${window?.master?.appRootPath || ''}\\src\\assets\\material\\image`;
 
 const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
   {

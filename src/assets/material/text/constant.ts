@@ -15,7 +15,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '分享美好',
       fontColor: '#fff48a',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -32,7 +32,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '与你相遇 心动不已',
       fontColor: '#ff7fa1',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -49,7 +49,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '独家访谈',
       fontColor: '#f4cdd1',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -66,7 +66,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '绝密内情大曝光',
       fontColor: '#31f631',
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   {
@@ -83,7 +83,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '黑科技',
       fontColor: '#24e4e7',
-      fontSize: 13,
+      fontSize: 14,
     },
   },
   {
@@ -100,7 +100,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '谢谢欣赏',
       fontColor: '#e72472',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -117,7 +117,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '健身前后的对比',
       fontColor: '#ae24e7',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -151,7 +151,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '超满足!',
       fontColor: '#c6e724',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -185,7 +185,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: 'Before',
       fontColor: '#ffc65f',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -202,7 +202,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: 'After',
       fontColor: '#31efda',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -219,7 +219,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '负向情绪',
       fontColor: '#ffa95f',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -236,7 +236,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '全员静止',
       fontColor: '#e89a9a',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -253,7 +253,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '美白护肤小课堂',
       fontColor: '#e72472',
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   {
@@ -270,7 +270,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '颜值超高',
       fontColor: '#469df3',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -287,7 +287,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '如何选择滑板!',
       fontColor: '#c3ffaf',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -304,7 +304,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '出游必备',
       fontColor: '#b7dcf6',
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   {
@@ -321,7 +321,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '糖炒栗子',
       fontColor: '#da99ff',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -338,7 +338,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '2024 来了',
       fontColor: '#ff7100',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -372,7 +372,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '有效穿搭',
       fontColor: '#99ffcc',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -389,7 +389,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '直播预告',
       fontColor: '#e8df9a',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -406,7 +406,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '今日碎片',
       fontColor: '#7e49ff',
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   {
@@ -423,7 +423,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '开箱好物',
       fontColor: '#fff48a',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -440,7 +440,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '本期看点',
       fontColor: '#ff8445',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -457,7 +457,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: 'Music',
       fontColor: '#ff5656',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -474,7 +474,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '实测数据',
       fontColor: '#ff8445',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -491,7 +491,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '时尚派对',
       fontColor: '#00cde5',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -508,7 +508,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '穿搭合集',
       fontColor: '#3166ef',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -525,7 +525,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: 'Live House',
       fontColor: '#ff1837',
-      fontSize: 14,
+      fontSize: 15,
     },
   },
   {
@@ -542,7 +542,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '出来玩',
       fontColor: '#ffcdd2',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -559,7 +559,7 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '人生得意须尽欢',
       fontColor: '#61dbe4',
-      fontSize: 12,
+      fontSize: 14,
     },
   },
   {
@@ -576,7 +576,24 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     data: {
       content: '有情人终成眷属',
       fontColor: '#c761e4',
-      fontSize: 12,
+      fontSize: 14,
+    },
+  },
+  {
+    uid: 'cloud.text.resource.034',
+    type: EResourceType.text,
+    size: 20588189,
+    name: '有情人终成眷属',
+    visible: true,
+    createTime: 1691142324878,
+    updateTime: 1691142324878,
+    isExistResource: true,
+    inputPath: '',
+    cover: '',
+    data: {
+      content: '程序猿',
+      fontColor: '#24e4e7',
+      fontSize: 14,
     },
   },
 ];

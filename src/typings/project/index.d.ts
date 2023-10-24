@@ -64,7 +64,7 @@ declare namespace MasterProjectType {
     /**
      * @description 素材物料
      */
-    material?: { [key: string]: any };
+    material?: IMaterialStructure;
     /**
      * @description 工程中的录制数据
      */
@@ -82,16 +82,9 @@ declare namespace MasterProjectType {
   /**
    * @description 资源数据
    */
-  interface IResourceStructure {
+  interface IMaterialStructure {
     video?: MasterResourceType.IVideoResource[];
-    audio?: MasterResourceType.IAudioResource[];
     image?: MasterResourceType.IImageResource[];
     text?: MasterResourceType.ITextResource[];
-  }
-  interface IProjectResource {
-    /**
-     * @description 资源池中的数据
-     */
-    pool?: IResourceStructure;
   }
 }

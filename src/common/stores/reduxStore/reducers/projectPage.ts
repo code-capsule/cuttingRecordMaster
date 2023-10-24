@@ -13,7 +13,11 @@ export const initialProjectState: MasterProjectType.IProjectDataInfo = {
   projectHash: undefined,
   isDelete: false,
   record: {},
-  material: {},
+  material: {
+    video: [],
+    text: [],
+    image: [],
+  },
 };
 
 export const projectPageSlice = createSlice({

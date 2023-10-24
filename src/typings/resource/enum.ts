@@ -7,11 +7,3 @@ export enum EResourceType {
   audio = 'audio', // 音频
   image = 'image', // 图片
 }
-
-/**
- * @description 资源来源
- */
-export enum EResourceFromType {
-  local = 'local', // 本地
-  cloud = 'cloud', // 云模板
-}
