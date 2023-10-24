@@ -23,8 +23,8 @@ const Header = () => {
           currentWindow={CLIP_PROCESS_KEY}
           onClose={async () => {
             // 1.关闭当前窗口，显示首页窗口
-            const homeWindowInstance = window.master?.services?.windowService?.get(HOME_PROCESS_KEY)?._instance;
-            const clipWindowInstance = window.master?.services?.windowService?.get(CLIP_PROCESS_KEY)?._instance;
+            const homeWindowInstance = window.master?.services?.windowService?.get(HOME_PROCESS_KEY);
+            const clipWindowInstance = window.master?.services?.windowService?.get(CLIP_PROCESS_KEY);
             clipWindowInstance?.hide();
             // 2.发送时间告知首页进行草稿列表刷新
             window.master.services?.ipc?.request(DRAFT_STORE_IPC_KEY.GET_LIST, 'infinite').finally(() => {
