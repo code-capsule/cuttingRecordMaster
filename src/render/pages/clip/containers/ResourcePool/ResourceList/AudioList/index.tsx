@@ -5,6 +5,9 @@ import AudioCard from './AudioCard';
 
 interface IProps {
   data: MasterResourceType.IAudioResource[];
+  onRetryMaterial?: () => void;
+  onInsertMaterial?: (material?: MasterResourceType.IAudioResource) => void;
+  onDeleteMaterial?: (material?: MasterResourceType.IAudioResource) => void;
 }
 
 const AudioList = (props: IProps) => {
@@ -26,7 +29,7 @@ const AudioList = (props: IProps) => {
             <div className="clip-audio-scrollbar-list">
               {props?.data?.map((resource: MasterResourceType.IAudioResource, idx: number) => {
                 return (
-                  <div key={`${resource?.uid}_${idx}`} className="clip-audio-scrollbar-item">
+                  <div key={`${resource?.uid}_${idx}`} className="clip-audio-scrollbar-item" onClick={() => props?.onInsertMaterial?.(resource)}>
                     <AudioCard resource={resource} />
                   </div>
                 );

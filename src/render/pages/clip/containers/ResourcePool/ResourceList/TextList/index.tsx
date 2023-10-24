@@ -5,6 +5,7 @@ import TextCard from './TextCard';
 
 interface IProps {
   data: MasterResourceType.ITextResource[];
+  onInsertMaterial?: (material?: MasterResourceType.ITextResource) => void;
 }
 
 const TextList = (props: IProps) => {
@@ -26,7 +27,7 @@ const TextList = (props: IProps) => {
             <div className="clip-text-scrollbar-list">
               {props?.data?.map((resource: MasterResourceType.ITextResource, idx: number) => {
                 return (
-                  <div key={`${resource?.uid}_${idx}`} className="clip-text-scrollbar-item">
+                  <div key={`${resource?.uid}_${idx}`} className="clip-text-scrollbar-item" onClick={() => props?.onInsertMaterial?.(resource)}>
                     <TextCard resource={resource} />
                   </div>
                 );

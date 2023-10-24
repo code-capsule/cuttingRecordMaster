@@ -5,6 +5,7 @@ import ImageCard from './ImageCard';
 
 interface IProps {
   data: MasterResourceType.IImageResource[];
+  onInsertMaterial?: (material?: MasterResourceType.IImageResource) => void;
 }
 
 const ImageList = (props: IProps) => {
@@ -26,7 +27,7 @@ const ImageList = (props: IProps) => {
             <div className="clip-image-scrollbar-list">
               {props?.data?.map((resource: MasterResourceType.IImageResource, idx: number) => {
                 return (
-                  <div key={`${resource?.uid}_${idx}`} className="clip-image-scrollbar-item">
+                  <div key={`${resource?.uid}_${idx}`} className="clip-image-scrollbar-item" onClick={() => props?.onInsertMaterial?.(resource)}>
                     <ImageCard resource={resource} />
                   </div>
                 );

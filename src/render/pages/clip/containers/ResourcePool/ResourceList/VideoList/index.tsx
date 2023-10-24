@@ -5,6 +5,9 @@ import VideoCard from './VideoCard';
 
 interface IProps {
   data: MasterResourceType.IVideoResource[];
+  onRetryMaterial?: () => void;
+  onInsertMaterial?: (material?: MasterResourceType.IVideoResource) => void;
+  onDeleteMaterial?: (material?: MasterResourceType.IVideoResource) => void;
 }
 
 const VideoList = (props: IProps) => {
@@ -26,8 +29,8 @@ const VideoList = (props: IProps) => {
             <div className="clip-video-scrollbar-list">
               {props?.data?.map((resource: MasterResourceType.IVideoResource, idx: number) => {
                 return (
-                  <div key={`${resource?.uid}_${idx}`} className="clip-video-scrollbar-item">
-                    <VideoCard resource={resource} />
+                  <div key={`${resource?.uid}_${idx}`} className="clip-video-scrollbar-item" onClick={() => props?.onInsertMaterial?.(resource)}>
+                    <VideoCard resource={resource} onDeleteMaterial={props?.onDeleteMaterial} onRetryMaterial={props?.onRetryMaterial} />
                   </div>
                 );
               })}
