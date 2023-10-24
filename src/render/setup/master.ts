@@ -20,7 +20,7 @@ export async function initMaster(options: InitRenderMasterOptions): Promise<Mast
     const { processKey } = options;
 
     const Master: MainMaster = remote.getGlobal('master');
-    const { services, stores, appSavePath } = Master;
+    const { services, stores, appArchivePath } = Master;
 
     const ipc = new RenderIpc({ processKey });
     const log = initRenderLog();
@@ -33,14 +33,11 @@ export async function initMaster(options: InitRenderMasterOptions): Promise<Mast
     const recordService = new RecorderService();
 
     const master: Master = {
-      appSavePath,
       appRootPath,
+      appArchivePath,
       services: {
         ipc,
         windowService: services.windowService,
-        userStoreService: services.userStoreService,
-        draftStoreService: services.draftStoreService,
-        projectStoreService: services.projectStoreService,
         recordService,
       },
       tools: {
@@ -49,6 +46,11 @@ export async function initMaster(options: InitRenderMasterOptions): Promise<Mast
       },
       stores: {
         reduxStore,
+        localStore: {
+          user: stores?.localStore?.user,
+          draft: stores?.localStore?.draft,
+          project: stores?.localStore?.project,
+        },
       },
     };
 

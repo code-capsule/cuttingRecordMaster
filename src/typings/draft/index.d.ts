@@ -13,17 +13,14 @@ declare namespace MasterDraftType {
      */
     cover?: string;
     /**
-     * @description 视频资源池中的资源
+     * @description 视频素材的第一个链接
+     * @summary 没合成前是录的素材地址，合成的话就是合成地址
      */
-    firstVideoPool?: string;
+    videoUrl?: string;
     /**
      * @description 工程总时长
      */
     duration?: number;
-    /**
-     * @description 工程发布状态
-     */
-    uploadStatus?: 'unpublish' | 'publishFail' | 'publishSuccess';
     /**
      * @description 创建时间
      */
@@ -33,7 +30,7 @@ declare namespace MasterDraftType {
      */
     updateTime?: number;
     /**
-     * @description 是否删除（物理删除）
+     * @description 是否删除（物理删除）用于回收站
      */
     isDelete?: boolean;
   }

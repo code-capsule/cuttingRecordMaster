@@ -32,7 +32,7 @@ const ClipName = React.memo(() => {
   }, 50);
 
   const onBlur = debounce(() => {
-    window.master.services.projectStoreService.updateProjectInfo({
+    window.master.stores?.localStore?.project?.updateProjectInfo({
       projectName: name,
     });
     setIsWrite(false);

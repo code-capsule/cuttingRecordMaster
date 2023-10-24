@@ -16,9 +16,9 @@ function Main() {
   const draftList = useSelector((state: MasterAppStoreType.AppState) => state.draftPage?.draftList || [], shallowEqual);
 
   useEffect(() => {
-    window.master?.services?.draftStoreService?.getHomeDraftList();
+    window.master?.stores?.localStore?.draft?.getHomeDraftList();
     window.master.services.ipc.on(DRAFT_STORE_IPC_KEY.GET_LIST, async (e) => {
-      await window.master?.services?.draftStoreService?.getHomeDraftList();
+      await window.master?.stores?.localStore?.draft?.getHomeDraftList();
       e?.request?.resolve(true);
     });
     return () => {

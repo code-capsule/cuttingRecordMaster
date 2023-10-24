@@ -27,10 +27,6 @@ declare namespace MasterProjectType {
      */
     projectName?: string;
     /**
-     * @description 工程简介
-     */
-    introduce?: string;
-    /**
      * @description 工程封面图，默认取视频首帧
      */
     cover?: string;
@@ -54,10 +50,6 @@ declare namespace MasterProjectType {
      */
     projectVersion?: number;
     /**
-     * @description 工程发布状态
-     */
-    uploadStatus?: 'unpublish' | 'publishFail' | 'publishSuccess';
-    /**
      * @description 创建时间
      */
     createTime?: number;
@@ -70,13 +62,9 @@ declare namespace MasterProjectType {
      */
     isDelete?: boolean;
     /**
-     * @description 工程中的资源数据
+     * @description 素材物料
      */
-    resource?: IProjectResource;
-    /**
-     * @description 工程中的剪辑轨道数据
-     */
-    clip?: { [key: string]: any };
+    material?: { [key: string]: any };
     /**
      * @description 工程中的录制数据
      */
