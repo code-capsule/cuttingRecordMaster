@@ -17,7 +17,14 @@ const MaterialList = () => {
     <React.Fragment>
       {materialContextReducer?.sidebarType === EResourceType.video && (
         <React.Fragment>
-          {videoMaterial?.length > 0 && <VideoList data={videoMaterial || []} />}
+          {videoMaterial?.length > 0 && (
+            <VideoList
+              data={videoMaterial || []}
+              onRetryMaterial={(material?: MasterResourceType.IVideoResource) => {}}
+              onInsertMaterial={(material?: MasterResourceType.IVideoResource) => {}}
+              onDeleteMaterial={(material?: MasterResourceType.IVideoResource) => {}}
+            />
+          )}
           {videoMaterial?.length === 0 && (
             <div className="empty-material-container">
               <div className="empty-material-button">
@@ -28,8 +35,12 @@ const MaterialList = () => {
           )}
         </React.Fragment>
       )}
-      {materialContextReducer?.sidebarType === EResourceType.image && <ImageList data={MATERIAL_CONSTANTS?.image || []} />}
-      {materialContextReducer?.sidebarType === EResourceType.text && <TextList data={MATERIAL_CONSTANTS?.text || []} />}
+      {materialContextReducer?.sidebarType === EResourceType.image && (
+        <ImageList data={MATERIAL_CONSTANTS?.image || []} onInsertMaterial={(material?: MasterResourceType.IImageResource) => {}} />
+      )}
+      {materialContextReducer?.sidebarType === EResourceType.text && (
+        <TextList data={MATERIAL_CONSTANTS?.text || []} onInsertMaterial={(material?: MasterResourceType.ITextResource) => {}} />
+      )}
     </React.Fragment>
   );
 };

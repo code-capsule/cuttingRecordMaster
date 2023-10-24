@@ -5,7 +5,7 @@ import Scrollbar from '@src/common/components/ScrollBar';
 
 interface IProps {
   data: MasterResourceType.IVideoResource[];
-  onRetryMaterial?: () => void;
+  onRetryMaterial?: (material?: MasterResourceType.IVideoResource) => void;
   onInsertMaterial?: (material?: MasterResourceType.IVideoResource) => void;
   onDeleteMaterial?: (material?: MasterResourceType.IVideoResource) => void;
 }
