@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import { createLogin } from '@common/services/windowService/windows';
+import { LOGIN_PROCESS_KEY } from '@common/constants/processKey';
 import setupMain from './setup';
 
 app.whenReady().then(async () => {
@@ -14,6 +14,6 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createLogin();
+    global.master.services.windowService.create(LOGIN_PROCESS_KEY);
   }
 });

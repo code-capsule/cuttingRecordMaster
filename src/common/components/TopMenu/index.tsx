@@ -30,7 +30,7 @@ const TopMenu = (props: IProps) => {
         style={{ color: props?.svgColor || '#F8F8F8' }}
         onClick={() => {
           props?.onMinimize?.();
-          const currentWindowInstance = window.master?.services?.windowService?.get(props?.currentWindow)?._instance;
+          const currentWindowInstance = window.master?.services?.windowService?.get(props?.currentWindow)?.getInstance?.();
           currentWindowInstance?.minimize();
         }}
       />
@@ -42,7 +42,7 @@ const TopMenu = (props: IProps) => {
           if (props?.onClose) {
             props?.onClose();
           } else {
-            const currentWindowInstance = window.master?.services?.windowService?.get(props?.currentWindow)?._instance;
+            const currentWindowInstance = window.master?.services?.windowService?.get(props?.currentWindow);
             currentWindowInstance?.close();
           }
         }}

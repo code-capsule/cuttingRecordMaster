@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './index.less';
 import { createPortal } from 'react-dom';
 import Message from '@src/common/components/Message';
-import MaskLoading from '@src/common/components/MaskLoading';
+import FullScreenLoading from '@src/common/components/FullScreenLoading';
 import { formatDate } from '@src/common/utils/time';
 import { PROJECT_STORE_IPC_KEY } from '@src/common/constants/ipcEventKey';
 import { CLIP_PROCESS_KEY, HOME_PROCESS_KEY, RECORD_PROCESS_KEY } from '@src/common/constants/processKey';
@@ -26,7 +26,7 @@ const CuttingRecordingBox = () => {
       if (isInitSuccess) {
         // 2.获取窗口实例，打开录制/剪辑窗口
         openWindowFunction?.();
-        const homeWindowInstance = window.master?.services?.windowService?.get(HOME_PROCESS_KEY)?._instance;
+        const homeWindowInstance = window.master?.services?.windowService?.get(HOME_PROCESS_KEY);
         homeWindowInstance.hide();
       } else {
         Message.error('新建作品失败，请重试');
@@ -50,7 +50,7 @@ const CuttingRecordingBox = () => {
             });
           }}
         >
-          <div className="label">Record</div>
+          <div className="label">录制</div>
         </div>
         <div
           className="home-box home-cutting"
@@ -60,10 +60,10 @@ const CuttingRecordingBox = () => {
             });
           }}
         >
-          <div className="label">Clip</div>
+          <div className="label">创作</div>
         </div>
       </div>
-      {isLoading && createPortal(<MaskLoading />, document.body)}
+      {isLoading && createPortal(<FullScreenLoading />, document.body)}
     </>
   );
 };

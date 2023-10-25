@@ -12,7 +12,3 @@ export function registerRecord() {
     resizable: false,
   });
 }
-
-export function createRecord() {
-  windowService.create(RECORD_PROCESS_KEY);
-}
