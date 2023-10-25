@@ -63,35 +63,3 @@ export interface ICustomResponseMetaData {
     sample_rate?: number;
   };
 }
-
-/**
- * @description 获取媒体信息的参数
- */
-export interface ICustomMetadataParams {
-  /**
-   * @description 视频扩展信息
-   */
-  videoExpandedInfo?: {
-    /**
-     * @description 编码格式
-     */
-    codec_name?: string;
-    /**
-     * @description 平均帧率
-     */
-    avg_frame_rate?: string;
-  };
-  /**
-   * @description 视频扩展信息
-   */
-  audioExpandedInfo?: {
-    /**
-     * @description 编码格式
-     */
-    codec_name?: string;
-    /**
-     * @description 采样率
-     */
-    sample_rate?: number;
-  };
-}
