@@ -30,7 +30,7 @@ interface MasterServices {
 
 interface MasterTools {
   log: typeof log;
-  ffmpegTool: FFmpegTool;
+  ffmpegTool: typeof FFmpegTool;
 }
 
 interface MasterStores {
