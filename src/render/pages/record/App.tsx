@@ -4,7 +4,6 @@ import { RECORD_PROCESS_KEY } from '@common/constants/processKey';
 import setupRender, { SetupRenderOptions } from '@render/setup';
 import { Provider } from 'react-redux';
 import '@common/styles/base.css';
-import './index.less';
 import FullScreenLoading from '@common/components/FullScreenLoading';
 
 const Main = lazy(() => import('./containers'));
