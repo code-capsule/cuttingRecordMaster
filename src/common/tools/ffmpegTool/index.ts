@@ -16,6 +16,7 @@ class FFmpegTool {
   };
 
   static master: Master;
+  static streamTool: StreamTool;
 
   /**
    * @description 初始化配置
@@ -31,9 +32,6 @@ class FFmpegTool {
       ff.setFfprobePath(this.parseProductionPath(opts?.buildPath, 'ffprobe', isWindows));
     }
     this.master = opts?.master;
-  }
-
-  static initTools() {
     this.streamTool = new StreamTool();
   }
 
