@@ -42,7 +42,7 @@ export async function initMaster(options: InitRenderMasterOptions): Promise<Mast
       },
       tools: {
         log,
-        ffmpegTool: new FFmpegTool(),
+        ffmpegTool: FFmpegTool,
       },
       stores: {
         reduxStore,
@@ -54,7 +54,7 @@ export async function initMaster(options: InitRenderMasterOptions): Promise<Mast
       },
     };
 
-    FFmpegTool.init({ devAppPath: remote?.app?.getAppPath(), buildAppPath: '' });
+    FFmpegTool.config({ devPath: remote?.app?.getAppPath(), buildPath: '', master });
     recordService.initialize({ recordEvent: ipc });
     resolve(master);
   });
