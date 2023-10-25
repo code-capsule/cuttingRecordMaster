@@ -8,8 +8,8 @@ const FfprobeData = ff.FfprobeData;
 
 class FFmpegTool {
   static Ffprobe = ff.ffprobe;
-  static FFmpeg = (inputPath: string) => {
-    return ff(inputPath).on('start', (cmd: string) => {
+  static FFmpeg = (filePath: string) => {
+    return ff(filePath).on('start', (cmd: string) => {
       console.log('[ffmpegTool] run ffmpeg', cmd);
     });
   };
