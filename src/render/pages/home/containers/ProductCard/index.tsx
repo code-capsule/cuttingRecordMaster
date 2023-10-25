@@ -25,9 +25,9 @@ const ProductCard = (props: { data: MasterDraftType.IDraftItem }) => {
       }}
     >
       <div className="product-video-time">{formatSeconds(props?.data?.duration)}</div>
-      {props?.data?.firstVideoPool ? (
+      {props?.data?.videoUrl ? (
         <video className="product-video-source">
-          <source src={props?.data?.firstVideoPool} type="video/mp4" />
+          <source src={props?.data?.videoUrl} type="video/mp4" />
         </video>
       ) : (
         <img src={props?.data?.cover || DefaultProjectCoverPNG} className="product-cover" alt="" />

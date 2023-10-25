@@ -5,7 +5,7 @@ export interface IThumbnailItem {
   /**
    * @description 视频资源路径
    */
-  inputPath: string;
+  filePath: string;
   /**
    * @description 获取缩略图的时间点 （假设时间点时5，则表示取第5秒的缩略图）
    */

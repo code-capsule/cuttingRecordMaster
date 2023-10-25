@@ -3,10 +3,10 @@
  * @summary 以 json 格式存储于本地
  * https://www.npmjs.com/package/electron-store
  */
-import { app } from 'electron';
 import path from 'path';
-import { PROJECT_NAME } from '@common/constants/processKey';
 import ElectronStore from 'electron-store';
+import { app } from 'electron';
+import { PROJECT_NAME } from '@common/constants/processKey';
 
 // 草稿工程列表数据
 interface IProps {

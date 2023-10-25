@@ -21,7 +21,3 @@ export function registerRecord() {
     // closable: false,
   });
 }
-
-export function createRecord() {
-  windowService.create(RECORD_PROCESS_KEY);
-}

@@ -13,14 +13,12 @@ export interface InitRenderMasterOptions {
   processKey: string;
 }
 
-export async function initMaster(
-  options: InitRenderMasterOptions
-): Promise<Master> {
+export async function initMaster(options: InitRenderMasterOptions): Promise<Master> {
   return new Promise((resolve) => {
     const { processKey } = options;
 
     const Master: MainMaster = remote.getGlobal('master');
-    const { services, stores, appSavePath } = Master;
+    const { services, stores, appArchivePath } = Master;
 
     const ipc = new RenderIpc({ processKey });
     const log = initRenderLog();
@@ -30,24 +28,26 @@ export async function initMaster(
     const reduxStore = initReduxStore(state, 'render');
 
     const master: Master = {
-      appSavePath,
+      appArchivePath,
       services: {
         ipc,
         windowService: services.windowService,
-        userStoreService: services.userStoreService,
-        draftStoreService: services.draftStoreService,
-        projectStoreService: services.projectStoreService,
       },
       tools: {
         log,
-        ffmpegTool: new FFmpegTool(),
+        ffmpegTool: FFmpegTool,
       },
       stores: {
         reduxStore,
+        localStore: {
+          user: stores?.localStore?.user,
+          draft: stores?.localStore?.draft,
+          project: stores?.localStore?.project,
+        },
       },
     };
 
-    FFmpegTool.init({ devAppPath: remote?.app?.getAppPath(), buildAppPath: '' });
+    FFmpegTool.config({ devPath: remote?.app?.getAppPath(), buildPath: '', master });
     resolve(master);
   });
 }
