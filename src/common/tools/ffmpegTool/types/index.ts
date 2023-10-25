@@ -23,7 +23,7 @@ export interface ICustomResponseMetaData {
   /**
    * @description 路径
    */
-  url: string;
+  filePath: string;
   /**
    * @description 名称
    */
@@ -35,15 +35,31 @@ export interface ICustomResponseMetaData {
   /**
    * @description 大小
    */
-  size?: number;
-}
-
-/**
- * @description 获取媒体信息的参数
- */
-export interface ICustomMetadataParams {
+  size?: number
   /**
-   * @description 资源媒体路径
+   * @description 视频扩展信息
+   */;
+  videoExpandedInfo?: {
+    /**
+     * @description 编码格式
+     */
+    codec_name?: string;
+    /**
+     * @description 平均帧率
+     */
+    avg_frame_rate?: string;
+  };
+  /**
+   * @description 视频扩展信息
    */
-  inputPath: string;
+  audioExpandedInfo?: {
+    /**
+     * @description 编码格式
+     */
+    codec_name?: string;
+    /**
+     * @description 采样率
+     */
+    sample_rate?: number;
+  };
 }

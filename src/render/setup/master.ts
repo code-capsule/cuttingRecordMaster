@@ -11,9 +11,7 @@ export interface InitRenderMasterOptions {
   processKey: string;
 }
 
-export async function initMaster(
-  options: InitRenderMasterOptions
-): Promise<Master> {
+export async function initMaster(options: InitRenderMasterOptions): Promise<Master> {
   return new Promise((resolve) => {
     const { processKey } = options;
 
@@ -30,11 +28,11 @@ export async function initMaster(
       },
       tools: {
         log,
-        ffmpegTool: new FFmpegTool(),
+        ffmpegTool: FFmpegTool,
       },
     };
 
-    FFmpegTool.init({ devAppPath: remote?.app?.getAppPath(), buildAppPath: '' });
+    FFmpegTool.config({ devPath: remote?.app?.getAppPath(), buildPath: '', master });
     resolve(master);
   });
 }
