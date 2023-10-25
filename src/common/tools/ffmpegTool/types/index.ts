@@ -35,7 +35,33 @@ export interface ICustomResponseMetaData {
   /**
    * @description 大小
    */
-  size?: number;
+  size?: number
+  /**
+   * @description 视频扩展信息
+   */;
+  videoExpandedInfo?: {
+    /**
+     * @description 编码格式
+     */
+    codec_name?: string;
+    /**
+     * @description 平均帧率
+     */
+    avg_frame_rate?: string;
+  };
+  /**
+   * @description 视频扩展信息
+   */
+  audioExpandedInfo?: {
+    /**
+     * @description 编码格式
+     */
+    codec_name?: string;
+    /**
+     * @description 采样率
+     */
+    sample_rate?: number;
+  };
 }
 
 /**
