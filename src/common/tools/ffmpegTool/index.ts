@@ -1,36 +1,37 @@
 import path from 'path';
-import { find } from 'lodash';
-import { ICustomMediaMetadata } from './types';
+import { find, isEmpty } from 'lodash';
+import { ICustomResponseMetaData } from './types';
 import { IParserVideoMetadataStream, IParserAudioMetadataStream } from './types/parserMetadataType';
+import { Master } from '@typings/browser';
 const ff = require('@codecapsule/fluent-ffmpeg');
 const FfprobeData = ff.FfprobeData;
 import StreamTool from './tool/streamTool';
 
 class FFmpegTool {
   static Ffprobe = ff.ffprobe;
-  static streamTool: StreamTool;
-  static FFmpeg = (inputPath: string) => {
-    return ff(inputPath).on('start', (cmd: string) => {
+  static FFmpeg = (filePath: string) => {
+    return ff(filePath).on('start', (cmd: string) => {
       console.log('[ffmpegTool] run ffmpeg', cmd);
     });
   };
 
+  static master: Master;
+  static streamTool: StreamTool;
+
   /**
    * @description 初始化配置
    */
-  static init(opts: { devAppPath: string; buildAppPath: string }) {
+  static config(opts: { devPath: string; buildPath: string; master: Master }) {
     const mode = process?.env?.mode || 'dev';
     const isWindows = process?.platform !== 'darwin';
     if (mode === 'dev') {
-      ff.setFfmpegPath(this.parseDevelopmentPath(opts?.devAppPath, 'ffmpeg', isWindows));
-      ff.setFfprobePath(this.parseDevelopmentPath(opts?.devAppPath, 'ffprobe', isWindows));
+      ff.setFfmpegPath(this.parseDevelopmentPath(opts?.devPath, 'ffmpeg', isWindows));
+      ff.setFfprobePath(this.parseDevelopmentPath(opts?.devPath, 'ffprobe', isWindows));
     } else {
-      ff.setFfmpegPath(this.parseProductionPath(opts?.buildAppPath, 'ffmpeg', isWindows));
-      ff.setFfprobePath(this.parseProductionPath(opts?.buildAppPath, 'ffprobe', isWindows));
+      ff.setFfmpegPath(this.parseProductionPath(opts?.buildPath, 'ffmpeg', isWindows));
+      ff.setFfprobePath(this.parseProductionPath(opts?.buildPath, 'ffprobe', isWindows));
     }
-  }
-
-  static initTools() {
+    this.master = opts?.master;
     this.streamTool = new StreamTool();
   }
 
@@ -48,20 +49,34 @@ class FFmpegTool {
     return '';
   }
 
-  async getMetaInfo(inputPath: string): Promise<ICustomMediaMetadata> {
+  static async getMetaInfo(filePath: string): Promise<ICustomResponseMetaData> {
     return new Promise((resolve, reject) => {
-      FFmpegTool.Ffprobe(inputPath, (e: Error, metadata: typeof FfprobeData) => {
+      FFmpegTool.Ffprobe(filePath, (e: Error, metadata: typeof FfprobeData) => {
         if (e) {
           reject(e);
           return;
         }
-        const { streams } = metadata;
+        const { format, streams } = metadata;
         const videoInfo = find(streams, { codec_type: 'video' }) as IParserVideoMetadataStream;
         const audioInfo = find(streams, { codec_type: 'audio' }) as IParserAudioMetadataStream;
+        let resolution = '1920x1080';
+        if (!isEmpty(videoInfo)) resolution = `${videoInfo?.width}x${videoInfo?.height}`;
         resolve({
-          videoInfo,
-          audioInfo,
-        } as ICustomMediaMetadata);
+          resolution,
+          filePath: filePath,
+          name: path.basename(format?.filename || ''),
+          startTime: videoInfo?.start_time || 0,
+          duration: format?.duration || 0,
+          size: format?.size,
+          videoExpandedInfo: {
+            codec_name: videoInfo?.codec_name,
+            avg_frame_rate: videoInfo?.avg_frame_rate,
+          },
+          audioExpandedInfo: {
+            codec_name: audioInfo?.codec_name,
+            sample_rate: audioInfo?.sample_rate,
+          },
+        } as ICustomResponseMetaData);
       });
     });
   }

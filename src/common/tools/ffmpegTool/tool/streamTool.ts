@@ -1,4 +1,5 @@
 import path from 'path';
+import FFmpegTool from '..';
 import FileTool from '@common/tools/fileTool';
 import { generateUUid } from '@common/utils/uuid';
 
@@ -6,8 +7,8 @@ class StreamTool {
   private streamPath = '';
 
   constructor() {
-    const appSavePath = global.master.appSavePath;
-    this.streamPath = `${appSavePath}\\originMedia`;
+    const appArchivePath = FFmpegTool?.master?.appArchivePath || '';
+    this.streamPath = `${appArchivePath}\\originMedia`;
   }
 
   /**
