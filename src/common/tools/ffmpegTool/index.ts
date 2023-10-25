@@ -2,17 +2,17 @@ import path from 'path';
 import { find, isEmpty } from 'lodash';
 import { ICustomResponseMetaData } from './types';
 import { IParserVideoMetadataStream, IParserAudioMetadataStream } from './types/parserMetadataType';
+import { Master } from '@typings/browser';
 const ff = require('@codecapsule/fluent-ffmpeg');
 const FfprobeData = ff.FfprobeData;
 import StreamTool from './tool/streamTool';
 import ThumbnailTool from './tool/thumbnailTool';
-import { Master } from '@src/typings/browser';
 
 class FFmpegTool {
   static Ffprobe = ff.ffprobe;
-  static FFmpeg = (inputPath: string) => {
-    return ff(inputPath).on('start', (cmd: string) => {
-      console.log('[ffmpegTool] run cmd: ', cmd);
+  static FFmpeg = (filePath: string) => {
+    return ff(filePath).on('start', (cmd: string) => {
+      console.log('[ffmpegTool] run ffmpeg', cmd);
     });
   };
 
@@ -52,9 +52,9 @@ class FFmpegTool {
     return '';
   }
 
-  static async getMetaInfo(inputPath: string): Promise<ICustomResponseMetaData> {
+  static async getMetaInfo(filePath: string): Promise<ICustomResponseMetaData> {
     return new Promise((resolve, reject) => {
-      FFmpegTool.Ffprobe(inputPath, (e: Error, metadata: typeof FfprobeData) => {
+      FFmpegTool.Ffprobe(filePath, (e: Error, metadata: typeof FfprobeData) => {
         if (e) {
           reject(e);
           return;
@@ -66,7 +66,7 @@ class FFmpegTool {
         if (!isEmpty(videoInfo)) resolution = `${videoInfo?.width}x${videoInfo?.height}`;
         resolve({
           resolution,
-          url: inputPath,
+          filePath: filePath,
           name: path.basename(format?.filename || ''),
           startTime: videoInfo?.start_time || 0,
           duration: format?.duration || 0,
