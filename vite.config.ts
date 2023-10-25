@@ -6,7 +6,7 @@ import { builtinModules } from 'module';
 import commonjs from 'vite-plugin-commonjs-externals';
 import { join } from 'path';
 
-const commonjsPackages = [...builtinModules, 'electron-log', 'lodash', 'electron-redux'];
+const commonjsPackages = [...builtinModules, 'electron', 'electron-log', 'lodash', 'electron-redux'];
 
 export default defineConfig({
   root: join(__dirname, 'src/render'),

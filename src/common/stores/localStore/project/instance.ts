@@ -1,6 +1,6 @@
 import { Unsubscribe } from 'redux';
 import md5 from 'md5';
-import { merge  } from 'lodash';
+import { merge } from 'lodash';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 import CuttingRecordMasterElectronStore from '@common/stores/localStore';
 import { projectPageSlice, initialProjectState } from '@common/stores/reduxStore/reducers/projectPage';
@@ -33,7 +33,7 @@ class ProjectStore {
       if (state?.projectPage?.projectVersion !== this.currentVersion) {
         this.currentVersion = state?.projectPage?.projectVersion || 0;
         if (!this.isWritingFile) {
-          console.log('[projectStoreService] will write local project json file');
+          console.log('[stores.project] will write local project json file');
           this.isWritingFile = true;
           this.save2JsonSync(this.currentVersion, state.projectPage);
         }
@@ -58,7 +58,7 @@ class ProjectStore {
    * @description 获取工程信息
    */
   public getProjectInfo() {
-    console.log('[projectStoreService] get project info');
+    console.log('[stores.project] get project info');
     const projectInfo = (this.reduxStore?.getState() as MasterAppStoreType.AppState)?.projectPage;
     return projectInfo;
   }
@@ -70,7 +70,7 @@ class ProjectStore {
   public updateProjectInfo(info?: MasterProjectType.IProjectDataInfo) {
     if (!this.reduxStore) return -1;
     const version = this.currentVersion + 1;
-    console.log('[projectStoreService] update project info');
+    console.log('[stores.project] update project info');
     this.reduxStore?.dispatch(
       projectPageSlice?.actions.updateProjectInfo({
         ...info,
@@ -85,7 +85,7 @@ class ProjectStore {
    * @description 重写工程信息
    */
   public overrideProjectInfo(info: MasterProjectType.IProjectDataInfo) {
-    console.log('[projectStoreService] override project info');
+    console.log('[stores.project] override project info');
     this.reduxStore?.dispatch(
       projectPageSlice?.actions.overrideProjectInfo({
         ...info,
@@ -101,7 +101,7 @@ class ProjectStore {
     this.localStore?.set('projectData', data);
     this.localStore?.set('projectVersion', version);
     this.isWritingFile = false;
-    console.log('[projectStoreService] update local project json file');
+    console.log('[stores.project] update local project json file');
   };
 }
 

@@ -1,6 +1,6 @@
 import DraftStore from './instance';
 
-class DraftStoreService {
+class DraftLocalStore {
   _instance: DraftStore = new DraftStore();
 
   async initialize() {
@@ -8,4 +8,4 @@ class DraftStoreService {
   }
 }
 
-export default new DraftStoreService();
+export default new DraftLocalStore();

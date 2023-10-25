@@ -4,7 +4,6 @@ import path from 'path';
 type TLogArg = string | number | boolean | object | undefined | null;
 type TLogArgs = TLogArg[];
 
-
 function initLog(logRootPath: string) {
   log.transports.console.useStyles = true;
   log.transports.file.resolvePath = (variables) => {
