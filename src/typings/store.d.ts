@@ -4,5 +4,6 @@ declare namespace MasterAppStoreType {
     recordPage: MasterRecordType.IRecordPageInfo;
     projectPage?: MasterProjectType.IProjectDataInfo;
     draftPage?: MasterDraftType.IDraftDataInfo;
+    trackPage?: MasterTrackType.ITrackInfo;
   }
 }
