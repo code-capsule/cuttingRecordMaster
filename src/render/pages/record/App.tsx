@@ -1,5 +1,4 @@
 import React, { lazy, Suspense } from 'react';
-import './index.less';
 import { createRoot } from 'react-dom/client';
 import { RECORD_PROCESS_KEY } from '@common/constants/processKey';
 import setupRender, { SetupRenderOptions } from '@render/setup';
