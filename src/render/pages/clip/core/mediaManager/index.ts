@@ -57,7 +57,7 @@ class MediaManager {
         const timeMarks = Array.from({ length: metadata?.duration }, (val, idx) => idx + 1); // 默认每秒生成一张缩略图
         const thumbnails = await this?.ffmpegTool?.thumbnailTool.generateVideoFrames({
           filePath: thumbnailParams?.filePath,
-          size: { width: 64, height: 64 },
+          size: { width: 50, height: 50 },
           timeMarks,
         });
         const covers = await this?.ffmpegTool?.thumbnailTool?.generateVideoFrames({
