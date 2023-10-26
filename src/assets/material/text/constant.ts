@@ -11,6 +11,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '分享美好',
       fontColor: '#fff48a',
@@ -34,6 +36,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '与你相遇 心动不已',
       fontColor: '#ff7fa1',
@@ -57,6 +61,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '独家访谈',
       fontColor: '#f4cdd1',
@@ -80,6 +86,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '绝密内情大曝光',
       fontColor: '#31f631',
@@ -103,6 +111,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '黑科技',
       fontColor: '#24e4e7',
@@ -126,6 +136,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '谢谢欣赏',
       fontColor: '#e72472',
@@ -149,6 +161,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '健身前后的对比',
       fontColor: '#ae24e7',
@@ -172,6 +186,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '大曝光 !',
       fontColor: '#e73c24',
@@ -195,6 +211,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '超满足!',
       fontColor: '#c6e724',
@@ -218,6 +236,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '辟谣',
       fontColor: '#3166ef',
@@ -241,6 +261,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: 'Before',
       fontColor: '#ffc65f',
@@ -264,6 +286,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: 'After',
       fontColor: '#31efda',
@@ -287,6 +311,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '负向情绪',
       fontColor: '#ffa95f',
@@ -310,6 +336,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '全员静止',
       fontColor: '#e89a9a',
@@ -333,6 +361,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '美白护肤小课堂',
       fontColor: '#e72472',
@@ -356,6 +386,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '颜值超高',
       fontColor: '#469df3',
@@ -379,6 +411,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '如何选择滑板!',
       fontColor: '#c3ffaf',
@@ -402,6 +436,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '出游必备',
       fontColor: '#b7dcf6',
@@ -425,6 +461,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '糖炒栗子',
       fontColor: '#da99ff',
@@ -448,6 +486,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '2024 来了',
       fontColor: '#ff7100',
@@ -471,6 +511,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '买买买 !',
       fontColor: '#ff45f4',
@@ -494,6 +536,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '有效穿搭',
       fontColor: '#99ffcc',
@@ -517,6 +561,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '直播预告',
       fontColor: '#e8df9a',
@@ -540,6 +586,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '今日碎片',
       fontColor: '#7e49ff',
@@ -563,6 +611,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '开箱好物',
       fontColor: '#fff48a',
@@ -586,6 +636,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '本期看点',
       fontColor: '#ff8445',
@@ -609,6 +661,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: 'Music',
       fontColor: '#ff5656',
@@ -632,6 +686,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '实测数据',
       fontColor: '#ff8445',
@@ -655,6 +711,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '时尚派对',
       fontColor: '#00cde5',
@@ -678,6 +736,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '穿搭合集',
       fontColor: '#3166ef',
@@ -701,6 +761,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: 'Live House',
       fontColor: '#ff1837',
@@ -724,6 +786,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '出来玩',
       fontColor: '#ffcdd2',
@@ -747,6 +811,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '人生得意须尽欢',
       fontColor: '#61dbe4',
@@ -770,6 +836,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '有情人终成眷属',
       fontColor: '#c761e4',
@@ -793,6 +861,8 @@ const CLOUD_RESOURCE_TEXT_LIST: MasterResourceType.ITextResource[] = [
     isExistResource: true,
     inputPath: '',
     cover: '',
+    duration: 3,
+    startTime: 0,
     data: {
       content: '程序猿',
       fontColor: '#24e4e7',

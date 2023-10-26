@@ -14,6 +14,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\升级.png'),
     cover: path.join(cloudImageFilePath, '\\升级.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -36,6 +38,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\麦克风.png'),
     cover: path.join(cloudImageFilePath, '\\麦克风.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -58,6 +62,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\猫猫贴纸.png'),
     cover: path.join(cloudImageFilePath, '\\猫猫贴纸.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -80,6 +86,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\爱心咖啡.png'),
     cover: path.join(cloudImageFilePath, '\\爱心咖啡.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -102,6 +110,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\尽请期待.png'),
     cover: path.join(cloudImageFilePath, '\\尽请期待.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -124,6 +134,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\推荐好友.png'),
     cover: path.join(cloudImageFilePath, '\\推荐好友.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -146,6 +158,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\比心.png'),
     cover: path.join(cloudImageFilePath, '\\比心.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -168,6 +182,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\敬请期待.png'),
     cover: path.join(cloudImageFilePath, '\\敬请期待.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -190,6 +206,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\猜你喜欢.png'),
     cover: path.join(cloudImageFilePath, '\\猜你喜欢.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -212,6 +230,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\推荐.png'),
     cover: path.join(cloudImageFilePath, '\\推荐.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -234,6 +254,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\先享后付.png'),
     cover: path.join(cloudImageFilePath, '\\先享后付.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -256,6 +278,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\好评.png'),
     cover: path.join(cloudImageFilePath, '\\好评.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -278,6 +302,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\可爱猫猫.png'),
     cover: path.join(cloudImageFilePath, '\\可爱猫猫.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -300,6 +326,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\蜜蜂小可爱.png'),
     cover: path.join(cloudImageFilePath, '\\蜜蜂小可爱.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -322,6 +350,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\大喇叭.png'),
     cover: path.join(cloudImageFilePath, '\\大喇叭.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -344,6 +374,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\万圣节.png'),
     cover: path.join(cloudImageFilePath, '\\万圣节.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -366,6 +398,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\外卖车.png'),
     cover: path.join(cloudImageFilePath, '\\外卖车.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -388,6 +422,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\外卖配送中.png'),
     cover: path.join(cloudImageFilePath, '\\外卖配送中.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -410,6 +446,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\禁止攀爬.png'),
     cover: path.join(cloudImageFilePath, '\\禁止攀爬.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -432,6 +470,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\禁止吸烟.png'),
     cover: path.join(cloudImageFilePath, '\\禁止吸烟.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -454,6 +494,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\香蕉.png'),
     cover: path.join(cloudImageFilePath, '\\香蕉.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -476,6 +518,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\饼干.png'),
     cover: path.join(cloudImageFilePath, '\\饼干.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -498,6 +542,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\狗狗.png'),
     cover: path.join(cloudImageFilePath, '\\狗狗.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -520,6 +566,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\狗头.png'),
     cover: path.join(cloudImageFilePath, '\\狗头.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -542,6 +590,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\圣诞帽.png'),
     cover: path.join(cloudImageFilePath, '\\圣诞帽.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,
@@ -564,6 +614,8 @@ const CLOUD_RESOURCE_IMAGE_LIST: MasterResourceType.IImageResource[] = [
     isExistResource: true,
     inputPath: path.join(cloudImageFilePath, '\\鼓掌.png'),
     cover: path.join(cloudImageFilePath, '\\鼓掌.png'),
+    duration: 3,
+    startTime: 0,
     data: {
       resolutionHeight: 100,
       resolutionWidth: 200,

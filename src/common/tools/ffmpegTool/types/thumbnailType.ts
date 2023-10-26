@@ -3,7 +3,7 @@
  */
 export interface IThumbnailItem {
   /**
-   * @description 视频资源路径
+   * @description 视频素材路径
    */
   filePath: string;
   /**

@@ -33,9 +33,9 @@ class MaterialManager {
           isExistResource: true,
           inputPath: filePaths?.[idx],
           cover: metadata?.cover,
+          duration: metadata?.duration || 0,
+          startTime: metadata?.startTime || 0,
           data: {
-            duration: metadata?.duration || 0,
-            startTime: metadata?.startTime || 0,
             resolutionWidth: parseInt(width) || 0,
             resolutionHeight: parseInt(height) || 0,
             thumbnails: metadata?.thumbnails || [],
