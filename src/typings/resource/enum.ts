@@ -1,5 +1,5 @@
 /**
- * @description 资源类型
+ * @description 素材类型
  */
 export enum EResourceType {
   text = 'text', // 文字

@@ -1,24 +1,24 @@
 declare namespace MasterResourceType {
   type TResourceType = 'text' | 'video' | 'audio' | 'image';
 
-  // 基础资源类型声明
+  // 基础素材类型声明
   interface InitializeResource {
     /**
-     * @description 资源 uid
+     * @description 素材 uid
      * @summary 时间戳+随机数
      * @example `${new Date().valueOf()}${Math.random().toString(10).slice(0, 5)}`
      */
     uid?: string;
     /**
-     * @description 资源类型
+     * @description 素材类型
      */
     type?: TResourceType;
     /**
-     * @description 资源大小
+     * @description 素材大小
      */
     size?: number;
     /**
-     * @description 资源名
+     * @description 素材名
      */
     name?: string;
     /**
@@ -30,18 +30,26 @@ declare namespace MasterResourceType {
      */
     updateTime?: number;
     /**
-     * @description 资源在本地映射是否存在
-     * @summary 可能用户在加入资源池后，把本地真实资源给删除了，此时的资源是不存在的
+     * @description 素材在本地映射是否存在
+     * @summary 可能用户在加入素材中心后，把本地素材给删除了，此时的素材是不存在的
      */
     isExistResource?: boolean;
     /**
-     * @description 资源存于本地的路径
+     * @description 素材存于本地的路径
      */
     inputPath?: string;
     /**
-     * @description 资源封面
+     * @description 素材封面
      */
     cover?: string;
+     /**
+     * @description 素材播放时长
+     */
+     duration?: number;
+     /**
+      * @description 起播时间
+      */
+     startTime?: number;
   }
 
   // 视频
@@ -55,15 +63,7 @@ declare namespace MasterResourceType {
      */
     resolutionWidth?: number;
     /**
-     * @description 资源时长
-     */
-    duration?: number;
-    /**
-     * @description 起播时间
-     */
-    startTime?: number;
-    /**
-     * @description 资源缩略图
+     * @description 素材缩略图
      */
     thumbnails?: string[];
     /**
@@ -97,7 +97,7 @@ declare namespace MasterResourceType {
   // 音频
   interface ICustomResourceAudioData {
     /**
-     * @description 资源时长
+     * @description 素材时长
      */
     duration?: number;
     /**
