@@ -1,41 +1,50 @@
 .clip-track-container {
   width: 100%;
-  display: flex;
-  justify-content: flex-start;
   height: 100%;
-  .clip-track-wrapper-outer {
+  .clip-toolbar-container {
     width: 100%;
-    height: 100%;
-    position: relative;
-    .clip-track-wrapper-inner {
+    height: 32px;
+    background: #252424;
+  }
+  .clip-provider-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: calc(100% - 32px);
+    .clip-track-wrapper-outer {
       width: 100%;
-      height: calc(100% - 8px);
-      z-index: 1;
-      overflow-x: scroll;
-      white-space: nowrap;
+      height: 100%;
       position: relative;
-      overflow-y: hidden;
-      box-sizing: border-box;
-      user-select: none;
-      .clip-track-video-cell-item {
-        display: inline-block;
+      .clip-track-wrapper-inner {
+        width: 100%;
+        height: calc(100% - 8px);
+        z-index: 1;
+        overflow-x: scroll;
+        white-space: nowrap;
         position: relative;
-        margin-top: 72px;
+        overflow-y: hidden;
         box-sizing: border-box;
-        .clip-track-video-cell-item-cover {
-          width: 50px;
-          height: 50px;
+        user-select: none;
+        .clip-track-video-cell-item {
+          display: inline-block;
+          position: relative;
+          margin-top: 72px;
+          box-sizing: border-box;
+          .clip-track-video-cell-item-cover {
+            width: 50px;
+            height: 50px;
+          }
         }
-      }
-      &::-webkit-scrollbar {
-        height: 8px !important;
-        background: transparent;
-        border-radius: 4px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: rgba(255, 255, 255, 0.2);
-        height: 8px !important;
-        border-radius: 4px;
+        &::-webkit-scrollbar {
+          height: 8px !important;
+          background: transparent;
+          border-radius: 4px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: rgba(255, 255, 255, 0.2);
+          height: 8px !important;
+          border-radius: 4px;
+        }
       }
     }
   }
