@@ -4,7 +4,7 @@ import { ReactComponent as IcCommonAddSvg } from '@common/svgs/ic_common_add.svg
 
 interface IProps {
   /**
-   * @description 文字资源
+   * @description 文字素材
    */
   material: MasterResourceType.ITextResource;
 }

@@ -80,7 +80,7 @@ declare namespace MasterProjectType {
   }
 
   /**
-   * @description 资源数据
+   * @description 素材数据
    */
   interface IMaterialStructure {
     video?: MasterResourceType.IVideoResource[];

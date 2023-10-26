@@ -4,7 +4,7 @@ import { formatSeconds } from '@common/utils/time';
 import DefaultVideoImage from './defaultVideoImage.png';
 interface IProps {
   /**
-   * @description 视频资源
+   * @description 视频素材
    */
   material: MasterResourceType.IVideoResource;
   onRetryMaterial?: () => void;
@@ -48,7 +48,7 @@ const VideoCard = React.memo((props: IProps) => {
       </div>
       <div className="material-video-card-duration">{props?.material?.data?.duration && formatSeconds(props?.material?.data?.duration)}</div>
       <div className="material-video-card-name">{props?.material?.name}</div>
-      {/* 不存在资源 */}
+      {/* 不存在素材 */}
       <div className={`material-video-card-not-found ${!props?.material?.isExistResource ? 'not-exist-video-material' : ''}`}>
         <div className="material-video-card-not-found-label">媒体丢失</div>
         <div className="material-video-card-not-found-label">Media Not Found</div>
