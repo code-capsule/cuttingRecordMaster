@@ -10,5 +10,6 @@ declare namespace MasterTrackType {
     timeScaleGears?: number; // 缩放倍数，范围在 [timeScaleMinGears, timeScaleMaxGears]
     timeScaleMinGears?: number; // 最小挡位
     timeScaleMaxGears?: number; // 最大挡位
+    activeMaterial?: MasterResourceType.IResourceItem; // 激活的素材元素
   }
 }

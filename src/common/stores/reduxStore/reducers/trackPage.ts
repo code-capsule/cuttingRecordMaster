@@ -12,6 +12,7 @@ export const initialTrackState: MasterTrackType.ITrackInfo = {
   timeScaleGears: 0,
   timeScaleMinGears: 0,
   timeScaleMaxGears: 0,
+  activeMaterial: undefined,
 };
 
 export const trackPageSlice = createSlice({
