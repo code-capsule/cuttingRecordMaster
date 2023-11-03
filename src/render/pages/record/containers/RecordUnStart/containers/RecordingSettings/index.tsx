@@ -3,6 +3,7 @@ import AudioOptions from './components/AudioOptions';
 import EquipmentOptions from './components/EquipmentOptions';
 import StartRecording from './components/StartRecording';
 import { recordPageActions } from '@common/stores/reduxStore/actions';
+import { SCREEN_CAMERA_PROCESS_KEY } from '@common/constants/processKey';
 const remote = require('@electron/remote');
 const screen = remote.screen;
 import './index.less';
@@ -50,13 +51,22 @@ const RecordingSettings = (props: IProps) => {
 
   const handleClickStartRecording = () => {
     const size = screen.getPrimaryDisplay().workAreaSize;
-    const recordInstance = window.master?.services?.windowService?.get('record')?.getInstance();
-    recordInstance.setSize(size.width, size.height);
-    recordInstance.center();
+    const recordInstance = window.master.services.windowService.get('record')?.getInstance();
     recordInstance.setAlwaysOnTop(true);
     recordPageActions.updateRecordingMode(recordingMode);
     recordPageActions.updateRecordingAudioMode(audioMode);
     recordPageActions.updateRecordStatus('recording');
+    if (recordingMode === 'screenAndCam') {
+      recordInstance.setSize(210, 48);
+      recordInstance.setPosition(size.width / 2 - 105, 5);
+      window.master.services.windowService.create(SCREEN_CAMERA_PROCESS_KEY, { x: 10, y: size.height - 180 - 10 });
+    } else if (recordingMode === 'screenOnly') {
+      recordInstance.setSize(210, 48);
+      recordInstance.setPosition(size.width / 2 - 105, 5);
+    } else if (recordingMode === 'camOnly') {
+      recordInstance.setSize(880, 466);
+      recordInstance.center();
+    }
   };
 
   return (
