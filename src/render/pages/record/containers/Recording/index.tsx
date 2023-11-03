@@ -13,7 +13,7 @@ const Recording = () => {
         return <CamOnly />;
       case 'screenAndCam':
       case 'screenOnly':
-        return <ScreenRecording defaultIsShowCam={recordingMode === 'screenAndCam'} />;
+        return <ScreenRecording />;
       default:
         return <CamOnly />;
     }
