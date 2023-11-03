@@ -15,7 +15,7 @@ function Main() {
   const draftList = useSelector((state: MasterAppStoreType.AppState) => state.draftPage?.draftList || [], shallowEqual);
 
   useEffect(() => {
-    window.master?.services?.draftStoreService?.getHomeDraftList();
+    window.master?.stores?.localStore?.draft?.getHomeDraftList();
   }, []);
 
   return (

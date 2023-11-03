@@ -20,7 +20,7 @@ class UserStore {
    * @description 获取用户信息
    */
   public getUserInfo(): MasterUserType.IUserInfo {
-    console.log('[userStoreService] get user info');
+    console.log('[stores.user] get user info');
     return this.localStore?.get('userInfo') as MasterUserType.IUserInfo;
   }
 
@@ -30,7 +30,7 @@ class UserStore {
    * @param {boolean} isOverride 是否覆盖
    */
   public updateUserInfo(userInfo: MasterUserType.IUserInfo, isOverride?: boolean) {
-    console.log('[userStoreService] update user info');
+    console.log('[stores.user] update user info');
     const info: MasterUserType.IUserInfo = isOverride ? { ...Object.assign(userPageSlice.getInitialState(), userInfo) } : { ...userInfo };
     this.reduxStore?.dispatch(userPageSlice?.actions?.updateUserInfo(info));
     // 同步更新本地json

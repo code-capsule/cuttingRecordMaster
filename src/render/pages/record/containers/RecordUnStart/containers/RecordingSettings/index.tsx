@@ -51,7 +51,7 @@ const RecordingSettings = (props: IProps) => {
 
   const handleClickStartRecording = () => {
     const size = screen.getPrimaryDisplay().workAreaSize;
-    const recordInstance = window.master?.services?.windowService?.get('record')?.getInstance();
+    const recordInstance = window.master.services.windowService.get('record')?.getInstance();
     recordInstance.setAlwaysOnTop(true);
     recordPageActions.updateRecordingMode(recordingMode);
     recordPageActions.updateRecordingAudioMode(audioMode);

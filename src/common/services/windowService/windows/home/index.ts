@@ -15,7 +15,3 @@ export function registerHome() {
     },
   });
 }
-
-export function createHome() {
-  windowService.create(HOME_PROCESS_KEY);
-}

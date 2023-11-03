@@ -1,8 +1,9 @@
 /**
  * @description Y轴滚动
  */
+import { isUndefined } from 'lodash';
 import React, { useMemo } from 'react';
-import { Scrollbars } from 'react-custom-scrollbars-2';
+import { Scrollbars, positionValues } from 'react-custom-scrollbars-2';
 
 interface IProps {
   domRef?: any;
@@ -67,6 +68,10 @@ interface IProps {
     thumbBackgroundColor?: string;
   };
   children?: any;
+  onScrollStop?: () => void;
+  onScrollStart?: () => void;
+  onScroll?: React.UIEventHandler<any>;
+  onUpdate?: (values: positionValues) => void;
 }
 
 const Scrollbar = (props?: IProps) => {
@@ -87,9 +92,9 @@ const Scrollbar = (props?: IProps) => {
           left: 0,
           bottom: 8,
           width: '100%',
-          height: props?.x?.height || 8,
-          right: props?.x?.gap || 8,
-          borderRadius: props?.x?.radius || 4,
+          height: isUndefined(props?.x?.height) ? 8 : props?.x?.height,
+          right: isUndefined(props?.x?.gap) ? 8 : props?.x?.gap,
+          borderRadius: isUndefined(props?.x?.radius) ? 4 : props?.x?.radius,
           background: props?.x?.trackBackgroundColor || 'transparent',
         };
         return <div style={xStyles} />;
@@ -110,8 +115,8 @@ const Scrollbar = (props?: IProps) => {
             position: 'absolute',
             left: 0,
             bottom: 0,
-            height: props?.x?.height || 8,
-            borderRadius: props?.x?.radius || 4,
+            height: isUndefined(props?.x?.height) ? 8 : props?.x?.height,
+            borderRadius: isUndefined(props?.x?.radius) ? 4 : props?.x?.radius,
             background: props?.x?.thumbBackgroundColor || 'rgba(255, 255, 255, 0.2)',
           };
           return <div style={xStyles} />;
@@ -123,9 +128,9 @@ const Scrollbar = (props?: IProps) => {
           position: 'absolute',
           top: 0,
           height: '100%',
-          width: props?.y?.width || 8,
-          right: props?.y?.gap || 8,
-          borderRadius: props?.y?.radius || 4,
+          width: isUndefined(props?.y?.width) ? 8 : props?.y?.width,
+          right: isUndefined(props?.y?.gap) ? 8 : props?.y?.gap,
+          borderRadius: isUndefined(props?.y?.radius) ? 4 : props?.y?.radius,
           background: props?.y?.trackBackgroundColor || 'transparent',
         };
         return <div style={yStyles} />;
@@ -146,13 +151,17 @@ const Scrollbar = (props?: IProps) => {
             position: 'absolute',
             top: 0,
             right: 0,
-            width: props?.y?.width || 8,
-            borderRadius: props?.y?.radius || 4,
+            width: isUndefined(props?.y?.width) ? 8 : props?.y?.width,
+            borderRadius: isUndefined(props?.y?.radius) ? 4 : props?.y?.radius,
             background: props?.y?.thumbBackgroundColor || 'rgba(255, 255, 255, 0.2)',
           };
           return <div style={yStyles} />;
         }
       }}
+      onScroll={(e) => props?.onScroll?.(e)}
+      onScrollStop={() => props?.onScrollStop?.()}
+      onScrollStart={() => props?.onScrollStart?.()}
+      onUpdate={(val) => props?.onUpdate?.(val)}
     >
       {props?.children}
     </Scrollbars>
