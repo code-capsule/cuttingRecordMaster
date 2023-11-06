@@ -7,6 +7,7 @@ import UnitScaleBar from './UnitScaleBar';
 import ClipCore from '@render/pages/clip/core';
 import VideoTrack from './TrackProvider/VideoTrack';
 import useInitTrackHooks from '@render/pages/clip/hooks/useInitTrackHooks';
+import { debounce } from 'lodash';
 
 const Track = React.memo(() => {
   const providerElementRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,15 @@ const Track = React.memo(() => {
       </div>
       <div className="clip-provider-container">
         <div className="clip-track-wrapper-outer" style={{ paddingLeft: 0 }} onClick={() => {}}>
-          <div className="clip-track-wrapper-inner" id="clip-track-wrapper-inner" ref={providerElementRef} onScroll={() => {}}>
+          <div
+            className="clip-track-wrapper-inner"
+            id="clip-track-wrapper-inner"
+            ref={providerElementRef}
+            onScroll={() => {
+              if (!providerElementRef?.current) return;
+              debounce(() => trackPageActions?.updateTrackInfo?.({ scrollLeft: providerElementRef?.current?.scrollLeft }), 200)();
+            }}
+          >
             {trackElementRectSize && (
               <div style={{ height: trackElementRectSize?.height, width: trackWidth ? `${trackWidth}px` : '' }}>
                 {/* 场景一：初始化状态 */}

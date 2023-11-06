@@ -12,7 +12,6 @@ interface IDemandParams {
  */
 const demandTimeMarksThumbnails = (params: IDemandParams): number[] => {
   const { timeMarkViewDistanceWidth, totalThumbnailCount } = params;
-  console.log(params);
   // 1.计算出需要展示的缩略图张数
   const needThumbnailCount = Math.ceil(timeMarkViewDistanceWidth / THUMBNAIL_WIDTH);
   // 2.计算出系数

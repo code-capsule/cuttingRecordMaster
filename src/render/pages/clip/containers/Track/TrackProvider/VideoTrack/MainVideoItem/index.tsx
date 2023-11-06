@@ -43,12 +43,11 @@ const MainVideoItem = React.memo((props: IProps) => {
 
   // 4.获取视频片段在可视区域内展示的时间范围
   const timeMarks = ClipCore.utilsManager.unitScale.getCellAndBoxTimeIntersection(cellTime, boxTime);
-  console.log(timeMarks);
+
   // 5.根据时间范围抽取指定的张数
   const viewThumbnails = useMemo(() => {
     if (timeMarks.length === 0 || timeMarks.length === 1) return [];
     const timeMarkViewDistanceWidth = Math.ceil(((timeMarks[1] - timeMarks[0]) * unitPX) / unitTime);
-    console.log(timeMarkViewDistanceWidth);
     const needThumbnailTimeMarks = ClipCore.utilsManager.thumbnail.demandTimeMarksThumbnails({
       timeMarks,
       timeMarkViewDistanceWidth,
