@@ -114,6 +114,9 @@ devDependencies:
   react-slider:
     specifier: ^2.0.6
     version: 2.0.6(react@18.2.0)
+  react-virtual:
+    specifier: ^2.10.4
+    version: 2.10.4(react@18.2.0)
   recordrtc:
     specifier: 5.6.2
     version: 5.6.2
@@ -714,6 +717,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@reach/observe-rect@1.2.0:
+    resolution: {integrity: sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==}
     dev: true
 
   /@reduxjs/toolkit@1.9.5(react-redux@8.0.7)(react@18.2.0):
@@ -3306,6 +3313,15 @@ packages:
       react: ^16 || ^17 || ^18
     dependencies:
       prop-types: 15.8.1
+      react: 18.2.0
+    dev: true
+
+  /react-virtual@2.10.4(react@18.2.0):
+    resolution: {integrity: sha512-Ir6+oPQZTVHfa6+JL9M7cvMILstFZH/H3jqeYeKI4MSUX+rIruVwFC6nGVXw9wqAw8L0Kg2KvfXxI85OvYQdpQ==}
+    peerDependencies:
+      react: ^16.6.3 || ^17.0.0
+    dependencies:
+      '@reach/observe-rect': 1.2.0
       react: 18.2.0
     dev: true
 

@@ -49,6 +49,7 @@
     "react-dom": "18.2.0",
     "react-redux": "^8.0.7",
     "react-slider": "^2.0.6",
+    "react-virtual": "^2.10.4",
     "recordrtc": "5.6.2",
     "redux": "^4.2.1",
     "typescript": "^4.9.3",
