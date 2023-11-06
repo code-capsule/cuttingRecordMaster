@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import './index.less';
 import { useSelector, shallowEqual } from 'react-redux';
 import Toolbar from './ToolBar';
+import UnitScaleBar from './UnitScaleBar';
 
 const Track = React.memo(() => {
   const providerElementRef = useRef<HTMLDivElement>(null);
@@ -12,8 +13,11 @@ const Track = React.memo(() => {
       <div className="clip-toolbar-container">
         <Toolbar />
       </div>
+      <div className="clip-unit-scale-container">
+        <UnitScaleBar />
+      </div>
       <div className="clip-provider-container">
-        <div className="clip-track-wrapper-outer" style={{ paddingLeft: 16 }} onClick={() => {}}>
+        <div className="clip-track-wrapper-outer" style={{ paddingLeft: 0 }} onClick={() => {}}>
           <div className="clip-track-wrapper-inner" id="clip-track-wrapper-inner" ref={providerElementRef}>
             {videoMaterial?.[0]?.data?.thumbnails?.map((url, idx) => {
               return (
