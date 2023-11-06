@@ -9,6 +9,7 @@ import TextList from './TextList';
 import MATERIAL_CONSTANTS from '@src/assets/material';
 import { ReactComponent as IcCommonVideoSvg } from '@common/svgs/ic_common_video.svg';
 
+import C from '@render/pages/clip/core';
 const MaterialList = () => {
   const materialContextReducer = useContext<MaterialContextProps>(MaterialCenterContext);
   const videoMaterial = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.material?.video || [], shallowEqual);
@@ -26,7 +27,10 @@ const MaterialList = () => {
             />
           )}
           {videoMaterial?.length === 0 && (
-            <div className="empty-material-container">
+            <div className="empty-material-container"
+            onClick={async () => {
+              await C.materialManager.insertVideoMaterial(['C:\\Users\\user\\Desktop\\测试视频\\test8.mp4']);
+            }}>
               <div className="empty-material-button">
                 <IcCommonVideoSvg className="empty-material-svg" />
                 录制素材
