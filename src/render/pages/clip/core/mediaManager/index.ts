@@ -1,4 +1,5 @@
 import FFmpegTool from '@src/common/tools/ffmpegTool';
+import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from '@render/pages/clip/constants';
 import { IGenerateThumbnailParams } from '@src/common/tools/ffmpegTool/tool/thumbnailTool';
 import { ICustomResponseMetaData } from '@src/common/tools/ffmpegTool/types';
 import { getLogger } from '@src/common/tools/log';
@@ -57,7 +58,7 @@ class MediaManager {
         const timeMarks = Array.from({ length: metadata?.duration }, (val, idx) => idx + 1); // 默认每秒生成一张缩略图
         const thumbnails = await this?.ffmpegTool?.thumbnailTool.generateVideoFrames({
           filePath: thumbnailParams?.filePath,
-          size: { width: 50, height: 50 },
+          size: { width: THUMBNAIL_WIDTH, height: THUMBNAIL_HEIGHT },
           timeMarks,
         });
         const covers = await this?.ffmpegTool?.thumbnailTool?.generateVideoFrames({

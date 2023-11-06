@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './index.less';
 import { useSelector, shallowEqual } from 'react-redux';
+import { trackPageActions } from '@common/stores/reduxStore/actions';
 import Toolbar from './ToolBar';
 import UnitScaleBar from './UnitScaleBar';
-import { trackPageActions } from '@common/stores/reduxStore/actions';
-import useInitTrackHooks from '@render/pages/clip/hooks/useInitTrackHooks';
 import ClipCore from '@render/pages/clip/core';
+import VideoTrack from './TrackProvider/VideoTrack';
+import useInitTrackHooks from '@render/pages/clip/hooks/useInitTrackHooks';
 
 const Track = React.memo(() => {
   const providerElementRef = useRef<HTMLDivElement>(null);
@@ -52,13 +53,7 @@ const Track = React.memo(() => {
                   <div className="unit-scale-container">
                     <UnitScaleBar parentElementRef={providerElementRef} />
                   </div>
-                  {videoMaterials?.[0]?.data?.thumbnails?.map((url, idx) => {
-                    return (
-                      <div key={idx} className="clip-track-video-cell-item">
-                        <img src={url} className="clip-track-video-cell-item-cover" />
-                      </div>
-                    );
-                  })}
+                  <VideoTrack />
                 </React.Fragment>
               </div>
             )}
