@@ -27,10 +27,7 @@ const MaterialList = () => {
             />
           )}
           {videoMaterial?.length === 0 && (
-            <div className="empty-material-container"
-            onClick={async () => {
-              await C.materialManager.insertVideoMaterial(['C:\\Users\\user\\Desktop\\测试视频\\test8.mp4']);
-            }}>
+            <div className="empty-material-container">
               <div className="empty-material-button">
                 <IcCommonVideoSvg className="empty-material-svg" />
                 录制素材

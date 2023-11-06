@@ -55,7 +55,7 @@ class MediaManager {
       const md5Hash = md5(JSON.stringify(metadata));
       const targetMaterial = this._getCache(md5Hash);
       if (isEmpty(targetMaterial) || isNull(targetMaterial) || isUndefined(targetMaterial)) {
-        const timeMarks = Array.from({ length: metadata?.duration }, (val, idx) => idx + 1); // 默认每秒生成一张缩略图
+        const timeMarks = Array.from({ length: metadata?.duration }, (val, idx) => idx + 5); // 默认每5秒生成一张缩略图
         const thumbnails = await this?.ffmpegTool?.thumbnailTool.generateVideoFrames({
           filePath: thumbnailParams?.filePath,
           size: { width: THUMBNAIL_WIDTH, height: THUMBNAIL_HEIGHT },
