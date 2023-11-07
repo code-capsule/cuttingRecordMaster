@@ -30,7 +30,6 @@ const demandTimeMarksThumbnails = (params: IDemandParams): number[] => {
     if (mark >= maxIndex) mark = maxIndex;
     picIndexTimeMarks[i] = mark;
   }
-  console.log(picIndexTimeMarks);
   return picIndexTimeMarks || [];
 };
 
