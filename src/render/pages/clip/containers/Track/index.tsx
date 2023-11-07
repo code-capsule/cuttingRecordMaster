@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import './index.less';
 import { useSelector, shallowEqual } from 'react-redux';
 import { trackPageActions } from '@common/stores/reduxStore/actions';
@@ -8,6 +8,7 @@ import ClipCore from '@render/pages/clip/core';
 import VideoTrack from './TrackProvider/VideoTrack';
 import useInitTrackHooks from '@render/pages/clip/hooks/useInitTrackHooks';
 import { debounce } from 'lodash';
+import InitNoneTrack from './TrackProvider/InitNoneTrack';
 
 const Track = React.memo(() => {
   const providerElementRef = useRef<HTMLDivElement>(null);
@@ -15,6 +16,8 @@ const Track = React.memo(() => {
   const unitTime = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitTime) || 0;
   const boxWidth = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.boxWidth) || 0;
   const trackWidth = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.trackWidth) || 0;
+  const textMaterials = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.material?.text || [], shallowEqual);
+  const imageMaterials = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.material?.image || [], shallowEqual);
   const videoMaterials = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.material?.video || [], shallowEqual);
   const [trackElementRectSize, setTrackElementRectSize] = useState<DOMRect>(); // 轨道区元素尺寸，用此来初始化boxWidth
 
@@ -38,6 +41,15 @@ const Track = React.memo(() => {
     trackPageActions?.updateTrackInfo?.({ trackWidth: calcTrackWidth, totalDuration });
   }, [unitPX, unitTime, boxWidth, videoMaterials]);
 
+  const materialStatus = useMemo(() => {
+    return {
+      hasText: textMaterials?.length > 0,
+      hasVideo: videoMaterials?.length > 0,
+      hasImage: imageMaterials?.length > 0,
+      hasMaterial: textMaterials?.length > 0 || videoMaterials?.length > 0 || imageMaterials?.length > 0,
+    };
+  }, [videoMaterials, textMaterials, imageMaterials]);
+
   return (
     <div className="clip-track-container">
       <div className="clip-toolbar-container">
@@ -57,13 +69,16 @@ const Track = React.memo(() => {
             {trackElementRectSize && (
               <div style={{ height: trackElementRectSize?.height, width: trackWidth ? `${trackWidth}px` : '' }}>
                 {/* 场景一：初始化状态 */}
-                {/* 场景二：只有视频素材+[其他素材]状态 */}
-                <React.Fragment>
-                  <div className="unit-scale-container">
-                    <UnitScaleBar parentElementRef={providerElementRef} />
-                  </div>
-                  <VideoTrack />
-                </React.Fragment>
+                {!materialStatus?.hasMaterial && <InitNoneTrack />}
+                {/* 场景二：视频素材+[其他素材]状态 */}
+                {materialStatus?.hasMaterial && (
+                  <React.Fragment>
+                    <div className="unit-scale-container">
+                      <UnitScaleBar parentElementRef={providerElementRef} />
+                    </div>
+                    <VideoTrack />
+                  </React.Fragment>
+                )}
               </div>
             )}
           </div>
