@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import './index.less';
 import { debounce } from 'lodash';
 import { useSelector, shallowEqual } from 'react-redux';
@@ -12,6 +12,9 @@ const Toolbar = React.memo(() => {
   const timeScaleGears = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.timeScaleGears, shallowEqual) || 0;
   const timeScaleMinGears = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.timeScaleMinGears, shallowEqual) || 0;
   const timeScaleMaxGears = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.timeScaleMaxGears, shallowEqual) || 0;
+  const textMaterials = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.material?.text || [], shallowEqual);
+  const imageMaterials = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.material?.image || [], shallowEqual);
+  const videoMaterials = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.material?.video || [], shallowEqual);
 
   const onChangeGears = useCallback(
     (val: number) => {
@@ -26,25 +29,45 @@ const Toolbar = React.memo(() => {
   );
   const onDebounceChangeGears = debounce(onChangeGears, 16.7);
 
+  const materialStatus = useMemo(() => {
+    return {
+      hasText: textMaterials?.length > 0,
+      hasVideo: videoMaterials?.length > 0,
+      hasImage: imageMaterials?.length > 0,
+      hasMaterial: textMaterials?.length > 0 || videoMaterials?.length > 0 || imageMaterials?.length > 0,
+    };
+  }, [videoMaterials, textMaterials, imageMaterials]);
+
   return (
     <div className="clip-toolbar-domain-container">
-      <div className={'clip-track-gears-slider '}>
-        <IcCommonSubGearsSvg className="sub-gears-svg" onClick={() => onDebounceChangeGears(-1)} />
+      <div className={`clip-track-gears-slider ${materialStatus?.hasMaterial ? '' : 'disabled-gears-slider'}`}>
+        <IcCommonSubGearsSvg
+          className="sub-gears-svg"
+          onClick={() => {
+            if (materialStatus?.hasMaterial) onDebounceChangeGears(-1);
+          }}
+        />
         <div className="clip-slider">
           <Slider
             value={timeScaleGears}
             min={timeScaleMinGears}
             max={timeScaleMaxGears}
+            disabled={!materialStatus?.hasMaterial}
             onChange={(v) => {
               const fn = debounce((nextGears) => {
                 const nextUnitTime = TRACK_UNIT_TIME_GEARS[nextGears] || TRACK_UNIT_TIME;
                 trackPageActions.updateTrackInfo?.({ timeScaleGears: nextGears, unitTime: nextUnitTime });
               }, 16.7);
-              fn(v);
+              if (materialStatus?.hasMaterial) fn(v);
             }}
           />
         </div>
-        <IcCommonAddGearsSvg className="add-gears-svg" onClick={() => onDebounceChangeGears(1)} />
+        <IcCommonAddGearsSvg
+          className="add-gears-svg"
+          onClick={() => {
+            if (materialStatus?.hasMaterial) onDebounceChangeGears(1);
+          }}
+        />
       </div>
     </div>
   );
