@@ -1,5 +1,5 @@
 import FFmpegTool from '@src/common/tools/ffmpegTool';
-import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from '@render/pages/clip/constants';
+import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH, THUMBNAIL_GENERATE_SPLIT_COUNT } from '@render/pages/clip/constants';
 import { IGenerateThumbnailParams } from '@src/common/tools/ffmpegTool/tool/thumbnailTool';
 import { ICustomResponseMetaData } from '@src/common/tools/ffmpegTool/types';
 import { getLogger } from '@src/common/tools/log';
@@ -55,7 +55,7 @@ class MediaManager {
       const md5Hash = md5(JSON.stringify(metadata));
       const targetMaterial = this._getCache(md5Hash);
       if (isEmpty(targetMaterial) || isNull(targetMaterial) || isUndefined(targetMaterial)) {
-        const timeMarks = Array.from({ length: metadata?.duration }, (val, idx) => idx + 5); // 默认每5秒生成一张缩略图
+        const timeMarks = Array.from({ length: metadata?.duration }, (val, idx) => idx)?.filter((idx) => idx % THUMBNAIL_GENERATE_SPLIT_COUNT === 0); // 默认每5秒生成一张缩略图
         const thumbnails = await this?.ffmpegTool?.thumbnailTool.generateVideoFrames({
           filePath: thumbnailParams?.filePath,
           size: { width: THUMBNAIL_WIDTH, height: THUMBNAIL_HEIGHT },

@@ -11,3 +11,4 @@ export const TRACK_UNIT_TIME = 30; // 默认30s为一个大刻度，换言之，
  */
 export const THUMBNAIL_WIDTH = 50;
 export const THUMBNAIL_HEIGHT = 50;
+export const THUMBNAIL_GENERATE_SPLIT_COUNT = 5; // 间隔5秒生成一张缩略图
