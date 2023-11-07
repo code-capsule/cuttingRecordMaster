@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.less';
 import { useSelector, shallowEqual } from 'react-redux';
-import { TRACK_UNIT_PX, TRACK_UNIT_TIME } from '@src/render/pages/clip/constants';
 import MainVideoItem from './MainVideoItem';
 
 interface IProps {
@@ -9,13 +8,15 @@ interface IProps {
 }
 
 const VideoTrack = (props: IProps) => {
+  const unitPX = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitPX) || 0;
+  const unitTime = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitTime) || 0;
   const videoMaterials = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.material?.video || [], shallowEqual);
   const activeMaterial = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.activeMaterial || null, shallowEqual);
 
   return (
     <div className="clip-track-video" id="clip-track-video" style={{ ...props?.style }}>
       {videoMaterials?.map((vm: MasterResourceType.IVideoResource, idx) => {
-        const itemPXWidth = ((vm?.duration || 0) * TRACK_UNIT_PX) / TRACK_UNIT_TIME < 0 ? 0 : ((vm?.duration || 0) * TRACK_UNIT_PX) / TRACK_UNIT_TIME;
+        const itemPXWidth = ((vm?.duration || 0) * unitPX) / unitTime < 0 ? 0 : ((vm?.duration || 0) * unitPX) / unitTime;
         return (
           <React.Fragment key={`${vm?.uid}_${idx}`}>
             <div className="clip-track-video-cell-item" style={{ width: `${itemPXWidth}px` }}>

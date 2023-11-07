@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import './index.less';
-import ClipCore from '@render/pages/clip/core';
 import { useSelector } from 'react-redux';
-import { THUMBNAIL_WIDTH } from '@render/pages/clip/constants';
+import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from '@render/pages/clip/constants';
+import ClipCore from '@render/pages/clip/core';
 
 interface IProps {
   itemPXWidth: number; // 视频素材的宽度
@@ -78,7 +78,7 @@ const MainVideoItem = React.memo((props: IProps) => {
         className="cell-body"
         style={{
           marginLeft: -leftExcessPX + 'px',
-          height: 50,
+          height: THUMBNAIL_HEIGHT,
         }}
       >
         <div className="placeholder-thumbnail-wrap" style={{ width: placeholderLeftDomWidth }}></div>

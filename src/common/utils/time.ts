@@ -96,8 +96,7 @@ export function formatDate(
  * @example 6002s -> 01:40:02
  */
 export function formatSeconds(time?: number): string {
-  if (!time) return '';
-  const inputSecondTime = Math.floor(parseFloat(time.toString()) * 10) / 10;
+  const inputSecondTime = Math.floor(parseFloat((time || 0)?.toString()) * 10) / 10;
   let min = 0; // 初始化分
   let h = 0; // 初始化小时
   let secondTime = 0;

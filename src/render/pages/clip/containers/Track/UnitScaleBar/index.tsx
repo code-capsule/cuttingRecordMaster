@@ -1,9 +1,9 @@
 import React, { useMemo, useCallback } from 'react';
 import './index.less';
-import { useVirtual } from 'react-virtual';
-import { TRACK_UNIT_PX, TRACK_UNIT_GRID_NUMBER, TRACK_UNIT_TIME } from '@render/pages/clip/constants';
-import { formatSeconds } from '@src/common/utils/time';
 import { useSelector } from 'react-redux';
+import { useVirtual } from 'react-virtual';
+import { formatSeconds } from '@src/common/utils/time';
+import { TRACK_UNIT_PX, TRACK_UNIT_GRID_NUMBER } from '@render/pages/clip/constants';
 import ClipCore from '@render/pages/clip/core';
 
 interface IProps {
@@ -18,8 +18,8 @@ interface IProps {
 
 const UnitScaleBar = React.memo((props: IProps) => {
   const unitPX = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitPX) || 0;
-  const unitTime = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitTime);
-  const trackWidth = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.trackWidth);
+  const unitTime = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitTime) || 0;
+  const trackWidth = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.trackWidth) || 0;
 
   const totalScales = useMemo(() => {
     if (!trackWidth) {
@@ -73,7 +73,7 @@ const UnitScaleBar = React.memo((props: IProps) => {
             >
               {isUnit && (
                 <div className={'unitTime-text '} style={{ transform: isFirstUnit ? 'translateX(0)' : 'translateX(-50%)' }}>
-                  {formatSeconds(unitNum * TRACK_UNIT_TIME)}
+                  {formatSeconds(unitNum * unitTime)}
                 </div>
               )}
             </div>
