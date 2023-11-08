@@ -67,6 +67,11 @@ declare namespace MasterResourceType {
      */
     thumbnails?: string[];
     /**
+     * @description 素材对应的音波地址
+     * @summary 从MP4视频素材提取出来的音频
+     */
+    soundWavUrl?: string;
+    /**
      * @description 视频扩展信息
      */
     videoExpandedInfo?: {
