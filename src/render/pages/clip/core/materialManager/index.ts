@@ -39,6 +39,7 @@ class MaterialManager {
             resolutionWidth: parseInt(width) || 0,
             resolutionHeight: parseInt(height) || 0,
             thumbnails: metadata?.thumbnails || [],
+            soundWavUrl: metadata?.soundWavUrl || '',
             audioExpandedInfo: metadata?.audioExpandedInfo,
             videoExpandedInfo: metadata?.videoExpandedInfo,
           },

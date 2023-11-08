@@ -9,6 +9,7 @@ const log = getLogger('clip.core.videoManager');
 type ICustomMediaMaterialData = ICustomResponseMetaData & {
   cover?: string; //封面
   thumbnails?: string[]; //缩略图列表
+  soundWavUrl?: string; // 音频地址
 };
 
 class MediaManager {
@@ -45,7 +46,7 @@ class MediaManager {
     }
   }
   /**
-   * @description 生成多张帧缩略图
+   * @description 解析视频并生成多张帧缩略图
    * @param {IGenerateThumbnailParams} thumbnailParams
    */
   public async parseVideoAndGenerateFrames(thumbnailParams: IGenerateThumbnailParams): Promise<ICustomMediaMaterialData | null> {
@@ -69,6 +70,7 @@ class MediaManager {
           ...metadata,
           cover: covers?.[0],
           thumbnails,
+          soundWavUrl: '',
         };
         this._setCache(md5Hash, result);
         return result;
