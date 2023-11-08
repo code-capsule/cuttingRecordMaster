@@ -5,6 +5,7 @@ import { IParserVideoMetadataStream, IParserAudioMetadataStream } from './types/
 import { Master } from '@typings/browser';
 const ff = require('@codecapsule/fluent-ffmpeg');
 const FfprobeData = ff.FfprobeData;
+import SoundTool from './tool/soundTool';
 import StreamTool from './tool/streamTool';
 import ThumbnailTool from './tool/thumbnailTool';
 
@@ -17,6 +18,7 @@ class FFmpegTool {
   };
 
   static master: Master;
+  static soundTool: SoundTool;
   static streamTool: StreamTool;
   static thumbnailTool: ThumbnailTool;
 
@@ -34,6 +36,7 @@ class FFmpegTool {
       ff.setFfprobePath(this.parseProductionPath(opts?.buildPath, 'ffprobe', isWindows));
     }
     this.master = opts?.master;
+    this.soundTool = new SoundTool();
     this.streamTool = new StreamTool();
     this.thumbnailTool = new ThumbnailTool();
   }
