@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useMemo } from 'react';
 import './index.less';
-import { useSelector, shallowEqual } from 'react-redux';
 import WaveSurfer from 'wavesurfer.js';
+import ClipCore from '@render/pages/clip/core';
+import { useSelector, shallowEqual } from 'react-redux';
 
 const AudioTrack = () => {
   const unitPX = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitPX) || 0;
@@ -23,14 +24,10 @@ const AudioTrack = () => {
   }, []);
 
   useEffect(() => {
-    if (wavesurfer?.current && videoMaterials?.[0]?.inputPath) {
-      window?.master?.tools?.ffmpegTool?.soundTool
-        ?.generateSoundAudioPCM(videoMaterials?.[0]?.inputPath, videoMaterials?.[0]?.name || videoMaterials?.[0]?.uid || '')
-        .then((url) => {
-          wavesurfer?.current?.load(url);
-        });
+    if (wavesurfer?.current && videoMaterials?.[0]?.data?.soundWavUrl) {
+      wavesurfer?.current?.load(videoMaterials?.[0]?.data?.soundWavUrl);
     }
-  }, [wavesurfer?.current, videoMaterials?.[0]?.inputPath]);
+  }, [wavesurfer?.current, videoMaterials?.[0]?.data?.soundWavUrl]);
 
   const soundAudioPCMWidth = useMemo(() => {
     return ((videoMaterials?.[0]?.duration || 0) * unitPX) / unitTime < 0 ? 0 : ((videoMaterials?.[0]?.duration || 0) * unitPX) / unitTime;

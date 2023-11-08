@@ -42,14 +42,14 @@ declare namespace MasterResourceType {
      * @description 素材封面
      */
     cover?: string;
-     /**
+    /**
      * @description 素材播放时长
      */
-     duration?: number;
-     /**
-      * @description 起播时间
-      */
-     startTime?: number;
+    duration?: number;
+    /**
+     * @description 起播时间
+     */
+    startTime?: number;
   }
 
   // 视频
@@ -66,6 +66,11 @@ declare namespace MasterResourceType {
      * @description 素材缩略图
      */
     thumbnails?: string[];
+    /**
+     * @description 素材对应的音波地址
+     * @summary 从MP4视频素材提取出来的音频
+     */
+    soundWavUrl?: string;
     /**
      * @description 视频扩展信息
      */
