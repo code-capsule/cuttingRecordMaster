@@ -9,6 +9,7 @@ import VideoTrack from './TrackProvider/VideoTrack';
 import useInitTrackHooks from '@render/pages/clip/hooks/useInitTrackHooks';
 import { debounce } from 'lodash';
 import InitNoneTrack from './TrackProvider/InitNoneTrack';
+import AudioTrack from './TrackProvider/AudioTrack';
 
 const Track = React.memo(() => {
   const providerElementRef = useRef<HTMLDivElement>(null);
@@ -76,7 +77,12 @@ const Track = React.memo(() => {
                     <div className="unit-scale-container">
                       <UnitScaleBar parentElementRef={providerElementRef} />
                     </div>
-                    <VideoTrack />
+                    {materialStatus?.hasVideo && (
+                      <React.Fragment>
+                        <VideoTrack />
+                        <AudioTrack />
+                      </React.Fragment>
+                    )}
                   </React.Fragment>
                 )}
               </div>
