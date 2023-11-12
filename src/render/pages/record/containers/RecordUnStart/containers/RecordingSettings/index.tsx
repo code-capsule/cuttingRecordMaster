@@ -4,6 +4,7 @@ import EquipmentOptions from './components/EquipmentOptions';
 import StartRecording from './components/StartRecording';
 import { recordPageActions } from '@common/stores/reduxStore/actions';
 import { SCREEN_CAMERA_PROCESS_KEY } from '@common/constants/processKey';
+import SystemTool from '@common/tools/systemTool';
 const remote = require('@electron/remote');
 const screen = remote.screen;
 import './index.less';
@@ -49,7 +50,7 @@ const RecordingSettings = (props: IProps) => {
     setMicKey(micKey);
   };
 
-  const handleClickStartRecording = () => {
+  const handleClickStartRecording = async () => {
     const size = screen.getPrimaryDisplay().workAreaSize;
     const recordInstance = window.master.services.windowService.get('record')?.getInstance();
     recordInstance.setAlwaysOnTop(true);
@@ -67,6 +68,19 @@ const RecordingSettings = (props: IProps) => {
       recordInstance.setSize(880, 466);
       recordInstance.center();
     }
+    const primaryDisplay = await SystemTool.getPrimaryScreenDisplay();
+    // const deviceId = recordInstance.getMediaSourceId();
+    // console.log('deviceId', deviceId);
+    const res = await window.master.services.recordService.startRecord({
+      video: {
+        width: primaryDisplay.dpiDisplaySize.width,
+        height: primaryDisplay.dpiDisplaySize.height,
+        deviceId: primaryDisplay.sourceId,
+        // deviceId,
+      },
+      audio: false,
+    });
+    console.log('res', res);
   };
 
   return (

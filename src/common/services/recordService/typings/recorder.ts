@@ -20,10 +20,11 @@ export interface IRecordAudioOptions {
   deviceId: string;
   sampleRate?: number;
   channelCount?: number;
+  hasSystemAudio?: boolean;
 }
 
 export interface IRecordVideoOptions {
-  sourceId: string;
+  deviceId: string;
   frameRate?: number;
   width?: number;
   height?: number;

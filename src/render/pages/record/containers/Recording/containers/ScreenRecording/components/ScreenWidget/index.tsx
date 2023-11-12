@@ -7,7 +7,12 @@ const ScreenWidget = () => {
   const recordStatus = useSelector((state: MasterAppStoreType.AppState) => state.recordPage.recordStatus);
   const recordingMode = useSelector((state: MasterAppStoreType.AppState) => state.recordPage.recordingMode);
 
-  const handleClickStop = () => {
+  const handleClickStop = async () => {
+    const res = await window.master.services.recordService.stopRecord();
+    console.log('stop record res', res);
+    if (res.code !== 0) {
+      return;
+    }
     const recordInstance = window.master?.services?.windowService?.get('record')?.getInstance();
     recordInstance.setSize(880, 466);
     recordInstance.center();
@@ -19,9 +24,13 @@ const ScreenWidget = () => {
     }
   };
 
-  const handleClickPause = () => {};
+  const handleClickPause = () => {
+    window.master.services.recordService.pauseRecord();
+  };
 
-  const handleClickResume = () => {};
+  const handleClickResume = () => {
+    window.master.services.recordService.resumeRecord();
+  };
   return <div className="screen-widget">
     <div className="screen-recording-widget">
       <RecordingWidget

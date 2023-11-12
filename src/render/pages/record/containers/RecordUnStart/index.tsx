@@ -23,9 +23,9 @@ const RecordUnStart = () => {
   };
 
   const handleClickClose = () =>  {
-    const homeWindowInstance = window.master?.services?.windowService?.get(HOME_PROCESS_KEY)?._instance;
+    const homeWindowInstance = window.master.services.windowService.get(HOME_PROCESS_KEY);
     homeWindowInstance.show();
-    const recordWindowInstance = window.master?.services?.windowService?.get(RECORD_PROCESS_KEY)?._instance;
+    const recordWindowInstance = window.master?.services?.windowService?.get(RECORD_PROCESS_KEY);
     recordWindowInstance?.close();
   };
 

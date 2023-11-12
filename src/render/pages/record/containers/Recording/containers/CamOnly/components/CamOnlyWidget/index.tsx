@@ -5,11 +5,18 @@ import RecordingWidget from '@src/render/pages/record/components/RecordingWidget
 
 const CamOnlyWidget = () => {
   const recordStatus = useSelector((state: MasterAppStoreType.AppState) => state.recordPage.recordStatus);
-  const handleClickStop = () => {};
+  const handleClickStop = async () => {
+    const res = await window.master.services.recordService.stopRecord();
+    console.log('stop record res', res);
+  };
 
-  const handleClickPause = () => {};
+  const handleClickPause = () => {
+    window.master.services.recordService.pauseRecord();
+  };
 
-  const handleClickResume = () => {};
+  const handleClickResume = () => {
+    window.master.services.recordService.resumeRecord();
+  };
 
   return (
     <div className="cam-only-widget">
