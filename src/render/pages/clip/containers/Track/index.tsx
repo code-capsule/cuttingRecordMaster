@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import './index.less';
 import { useSelector, shallowEqual } from 'react-redux';
 import { trackPageActions } from '@common/stores/reduxStore/actions';
@@ -7,6 +7,7 @@ import UnitScaleBar from './UnitScaleBar';
 import ClipCore from '@render/pages/clip/core';
 import VideoTrack from './TrackProvider/VideoTrack';
 import useInitTrackHooks from '@render/pages/clip/hooks/useInitTrackHooks';
+import useMouseClickPositionHooks from '@render/pages/clip/hooks/useMouseClickPositionHooks';
 import { debounce } from 'lodash';
 import InitNoneTrack from './TrackProvider/InitNoneTrack';
 import AudioTrack from './TrackProvider/AudioTrack';
@@ -51,13 +52,21 @@ const Track = React.memo(() => {
     };
   }, [videoMaterials, textMaterials, imageMaterials]);
 
+  // 点击轨道区其他区域
+  const { getMouseAnchorTime } = useMouseClickPositionHooks();
+  const handleMouseClickInTrackWrapperOuter = useCallback((e: any) => {
+    if (e.button !== 0) return;
+    const newAnchorTime = getMouseAnchorTime(e);
+    trackPageActions.updateTrackInfo?.({ activeMaterial: undefined, anchorTime: newAnchorTime });
+  }, []);
+
   return (
     <div className="clip-track-container">
       <div className="clip-toolbar-container">
         <Toolbar />
       </div>
       <div className="clip-provider-container">
-        <div className="clip-track-wrapper-outer" style={{ paddingLeft: 0 }} onClick={() => {}}>
+        <div className="clip-track-wrapper-outer" style={{ paddingLeft: 0 }} onClick={handleMouseClickInTrackWrapperOuter}>
           <div
             className="clip-track-wrapper-inner"
             id="clip-track-wrapper-inner"
