@@ -66,6 +66,10 @@ declare namespace MasterProjectType {
      */
     material?: IMaterialStructure;
     /**
+     * @description 轨道
+     */
+    track?: MasterTrackCell.IProjectTrack;
+    /**
      * @description 工程中的录制数据
      */
     record?: { [key: string]: any };
