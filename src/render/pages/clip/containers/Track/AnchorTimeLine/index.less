@@ -1,0 +1,37 @@
+.anchor-time-line {
+  position: absolute;
+  width: 16px;
+  height: 100%;
+  left: -8px;
+  z-index: 3;
+  top: 0px;
+  pointer-events: auto;
+  .anchor {
+    width: 0;
+    height: 0;
+    border-top: 8px solid rgba(217, 217, 217, 0.3);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 0;
+  }
+  .line {
+    border: 1px solid rgba(217, 217, 217, 0.3);
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    right: 7px;
+    height: calc(100% - 9px);
+    width: 0;
+  }
+  &.active {
+    .anchor {
+      border-top: 8px solid rgba(143, 143, 255, 1);
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 0;
+    }
+    .line {
+      border: 1px solid rgba(143, 143, 255, 1);
+    }
+  }
+}

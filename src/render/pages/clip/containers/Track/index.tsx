@@ -9,6 +9,7 @@ import VideoTrack from './TrackProvider/VideoTrack';
 import useInitTrackHooks from '@render/pages/clip/hooks/useInitTrackHooks';
 import useMouseClickPositionHooks from '@render/pages/clip/hooks/useMouseClickPositionHooks';
 import { debounce } from 'lodash';
+import AnchorTimeLine from './AnchorTimeLine';
 import InitNoneTrack from './TrackProvider/InitNoneTrack';
 import AudioTrack from './TrackProvider/AudioTrack';
 
@@ -88,6 +89,7 @@ const Track = React.memo(() => {
                     </div>
                     {materialStatus?.hasVideo && (
                       <React.Fragment>
+                        <AnchorTimeLine />
                         <VideoTrack />
                         <AudioTrack />
                       </React.Fragment>

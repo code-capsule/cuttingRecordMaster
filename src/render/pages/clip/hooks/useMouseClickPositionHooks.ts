@@ -21,7 +21,7 @@ const useMouseClickPosition = () => {
 
   const getMouseXPosition = useCallback((e: MouseEvent) => {
     const { scrollLeft } = mouseClickVarRef.current;
-    return scrollLeft + e?.clientX;
+    return scrollLeft + e?.clientX - 8; // 减去左侧8px的偏移量
   }, []);
 
   const calcAnchorTimeByPX = useCallback((anchorX: number): number => {
