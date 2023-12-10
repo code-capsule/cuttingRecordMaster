@@ -6,7 +6,7 @@ import ClipCore from '@render/pages/clip/core';
 
 interface IProps {
   itemPXWidth: number; // 视频素材的宽度
-  itemInfo: MasterResourceType.IVideoResource; // 视频的信息
+  itemInfo: MasterResourceType.IVideoResource | null; // 视频的信息
 }
 
 const MainVideoItem = React.memo((props: IProps) => {

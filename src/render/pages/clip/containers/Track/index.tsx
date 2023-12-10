@@ -58,7 +58,7 @@ const Track = React.memo(() => {
   const handleMouseClickInTrackWrapperOuter = useCallback((e: any) => {
     if (e.button !== 0) return;
     const newAnchorTime = getMouseAnchorTime(e);
-    trackPageActions.updateTrackInfo?.({ activeMaterial: undefined, anchorTime: newAnchorTime });
+    trackPageActions.updateTrackInfo?.({ activeTrackCells: [], anchorTime: newAnchorTime });
   }, []);
 
   return (
