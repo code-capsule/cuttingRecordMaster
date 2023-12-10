@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useVirtual } from 'react-virtual';
 import { formatSeconds } from '@src/common/utils/time';
 import { TRACK_UNIT_PX, TRACK_UNIT_GRID_NUMBER } from '@render/pages/clip/constants';
-import ClipCore from '@render/pages/clip/core';
+import ClipCoreManager from '@render/pages/clip/core';
 
 interface IProps {
   parentElementRef: React.RefObject<HTMLDivElement>;
@@ -24,10 +24,10 @@ const UnitScaleBar = React.memo((props: IProps) => {
   const totalScales = useMemo(() => {
     if (!trackWidth) {
       if (props?.defaultTrackWidth) {
-        return ClipCore.utilsManager.unitScale?.getVideoTotalScalesByUnitPX({ unitPX, trackWidth: props?.defaultTrackWidth });
+        return ClipCoreManager.utilsManager.unitScale?.getVideoTotalScalesByUnitPX({ unitPX, trackWidth: props?.defaultTrackWidth });
       } else return 0;
     }
-    return ClipCore.utilsManager.unitScale?.getVideoTotalScalesByUnitPX({ unitPX, trackWidth });
+    return ClipCoreManager.utilsManager.unitScale?.getVideoTotalScalesByUnitPX({ unitPX, trackWidth });
   }, [unitPX, trackWidth, props?.defaultTrackWidth]);
 
   const timeScalesVirtualizer = useVirtual({

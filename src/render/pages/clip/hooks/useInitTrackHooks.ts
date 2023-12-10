@@ -1,7 +1,7 @@
 /**
  * @description 初始化轨道上相关的信息
  */
-import ClipCore from '@render/pages/clip/core';
+import ClipCoreManager from '@render/pages/clip/core';
 import { useEffect } from 'react';
 import { trackPageActions } from '@common/stores/reduxStore/actions';
 import { TRACK_UNIT_PX, TRACK_UNIT_TIME_GEARS, TRACK_UNIT_TIME } from '@render/pages/clip/constants';
@@ -24,7 +24,7 @@ const useInitTrackHooks = () => {
   useEffect(() => {
     const projectInfo = window.master.stores.localStore.project.getProjectInfo() as MasterProjectType.IProjectDataInfo;
     const videoMaterials = projectInfo?.material?.video || [];
-    const totalDuration = ClipCore.utilsManager.unitScale.getVideoMaterialTotalDuration(videoMaterials);
+    const totalDuration = ClipCoreManager.utilsManager.unitScale.getVideoMaterialTotalDuration(videoMaterials);
     initTrackInfoParams(totalDuration);
   }, []);
 };
