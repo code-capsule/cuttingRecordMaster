@@ -4,7 +4,7 @@ import { useSelector, shallowEqual } from 'react-redux';
 import { trackPageActions } from '@common/stores/reduxStore/actions';
 import Toolbar from './ToolBar';
 import UnitScaleBar from './UnitScaleBar';
-import ClipCore from '@render/pages/clip/core';
+import ClipCoreManager from '@render/pages/clip/core';
 import VideoTrack from './TrackProvider/VideoTrack';
 import useInitTrackHooks from '@render/pages/clip/hooks/useInitTrackHooks';
 import useMouseClickPositionHooks from '@render/pages/clip/hooks/useMouseClickPositionHooks';
@@ -39,7 +39,7 @@ const Track = React.memo(() => {
   // 3.更新视频总宽度
   useEffect(() => {
     if (boxWidth === 0 || unitPX * unitTime === 0) return;
-    const totalDuration = ClipCore.utilsManager.unitScale.getVideoMaterialTotalDuration(videoMaterials);
+    const totalDuration = ClipCoreManager.utilsManager.unitScale.getVideoMaterialTotalDuration(videoMaterials);
     const calcTrackWidth = (unitPX * totalDuration) / unitTime > boxWidth ? (unitPX * totalDuration) / unitTime : boxWidth;
     trackPageActions?.updateTrackInfo?.({ trackWidth: calcTrackWidth, totalDuration });
   }, [unitPX, unitTime, boxWidth, videoMaterials]);

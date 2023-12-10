@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import './index.less';
 import { useSelector } from 'react-redux';
 import { THUMBNAIL_HEIGHT, THUMBNAIL_WIDTH } from '@render/pages/clip/constants';
-import ClipCore from '@render/pages/clip/core';
+import ClipCoreManager from '@render/pages/clip/core';
 
 interface IProps {
   itemPXWidth: number; // 视频素材的宽度
@@ -28,8 +28,8 @@ const MainVideoItem = React.memo((props: IProps) => {
   // 2.计算得到屏幕可视区域的时间范围
   const boxTime = useMemo(() => {
     return {
-      leftTime: ClipCore.utilsManager.unitScale.getBoxViewLeftTime({ scrollLeft, unitPX, unitTime }),
-      rightTime: ClipCore.utilsManager.unitScale.getBoxViewRightTime({ unitPX, unitTime, scrollLeft, boxWidth, trackWidth }),
+      leftTime: ClipCoreManager.utilsManager.unitScale.getBoxViewLeftTime({ scrollLeft, unitPX, unitTime }),
+      rightTime: ClipCoreManager.utilsManager.unitScale.getBoxViewRightTime({ unitPX, unitTime, scrollLeft, boxWidth, trackWidth }),
     };
   }, [unitPX, unitTime, scrollLeft, boxWidth, trackWidth]);
 
@@ -42,13 +42,13 @@ const MainVideoItem = React.memo((props: IProps) => {
   }, [props?.itemInfo?.startTime, props?.itemInfo?.duration]);
 
   // 4.获取视频片段在可视区域内展示的时间范围
-  const timeMarks = ClipCore.utilsManager.unitScale.getCellAndBoxTimeIntersection(cellTime, boxTime);
+  const timeMarks = ClipCoreManager.utilsManager.unitScale.getCellAndBoxTimeIntersection(cellTime, boxTime);
 
   // 5.根据时间范围抽取指定的张数
   const viewThumbnails = useMemo(() => {
     if (timeMarks.length === 0 || timeMarks.length === 1) return [];
     const timeMarkViewDistanceWidth = Math.ceil(((timeMarks[1] - timeMarks[0]) * unitPX) / unitTime);
-    const needThumbnailTimeMarks = ClipCore.utilsManager.thumbnail.demandTimeMarksThumbnails({
+    const needThumbnailTimeMarks = ClipCoreManager.utilsManager.thumbnail.demandTimeMarksThumbnails({
       timeMarks,
       timeMarkViewDistanceWidth,
       totalThumbnailCount: itemAllThumbnails?.length,
