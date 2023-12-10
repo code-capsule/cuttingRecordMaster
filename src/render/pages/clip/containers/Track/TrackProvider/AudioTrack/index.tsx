@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useMemo } from 'react';
 import './index.less';
 import WaveSurfer from 'wavesurfer.js';
-import ClipCore from '@render/pages/clip/core';
+import ClipCoreManager from '@render/pages/clip/core';
 import { useSelector, shallowEqual } from 'react-redux';
 
 const AudioTrack = () => {
