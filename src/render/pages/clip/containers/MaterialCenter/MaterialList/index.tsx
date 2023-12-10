@@ -27,7 +27,13 @@ const MaterialList = () => {
           )}
           {videoMaterial?.length === 0 && (
             <div className="empty-material-container">
-              <div className="empty-material-button">
+              <div
+                className="empty-material-button"
+                onClick={async () => {
+                  // 1.添加至视频素材池
+                  // 2.添加至轨道区
+                }}
+              >
                 <IcCommonVideoSvg className="empty-material-svg" />
                 录制素材
               </div>
