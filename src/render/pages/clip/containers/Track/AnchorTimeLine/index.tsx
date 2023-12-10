@@ -12,7 +12,7 @@ const AnchorTimeLine = React.memo(() => {
   const anchorX = (anchorTime * unitPX) / unitTime;
 
   const totalDuration = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.totalDuration) || 0;
-  const activeMaterial = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.activeMaterial, shallowEqual);
+  const activeTrackCells = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.activeTrackCells || [], shallowEqual);
 
   const closureValueRef = useRef<{ anchorTime: number; totalDuration: number }>();
   closureValueRef.current = { anchorTime, totalDuration };
@@ -38,8 +38,8 @@ const AnchorTimeLine = React.memo(() => {
   }, []);
 
   const isActive = useMemo(() => {
-    return !!activeMaterial;
-  }, [activeMaterial]);
+    return !!activeTrackCells?.[0];
+  }, [activeTrackCells]);
 
   return (
     <div
