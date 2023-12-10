@@ -36,7 +36,13 @@ const MaterialList = () => {
           )}
           {videoMaterial?.length === 0 && (
             <div className="empty-material-container">
-              <div className="empty-material-button">
+              <div
+                className="empty-material-button"
+                onClick={async () => {
+                  // 1.添加至视频素材池
+                  // 2.添加至轨道区
+                }}
+              >
                 <IcCommonRecordSvg className="empty-material-svg" />
                 录制素材
               </div>
@@ -44,9 +50,10 @@ const MaterialList = () => {
                 className="empty-material-button"
                 onClick={async () => {
                   setIsLoading(true);
-                  await CoreClip.materialManager.insertVideoMaterial([
+                  const responseMaterial = await CoreClip.materialManager.insertVideoMaterial([
                     `${window?.master?.appRootPath || ''}\\src\\assets\\material\\video\\demo.mp4`,
                   ]);
+                  CoreClip.trackManager.video.insert(responseMaterial?.executeMaterials?.[responseMaterial?.executeMaterials?.length -  1]?.uid, 0);
                   setIsLoading(false);
                 }}
               >
