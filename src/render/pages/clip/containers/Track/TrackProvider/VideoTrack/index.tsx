@@ -13,7 +13,7 @@ interface IProps {
 const VideoTrack = (props: IProps) => {
   const unitPX = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitPX) || 0;
   const unitTime = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.unitTime) || 0;
-  const videoCells = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.track?.imageTrack?.cells || [], shallowEqual);
+  const videoCells = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.track?.videoTrack?.cells || [], shallowEqual);
   const activeMaterial = useSelector((store: MasterAppStoreType.AppState) => store?.trackPage?.activeMaterial || null, shallowEqual);
 
   const renderVideoMaterials = useMemo(() => {
