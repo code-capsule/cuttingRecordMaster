@@ -1,7 +1,7 @@
 /**
  * @TODO 素材管理器
  */
-import ClipCore from '@render/pages/clip/core';
+import ClipCoreManager from '@render/pages/clip/core';
 import { find, findIndex, cloneDeep } from 'lodash';
 import { EResourceType } from '@src/typings/resource/enum';
 import { projectPageActions } from '@common/stores/reduxStore/actions';
@@ -17,7 +17,7 @@ class MaterialManager {
    * @param {string[]} filePaths 视频素材路径
    */
   async insertVideoMaterial(filePaths: string[]): Promise<IResponseMaterial> {
-    const metadataInfos = await Promise.all(filePaths?.map((filePath) => ClipCore.mediaManager.parseVideoAndGenerateFrames({ filePath })));
+    const metadataInfos = await Promise.all(filePaths?.map((filePath) => ClipCoreManager.mediaManager.parseVideoAndGenerateFrames({ filePath })));
     const assembles = metadataInfos?.map((metadata, idx) => {
       if (metadata) {
         const currentTimeStamp = new Date().valueOf();
