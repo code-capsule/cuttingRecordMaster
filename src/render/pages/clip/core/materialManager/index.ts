@@ -2,7 +2,7 @@
  * @TODO 素材管理器
  */
 import ClipCore from '@render/pages/clip/core';
-import { findIndex, cloneDeep } from 'lodash';
+import { find, findIndex, cloneDeep } from 'lodash';
 import { EResourceType } from '@src/typings/resource/enum';
 import { projectPageActions } from '@common/stores/reduxStore/actions';
 
@@ -49,12 +49,38 @@ class MaterialManager {
     });
     const insertVideoMaterials = assembles?.filter((ass) => ass?.uid) as MasterResourceType.IVideoResource[];
     const oldMaterial = (window?.master?.stores?.reduxStore?.getState() as MasterAppStoreType.AppState)?.projectPage?.material || {};
-    const newMaterial = {
+    const newMaterials = {
       ...oldMaterial,
       video: (oldMaterial?.video || [])?.concat(insertVideoMaterials),
     };
-    projectPageActions?.updateProjectInfo?.({ material: newMaterial });
-    return { executeMaterials: insertVideoMaterials, totalMaterials: newMaterial };
+    projectPageActions?.updateProjectInfo?.({ material: newMaterials });
+    return { executeMaterials: insertVideoMaterials, totalMaterials: newMaterials };
+  }
+
+  /**
+   * @description 获取素材信息
+   * @param {string} materialId 素材 id
+   * @param {EResourceType} materialType 素材类型
+   */
+  getMaterial(materialId?: string, materialType?: EResourceType): MasterResourceType.IResourceItem | null {
+    if (materialId && materialType) {
+      let targetFindMaterial: MasterResourceType.IResourceItem | null = null;
+      const store = window?.master?.stores?.reduxStore?.getState() as MasterAppStoreType.AppState;
+        if (materialType === EResourceType.video) {
+        const videoMaterials = store?.projectPage?.material?.video || [];
+        const findVideoMaterial = find(videoMaterials, (vm: MasterResourceType.IVideoResource) => vm?.uid === materialId);
+        if (findVideoMaterial) targetFindMaterial = findVideoMaterial;
+      } else if (materialType === EResourceType.text) {
+        const textMaterials = store?.projectPage?.material?.text || [];
+        const findTextMaterial = find(textMaterials, (vm: MasterResourceType.ITextResource) => vm?.uid === materialId);
+        if (findTextMaterial) targetFindMaterial = findTextMaterial;
+      } else if (materialType === EResourceType.image) {
+        const imageMaterials = store?.projectPage?.material?.image || [];
+        const findImageMaterial = find(imageMaterials, (vm: MasterResourceType.IImageResource) => vm?.uid === materialId);
+        if (findImageMaterial) targetFindMaterial = findImageMaterial;
+      } else targetFindMaterial = null;
+      return targetFindMaterial;
+    } else return null;
   }
 
   /**

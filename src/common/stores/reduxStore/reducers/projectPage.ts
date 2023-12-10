@@ -18,6 +18,23 @@ export const initialProjectState: MasterProjectType.IProjectDataInfo = {
     text: [],
     image: [],
   },
+  track: {
+    videoTrack: {
+      uid: 'track.video.001',
+      type: 'video',
+      cells: [],
+    },
+    textTrack: {
+      uid: 'track.text.001',
+      type: 'text',
+      cells: [],
+    },
+    imageTrack: {
+      uid: 'track.image.001',
+      type: 'image',
+      cells: [],
+    },
+  },
 };
 
 export const projectPageSlice = createSlice({
@@ -33,6 +50,20 @@ export const projectPageSlice = createSlice({
       return {
         ...state,
         ...action.payload,
+      };
+    },
+    updateProjectVideoTrack: (state, action: PayloadAction<MasterTrackCell.IVideoTrackCell[]>) => {
+      return {
+        ...state,
+        ...action.payload,
+        track: {
+          ...state.track,
+          videoTrack: {
+            ...state.track?.videoTrack,
+            type: 'video',
+            cells: action?.payload,
+          },
+        },
       };
     },
   },
