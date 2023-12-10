@@ -3,7 +3,7 @@ declare namespace MasterTrackCell {
     /**
      * @description 轨道唯一标识
      */
-    id?: string;
+    uid?: string;
     /**
      * @description 轨道类型
      */
@@ -21,7 +21,7 @@ declare namespace MasterTrackCell {
     /**
      * @description 片段id
      */
-    id?: string;
+    uid?: string;
     /**
      * @description 类型
      */

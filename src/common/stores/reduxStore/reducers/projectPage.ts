@@ -20,17 +20,17 @@ export const initialProjectState: MasterProjectType.IProjectDataInfo = {
   },
   track: {
     videoTrack: {
-      id: 'track.video.001',
+      uid: 'track.video.001',
       type: 'video',
       cells: [],
     },
     textTrack: {
-      id: 'track.text.001',
+      uid: 'track.text.001',
       type: 'text',
       cells: [],
     },
     imageTrack: {
-      id: 'track.image.001',
+      uid: 'track.image.001',
       type: 'image',
       cells: [],
     },
