@@ -52,5 +52,19 @@ export const projectPageSlice = createSlice({
         ...action.payload,
       };
     },
+    updateProjectVideoTrack: (state, action: PayloadAction<MasterTrackCell.IVideoTrackCell[]>) => {
+      return {
+        ...state,
+        ...action.payload,
+        track: {
+          ...state.track,
+          videoTrack: {
+            ...state.track?.videoTrack,
+            type: 'video',
+            cells: action?.payload,
+          },
+        },
+      };
+    },
   },
 });
