@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react';
 import './index.less';
 import { useSelector, shallowEqual } from 'react-redux';
-import ClipCoreManager from '@render/pages/clip/core';
 import { EResourceType } from '@src/typings/resource/enum';
+import ClipCoreManager from '@render/pages/clip/core';
+import { ReactComponent as IcCommonTrackSvg } from '@common/svgs/ic_common_track.svg';
 
 const Track = React.memo(() => {
   const videoCells = useSelector((store: MasterAppStoreType.AppState) => store?.projectPage?.track?.videoTrack?.cells || [], shallowEqual);
@@ -15,6 +16,9 @@ const Track = React.memo(() => {
 
   return (
     <div className="clip-track-container">
+      <div className="clip-track-svg-type">
+      <IcCommonTrackSvg className="track-svg-type" />
+      </div>
       <div className="clip-track-wrapper-outer" style={{ paddingLeft: 16 }} onClick={() => {}}>
         <div className="clip-track-wrapper-inner" id="clip-track-wrapper-inner">
           {targetVideoMaterial?.data?.thumbnails?.map((url, idx) => {

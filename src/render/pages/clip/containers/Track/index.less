@@ -3,8 +3,20 @@
   display: flex;
   justify-content: flex-start;
   height: 100%;
+  .clip-track-svg-type {
+    width: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #141414;
+    .track-svg-type {
+      width: 24px;
+      height: 24px;
+      color: #ffffff;
+    }
+  }
   .clip-track-wrapper-outer {
-    width: 100%;
+    width: calc(100% - 72px);
     height: 100%;
     position: relative;
     .clip-track-wrapper-inner {
