@@ -41,6 +41,7 @@ const MaterialList = () => {
                 onClick={async () => {
                   // 1.添加至视频素材池
                   // 2.添加至轨道区
+                  
                 }}
               >
                 <IcCommonRecordSvg className="empty-material-svg" />

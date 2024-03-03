@@ -12,6 +12,7 @@ import { debounce } from 'lodash';
 import AnchorTimeLine from './AnchorTimeLine';
 import InitNoneTrack from './TrackProvider/InitNoneTrack';
 import AudioTrack from './TrackProvider/AudioTrack';
+import { ReactComponent as IcCommonTrackSvg } from '@common/svgs/ic_common_track.svg';
 
 const Track = React.memo(() => {
   const providerElementRef = useRef<HTMLDivElement>(null);
@@ -67,7 +68,10 @@ const Track = React.memo(() => {
         <Toolbar />
       </div>
       <div className="clip-provider-container">
-        <div className="clip-track-wrapper-outer" style={{ paddingLeft: 0 }} onClick={handleMouseClickInTrackWrapperOuter}>
+        <div className="clip-track-svg-type">
+          <IcCommonTrackSvg className="track-svg-type" />
+        </div>
+        <div className="clip-track-wrapper-outer" style={{ paddingLeft: 16 }} onClick={handleMouseClickInTrackWrapperOuter}>
           <div
             className="clip-track-wrapper-inner"
             id="clip-track-wrapper-inner"
