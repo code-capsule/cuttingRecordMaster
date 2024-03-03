@@ -21,7 +21,7 @@ const useMouseClickPosition = () => {
 
   const getMouseXPosition = useCallback((e: MouseEvent) => {
     const { scrollLeft } = mouseClickVarRef.current;
-    return scrollLeft + e?.clientX - 8; // 减去左侧8px的偏移量
+    return scrollLeft + e?.clientX - 16 - 8 - 72; // 减去时间刻度线便宜 8px 的偏移量，以及 16px的 paddingLeft，还有左侧72px的轨道svg
   }, []);
 
   const calcAnchorTimeByPX = useCallback((anchorX: number): number => {
