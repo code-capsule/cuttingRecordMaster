@@ -14,7 +14,7 @@ const getVideoTotalScalesByUnitPX = (params: { trackWidth: number; unitPX: numbe
  * @param {MasterResourceType.IVideoResource[]} videoMaterials 视频素材
  * @returns {number}
  */
-const getVideoMaterialTotalDuration = (videoMaterials: MasterResourceType.IVideoResource[]) => {
+const getVideoMaterialTotalDuration = (videoMaterials: MasterResourceType.IVideoResource[]): number => {
   if (!videoMaterials || videoMaterials?.length === 0) return 0;
   const totalDuration = videoMaterials?.reduce((prev, next) => {
     return prev + (next?.duration || 0);
