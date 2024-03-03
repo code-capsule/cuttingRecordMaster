@@ -46,7 +46,7 @@ const VideoCard = React.memo((props: IProps) => {
           删除
         </div>
       </div>
-      <div className="material-video-card-duration">{props?.material?.data?.duration && formatSeconds(props?.material?.data?.duration)}</div>
+      <div className="material-video-card-duration">{props?.material?.duration && formatSeconds(props?.material?.duration)}</div>
       <div className="material-video-card-name">{props?.material?.name}</div>
       {/* 不存在素材 */}
       <div className={`material-video-card-not-found ${!props?.material?.isExistResource ? 'not-exist-video-material' : ''}`}>

@@ -8,6 +8,7 @@ import ImageList from './ImageList';
 import TextList from './TextList';
 import MATERIAL_CONSTANTS from '@src/assets/material';
 import { ReactComponent as IcCommonVideoSvg } from '@common/svgs/ic_common_video.svg';
+import ClipCoreManager from '@render/pages/clip/core';
 
 const MaterialList = () => {
   const materialContextReducer = useContext<MaterialContextProps>(MaterialCenterContext);
@@ -32,6 +33,8 @@ const MaterialList = () => {
                 onClick={async () => {
                   // 1.添加至视频素材池
                   // 2.添加至轨道区
+                  const responseMaterial =  await ClipCoreManager.materialManager.insertVideoMaterial(['C:\\Users\\user\\Desktop\\测试视频\\test13.mp4']);
+                   ClipCoreManager.trackManager.video.insert(responseMaterial?.executeMaterials?.[responseMaterial?.executeMaterials?.length -  1]?.uid, 0);
                 }}
               >
                 <IcCommonVideoSvg className="empty-material-svg" />
