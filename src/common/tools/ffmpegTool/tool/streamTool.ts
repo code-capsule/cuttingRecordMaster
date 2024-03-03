@@ -37,6 +37,23 @@ class StreamTool {
       }
     });
   }
+
+  async transformVideoMp4({ inputPath }: { inputPath: string }): Promise<string> {
+    return new Promise((res, rej) => {
+      const filepath = path.join(this.streamPath, `${generateUUid()}.mp4`);
+      const outputOptions: string[] = ['-codec', 'copy'];
+      FFmpegTool.FFmpeg(inputPath)
+        .outputOptions(outputOptions)
+        .on('error', function (err: any) {
+          console.log('transform video mp4: ' + err.message);
+        })
+        .on('end', function () {
+          console.log('transform video mp4 finished !', filepath);
+          res(filepath);
+        })
+        .save(filepath);
+    });
+  }
 }
 
 export default StreamTool;

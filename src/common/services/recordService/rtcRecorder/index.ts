@@ -22,7 +22,8 @@ class RtcRecorder implements IRecorder {
   public async stopRecord(): Promise<IStopRecordResult> {
     console.log('stopRecord');
     this.rtc?.stopRecording();
-    return { code: 0 };
+    const mp4Path = await FFmpegTool.streamTool.transformVideoMp4({ inputPath: this.recordVideoPath || '' });
+    return { code: 0, data: { path: mp4Path } };
   }
 
   public async pauseRecord(): Promise<IPauseRecordResult> {
