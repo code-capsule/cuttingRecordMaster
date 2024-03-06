@@ -69,8 +69,6 @@ const RecordingSettings = (props: IProps) => {
       recordInstance.center();
     }
     const primaryDisplay = await SystemTool.getPrimaryScreenDisplay();
-    // const deviceId = recordInstance.getMediaSourceId();
-    // console.log('deviceId', deviceId);
     const res = await window.master.services.recordService.startRecord({
       video: {
         width: primaryDisplay.dpiDisplaySize.width,

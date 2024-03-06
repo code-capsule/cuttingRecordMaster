@@ -144,6 +144,24 @@ class SystemTool {
       height: displaySize.height * scaleFactor
     };
   };
+
+  /**
+   * 获取麦克风列表
+   */
+  public getMicrophoneList = async (): Promise<MediaDeviceInfo[]> => {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const microphones = devices.filter((device) => device.kind === 'audioinput');
+    return microphones;
+  };
+
+  /**
+   * 获取摄像头列表
+   */
+  public getCameraList = async (): Promise<MediaDeviceInfo[]> => {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const cameras = devices.filter((device) => device.kind === 'videoinput');
+    return cameras;
+  };
 }
 
 export default new SystemTool() as SystemTool;

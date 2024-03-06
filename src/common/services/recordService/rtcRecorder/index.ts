@@ -21,9 +21,16 @@ class RtcRecorder implements IRecorder {
 
   public async stopRecord(): Promise<IStopRecordResult> {
     console.log('stopRecord');
-    this.rtc?.stopRecording();
-    const mp4Path = await FFmpegTool.streamTool.transformVideoMp4({ inputPath: this.recordVideoPath || '' });
-    return { code: 0, data: { path: mp4Path } };
+    return new Promise((res, rej) => {
+      this.rtc?.stopRecording(async () => {
+        const blob = this.rtc?.getBlob();
+        console.log('stop recording blob', blob);
+        if (blob?.size !== 0) {
+          const mp4Path = await FFmpegTool.streamTool.transformVideoMp4({ inputPath: this.recordVideoPath || '' });
+          res({ code: 0, data: { path: mp4Path } });
+        }
+      });
+    });
   }
 
   public async pauseRecord(): Promise<IPauseRecordResult> {
@@ -58,9 +65,16 @@ class RtcRecorder implements IRecorder {
     }
 
     const constraints: MediaStreamConstraints = {
+      // video: {
+      //   ...RECORD_VIDEO_CONFIG,
+      //   ...video,
+      // },
       video: {
-        ...RECORD_VIDEO_CONFIG,
-        ...video,
+        mandatory: {
+          chromeMediaSource: 'desktop',
+          chromeMediaSourceId: deviceId,
+          ...RECORD_VIDEO_CONFIG,
+        }
       },
       audio: audio && audio.hasSystemAudio ? {
         ...RECORD_AUDIO_CONFIG,
