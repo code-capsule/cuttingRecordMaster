@@ -6,7 +6,7 @@ import './index.less';
 
 interface IProps {
   micKey: string;
-  onChangeMicKey: (micKey: ISelectItem) => void;
+  onChangeMicKey: (micKey: string) => void;
 }
 
 const MicOptions = (props: IProps) => {
@@ -23,16 +23,25 @@ const MicOptions = (props: IProps) => {
         };
       });
       setList(micList);
+      if (micList.length > 0) {
+        onChangeMicKey(micList[0].key as string);
+      }
     };
     initMicList();
   }, []);
+
+  const handleClickMicKey = (selectItem: ISelectItem) => {
+    onChangeMicKey(selectItem.key as string);
+  };
 
   const renderMicIcon = () => {
     return <MicIcon width={20} height={20} style={{ marginRight: '8px' }} />;
   };
 
+  console.log('micKey', micKey);
+
   return <div className="equipment-option">
-    <Select Icon={renderMicIcon} list={list} currentKey={micKey} onChange={onChangeMicKey}></Select>
+    <Select Icon={renderMicIcon} list={list} currentKey={micKey} onChange={handleClickMicKey}></Select>
   </div>;
 };
 

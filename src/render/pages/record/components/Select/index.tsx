@@ -35,7 +35,7 @@ export const getCurrentValue = (list: ISelectItem[], key: RawValue, defaultValue
 };
 
 const Select = (props: IProps) => {
-  const { style, children, Icon } = props;
+  const { currentKey, style, children, Icon, list } = props;
   const optionsDirection = props.optionsDirection || 'bottom';
 
   const getCurrentSelectValue = (key: RawValue): string => {
@@ -45,7 +45,7 @@ const Select = (props: IProps) => {
 
   const selectRef = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState<boolean>(false);
-  const _currentValue = getCurrentSelectValue(props.currentKey);
+  const _currentValue = getCurrentSelectValue(currentKey);
   const [currentValue, setCurrentValue] = useState<string>(_currentValue);
 
   // 点击其它地方，要收起下拉框
@@ -57,9 +57,9 @@ const Select = (props: IProps) => {
   }, []);
 
   useEffect(() => {
-    const _currentValue = getCurrentSelectValue(props.currentKey);
+    const _currentValue = getCurrentSelectValue(currentKey);
     setCurrentValue(_currentValue);
-  }, [props.currentKey]);
+  }, [currentKey, list]);
 
   const handleClickDocument = (e: Event): void => {
     const isSelectWrap = Boolean(selectRef?.current?.contains?.(e?.target));
@@ -76,7 +76,7 @@ const Select = (props: IProps) => {
           return (
             <div
               key={index}
-              className={`select-options-item ${props.currentKey === item.key ? 'selected' : ''}`}
+              className={`select-options-item ${currentKey === item.key ? 'selected' : ''}`}
               onMouseDown={(e: any) => handleClickOption(e, item)}
             >
               {item.value}

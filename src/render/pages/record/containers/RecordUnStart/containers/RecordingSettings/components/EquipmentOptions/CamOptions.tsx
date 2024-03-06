@@ -6,7 +6,7 @@ import './index.less';
 
 interface IProps {
   camKey: string;
-  onChangeCamKey: (camKey: ISelectItem) => void;
+  onChangeCamKey: (camKey: string) => void;
 }
 
 const CamOptions = (props: IProps) => {
@@ -23,16 +23,23 @@ const CamOptions = (props: IProps) => {
         };
       });
       setList(camList);
+      if (camList.length > 0) {
+        onChangeCamKey(camList[0].key as string);
+      }
     };
     initCamList();
   }, []);
+
+  const handleClickCamKey = (selectItem: ISelectItem) => {
+    onChangeCamKey(selectItem.key as string);
+  };
 
   const renderCamIcon = () => {
     return <CamIcon width={20} height={20} style={{ marginRight: '8px' }} />;
   };
 
   return <div className="equipment-option">
-    <Select Icon={renderCamIcon} list={list} currentKey={camKey} onChange={onChangeCamKey}></Select>
+    <Select Icon={renderCamIcon} list={list} currentKey={camKey} onChange={handleClickCamKey}></Select>
   </div>;
 };
 
