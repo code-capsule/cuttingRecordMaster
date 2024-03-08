@@ -3,6 +3,7 @@ declare namespace MasterRecordType {
     recordStatus: TRecordStatus;
     recordingMode: TRecordingMode;
     recordingAudioMode: TRecordingAudioMode;
+    cameraDeviceId: string;
   }
 
   type TRecordStatus = 'unStart' | 'recording' | 'pause' | 'stop';

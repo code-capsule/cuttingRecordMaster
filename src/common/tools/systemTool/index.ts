@@ -162,6 +162,25 @@ class SystemTool {
     const cameras = devices.filter((device) => device.kind === 'videoinput');
     return cameras;
   };
+
+  /**
+   * 获取视频流
+   * @param deviceId 设备 id
+   */
+  public getVideoStream = async (deviceId: string) => {
+    const constraints = {
+      video: {
+        deviceId,
+        frameRate: { min: 20 },
+        width: { ideal: 4096 },
+        height: { ideal: 2160 },
+      },
+      audio: false,
+    };
+    log.info('the init video stream options is', constraints);
+    const stream: MediaStream = await navigator.mediaDevices.getUserMedia(constraints);
+    return stream;
+  };
 }
 
 export default new SystemTool() as SystemTool;

@@ -5,6 +5,7 @@ export const initialRecordPageState: MasterRecordType.IRecordPageInfo = {
   recordStatus: 'unStart',
   recordingMode: 'camOnly',
   recordingAudioMode: 'micAndSystem',
+  cameraDeviceId: '',
 };
 
 export const recordPageSlice = createSlice({
@@ -27,6 +28,12 @@ export const recordPageSlice = createSlice({
       return {
         ...state,
         recordingAudioMode: action.payload,
+      };
+    },
+    updateCameraDeviceId: (state, action: PayloadAction<string>) => {
+      return {
+        ...state,
+        cameraDeviceId: action.payload,
       };
     },
   },

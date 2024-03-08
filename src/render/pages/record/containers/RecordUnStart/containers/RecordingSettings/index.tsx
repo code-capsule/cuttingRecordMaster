@@ -34,10 +34,6 @@ const RecordingSettings = (props: IProps) => {
     setMicVisible(audioMode === 'micAndSystem' || audioMode === 'micOnly');
   }, [audioMode]);
 
-  useEffect(() => {
-    setCamVisible(audioMode === 'micAndSystem' || audioMode === 'systemOnly');
-  }, [audioMode]);
-
   const handleChangeAudioMode = (audioMode: MasterRecordType.TRecordingAudioMode) => {
     setAudioMode(audioMode);
   };
@@ -57,6 +53,7 @@ const RecordingSettings = (props: IProps) => {
     recordPageActions.updateRecordingMode(recordingMode);
     recordPageActions.updateRecordingAudioMode(audioMode);
     recordPageActions.updateRecordStatus('recording');
+    recordPageActions.updateCameraDeviceId(camKey);
     if (recordingMode === 'screenAndCam') {
       recordInstance.setSize(210, 48);
       recordInstance.setPosition(size.width / 2 - 105, 5);
@@ -65,7 +62,7 @@ const RecordingSettings = (props: IProps) => {
       recordInstance.setSize(210, 48);
       recordInstance.setPosition(size.width / 2 - 105, 5);
     } else if (recordingMode === 'camOnly') {
-      recordInstance.setSize(880, 466);
+      recordInstance.setSize(960, 544);
       recordInstance.center();
     }
     const primaryDisplay = await SystemTool.getPrimaryScreenDisplay();
